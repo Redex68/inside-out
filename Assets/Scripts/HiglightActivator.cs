@@ -36,6 +36,7 @@ public class HiglightActivator : MonoBehaviour
 
         GameObject highlight = highlights[indx];
         highlight.SetActive(true);
+        PromptScript.instance.updatePrompt("Acrivated " + highlight);
     }
 
     public void deactivateHighlight(BNG.Grabbable grabbable){
@@ -45,5 +46,6 @@ public class HiglightActivator : MonoBehaviour
 
         GameObject highlight = highlights[indx];
         highlight.SetActive(false);
+        PromptScript.instance.updatePrompt("Deactivated " + highlight);
     }
 }
