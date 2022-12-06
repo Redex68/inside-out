@@ -77,13 +77,12 @@ public class PC : MonoBehaviour
                         if (Mathf.Abs(snapPos.z - pos.z) > positionMargin)
                             continue;
 
-                        if (Mathf.Abs((snapAngle.x % 360) - rot.x) > angleMargin)
+                        if (Mathf.Abs(Mathf.DeltaAngle(snapAngle.x, rot.x)) > angleMargin)
                             continue;
-                        if (Mathf.Abs((snapAngle.y % 360) - rot.y) > angleMargin)
+                        if (Mathf.Abs(Mathf.DeltaAngle(snapAngle.y, rot.y)) > angleMargin)
                             continue;
-                        if (Mathf.Abs((snapAngle.z % 360) - rot.z) > angleMargin)
+                        if (Mathf.Abs(Mathf.DeltaAngle(snapAngle.z, rot.z)) > angleMargin)
                             continue;
-
                         snapPosIndex = k;
                         gameObjectIndex = j;
                         componentIndex = i;
@@ -122,7 +121,11 @@ public class PC : MonoBehaviour
         if (obj.GetComponent<Rigidbody>() != null) Destroy(obj.GetComponent<Rigidbody>());
         // if (obj.GetComponent<MeshCollider>() != null) Destroy(obj.GetComponent<MeshCollider>());
         // if (obj.GetComponent<BoxCollider>() != null) Destroy(obj.GetComponent<BoxCollider>());
-        if (obj.GetComponent<BNG.Grabbable>() != null) Destroy(obj.GetComponent<BNG.Grabbable>());
+        if (obj.GetComponent<BNG.Grabbable>() != null){
+            BNG.Grabbable grab = obj.GetComponent<BNG.Grabbable>();
+            grab.enabled = false;
+            grab.DropItem(grab.GetPrimaryGrabber(), true, true);
+        } 
         
     }
 }

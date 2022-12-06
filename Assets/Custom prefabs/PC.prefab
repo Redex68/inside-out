@@ -152,10 +152,10 @@ MonoBehaviour:
         snapPositions:
         - {x: -0.1539941, y: 0.7273, z: -0.2122269}
         snapAngles:
-        - {x: 0, y: 0, z: 270}
-        - {x: 90, y: 0, z: 270}
-        - {x: 180, y: 0, z: 270}
-        - {x: 270, y: 0, z: 270}
+        - {x: 0, y: 180, z: 270}
+        - {x: 90, y: 180, z: 270}
+        - {x: 180, y: 180, z: 270}
+        - {x: 270, y: 180, z: 270}
         gameObjects:
         - {fileID: 3515781580231970564}
         subComponents: []

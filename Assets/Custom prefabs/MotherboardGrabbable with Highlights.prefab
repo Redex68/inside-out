@@ -278,7 +278,7 @@ PrefabInstance:
     - target: {fileID: 7562465715283286821, guid: 9f7dd633da188e041bc6961610a1dd0d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.07730011
+      value: 0.0487
       objectReference: {fileID: 0}
     - target: {fileID: 7562465715283286821, guid: 9f7dd633da188e041bc6961610a1dd0d,
         type: 3}
@@ -288,7 +288,7 @@ PrefabInstance:
     - target: {fileID: 7562465715283286821, guid: 9f7dd633da188e041bc6961610a1dd0d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.43349928
+      value: -0.4335
       objectReference: {fileID: 0}
     - target: {fileID: 7562465715283286821, guid: 9f7dd633da188e041bc6961610a1dd0d,
         type: 3}
@@ -329,6 +329,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RamHighlight (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7562465715283286842, guid: 9f7dd633da188e041bc6961610a1dd0d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f7dd633da188e041bc6961610a1dd0d, type: 3}
@@ -446,17 +451,17 @@ PrefabInstance:
     - target: {fileID: 7562465715283286821, guid: 9f7dd633da188e041bc6961610a1dd0d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.13357009
+      value: 0.105
       objectReference: {fileID: 0}
     - target: {fileID: 7562465715283286821, guid: 9f7dd633da188e041bc6961610a1dd0d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.05738452
+      value: 0.0574
       objectReference: {fileID: 0}
     - target: {fileID: 7562465715283286821, guid: 9f7dd633da188e041bc6961610a1dd0d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.4334996
+      value: -0.4335
       objectReference: {fileID: 0}
     - target: {fileID: 7562465715283286821, guid: 9f7dd633da188e041bc6961610a1dd0d,
         type: 3}
@@ -497,6 +502,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RamHighlight
+      objectReference: {fileID: 0}
+    - target: {fileID: 7562465715283286842, guid: 9f7dd633da188e041bc6961610a1dd0d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f7dd633da188e041bc6961610a1dd0d, type: 3}
