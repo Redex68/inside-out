@@ -13,7 +13,7 @@ public class HeatManager : MonoBehaviour
     float maxHeat;
 
     private List<HeatInfo> heatInfos = new List<HeatInfo>();
-    private float lastOverheat;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -43,8 +43,6 @@ public class HeatManager : MonoBehaviour
                 heatInfo.renderer.material.color = newColor;
             }
             else{
-                print(maxHeat / heatInfo.heatPerSecond);
-                lastOverheat = Time.time;
                 //TODO: when component overheats
             }
         }
@@ -64,15 +62,19 @@ public class HeatManager : MonoBehaviour
 </param>
 
 <exception cref="ArgumentException">
-    If <c>obj</c> is not in the list of HeatedComponents or if <c>obj</c> is <c>null</c>.
+    If <c>obj</c> is not in the list of HeatedComponents.
+</exception>
+<exception cref="NullReferenceException">
+    If <c>obj</c> is <c>null</c>
 </exception>
 */
     public void CoolObject(GameObject obj, float coolingPercentage){
+        if(obj == null) throw new System.NullReferenceException("Obj cannot be null.");
+
         foreach(HeatInfo info in heatInfos){
             if(info.heatedObject.Equals(obj)){
                 //This is so you can overcool a componet by a bit
                 info.heat = Mathf.Max(-0.2f, info.heat - coolingPercentage * maxHeat);
-                if(info.heat <= 0) print(Time.time - lastOverheat);
                 return;
             }            
         }
