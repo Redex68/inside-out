@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PC : MonoBehaviour
 {
@@ -117,6 +118,7 @@ public class PC : MonoBehaviour
 
         obj.transform.localPosition = position;
         obj.transform.localEulerAngles = angle;
+        
 
         if (obj.GetComponent<Rigidbody>() != null) Destroy(obj.GetComponent<Rigidbody>());
         // if (obj.GetComponent<MeshCollider>() != null) Destroy(obj.GetComponent<MeshCollider>());
@@ -125,7 +127,10 @@ public class PC : MonoBehaviour
             BNG.Grabbable grab = obj.GetComponent<BNG.Grabbable>();
             grab.enabled = false;
             grab.DropItem(grab.GetPrimaryGrabber(), true, true);
-        } 
-        
+        }
+        if (obj.CompareTag("cpuCooler"))
+        {
+            SceneManager.LoadScene("cpuFanPuzzle");
+        }
     }
 }

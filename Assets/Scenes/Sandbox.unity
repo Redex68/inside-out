@@ -731,6 +731,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dff70ea1cb5e9a54584da43fc07a28a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentTemperature: 20
 --- !u!1 &524278924
 GameObject:
   m_ObjectHideFlags: 0
@@ -896,10 +897,20 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 430471995927208046, guid: b8ff1faeffed58c45b6b249eca46e594,
+        type: 3}
+      propertyPath: m_TagString
+      value: motherboard
+      objectReference: {fileID: 0}
     - target: {fileID: 485746717091390967, guid: b8ff1faeffed58c45b6b249eca46e594,
         type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 485746717091390967, guid: b8ff1faeffed58c45b6b249eca46e594,
+        type: 3}
+      propertyPath: m_TagString
+      value: motherboard
       objectReference: {fileID: 0}
     - target: {fileID: 773739474597292873, guid: b8ff1faeffed58c45b6b249eca46e594,
         type: 3}
@@ -1181,6 +1192,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 3515781580231970564, guid: b8ff1faeffed58c45b6b249eca46e594,
+        type: 3}
+      propertyPath: m_TagString
+      value: cpuCooler
+      objectReference: {fileID: 0}
     - target: {fileID: 3605172811643122662, guid: b8ff1faeffed58c45b6b249eca46e594,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1204,17 +1220,17 @@ PrefabInstance:
     - target: {fileID: 4287778778620810686, guid: b8ff1faeffed58c45b6b249eca46e594,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.0992
+      value: -0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4287778778620810686, guid: b8ff1faeffed58c45b6b249eca46e594,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.3873
+      value: 0.379
       objectReference: {fileID: 0}
     - target: {fileID: 4287778778620810686, guid: b8ff1faeffed58c45b6b249eca46e594,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.9649
+      value: 2.028
       objectReference: {fileID: 0}
     - target: {fileID: 4366509582817580024, guid: b8ff1faeffed58c45b6b249eca46e594,
         type: 3}
@@ -1334,12 +1350,12 @@ PrefabInstance:
     - target: {fileID: 6415461624972336512, guid: b8ff1faeffed58c45b6b249eca46e594,
         type: 3}
       propertyPath: angleMargin
-      value: 10
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 6415461624972336512, guid: b8ff1faeffed58c45b6b249eca46e594,
         type: 3}
       propertyPath: positionMargin
-      value: 0.3
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6415461624972336512, guid: b8ff1faeffed58c45b6b249eca46e594,
         type: 3}
@@ -1680,6 +1696,50 @@ Transform:
   m_Father: {fileID: 225028838}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 179.985, z: 0}
+--- !u!1 &652698287
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 652698289}
+  - component: {fileID: 652698288}
+  m_Layer: 0
+  m_Name: CpuFanPuzzleStartController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &652698288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652698287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66929e939348cee4d8980ed8a4f86cb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &652698289
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652698287}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &848067839
 GameObject:
   m_ObjectHideFlags: 0
@@ -1727,6 +1787,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dff70ea1cb5e9a54584da43fc07a28a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentTemperature: 20
 --- !u!65 &848067842
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1938,12 +1999,31 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 915455340}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &951972856 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 430471995927208046, guid: b8ff1faeffed58c45b6b249eca46e594,
+    type: 3}
+  m_PrefabInstance: {fileID: 568468395}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &959500688 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1059057654955965140, guid: b8ff1faeffed58c45b6b249eca46e594,
     type: 3}
   m_PrefabInstance: {fileID: 568468395}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &959500693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 951972856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 347b241cf115a1041b36dcd8ebc18b1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cpuFan: {fileID: 1362718400}
 --- !u!1 &988078619
 GameObject:
   m_ObjectHideFlags: 0
@@ -2525,6 +2605,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dff70ea1cb5e9a54584da43fc07a28a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentTemperature: 20
 --- !u!1 &1177775109 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 845780881796167507, guid: fc3edfa76e205804abee92c042da5d74,
@@ -2653,6 +2734,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3233878373365662496, guid: fdc0b74adafdc9d4c86d844a5fa9320b,
         type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3233878373365662496, guid: fdc0b74adafdc9d4c86d844a5fa9320b,
+        type: 3}
       propertyPath: m_Center.x
       value: -0.004253026
       objectReference: {fileID: 0}
@@ -2665,6 +2751,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Center.z
       value: 0.004302209
+      objectReference: {fileID: 0}
+    - target: {fileID: 5187073810336722683, guid: fdc0b74adafdc9d4c86d844a5fa9320b,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6899767694062000679, guid: fdc0b74adafdc9d4c86d844a5fa9320b,
         type: 3}
@@ -3706,6 +3797,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9212504965324830098, guid: fc3edfa76e205804abee92c042da5d74,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc3edfa76e205804abee92c042da5d74, type: 3}

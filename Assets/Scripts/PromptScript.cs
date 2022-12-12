@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 
 /**
     <summary>
@@ -29,14 +30,44 @@ public class PromptScript: MonoBehaviour
         }
     }
 
-/**
-    <summary>
-        Fetches the text value of the currently displayed prompt.
-    </summary>
+    public int currentTemperature = 20;
 
-    <returns>
-        The text value of the currently displayed prompt.
-    </returns>
+    IEnumerator CountdownOnWatch()
+    {
+        while(currentTemperature < 100)
+        {
+            if (currentTemperature == 20)
+            {
+                yield return new WaitForSeconds(3);
+                currentTemperature += 3;
+                updatePrompt("Current CPU temperature is " + currentTemperature.ToString() + " °C");
+            } else
+            {
+                yield return new WaitForSeconds(1);
+                currentTemperature++;
+                updatePrompt("Current CPU temperature is " + currentTemperature.ToString() + " °C");
+            }
+        }
+        SceneManager.LoadScene("Sandbox");
+    }
+
+
+    private void Start()
+    {
+        if (SceneManager.GetActiveScene().name == "cpuFanPuzzle")
+        {
+            StartCoroutine(CountdownOnWatch());
+        }
+    }
+
+    /**
+        <summary>
+            Fetches the text value of the currently displayed prompt.
+        </summary>
+
+        <returns>
+            The text value of the currently displayed prompt.
+        </returns>
 */
     public string getPrompt(){
         return TMPtext.text;
@@ -54,6 +85,6 @@ public class PromptScript: MonoBehaviour
 */
     public void updatePrompt(string text){
         if(text == null) throw new NullReferenceException("Prompt text atempted to be changed to null");
-        TMPtext.text = text;
+        TMPtext.text = text; 
     }
 }
