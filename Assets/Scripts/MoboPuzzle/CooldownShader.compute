@@ -1,0 +1,81 @@
+// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel Temperature
+#pragma kernel Height
+#pragma kernel Init
+
+// Create a RenderTexture with enableRandomWrite flag and set it
+// with cs.SetTexture
+
+//CONSTANT
+RWTexture2D<float4> Result;
+
+StructuredBuffer<float> drawFilter;
+
+int drawSize;
+float drawSpeed;
+
+float coolSpeed;
+float heatSpeed = 0.2f;
+
+int texWidth;
+int texHeight;
+
+//PerFrame
+int beginWidth;
+int beginHeight;
+bool heatStop;
+bool coolStop;
+
+//Modifies red -> temp value
+[numthreads(32,32,1)]
+void Temperature (uint3 id : SV_DispatchThreadID)
+{
+    if(heatStop && coolStop || id.x >= texWidth || id.y >= texHeight) return;
+
+    int x = id.x - beginWidth;
+    int y = id.y - beginHeight;
+    int index = x*drawSize + y;
+
+    float4 prevTemp = Result[id.xy];
+
+    if(x >= 0 && y >= 0 && x < drawSize && y < drawSize && prevTemp.x < drawFilter[index] && !heatStop)
+    {
+        prevTemp.x += drawFilter[index] * heatSpeed;
+    }
+    else if(!coolStop)
+    {
+        prevTemp.x = max(0.0, prevTemp.x - coolSpeed);
+    }
+
+    Result[id.xy] = prevTemp;
+};
+
+//Modifies green -> height value
+[numthreads(32,32,1)]
+void Height (uint3 id : SV_DispatchThreadID)
+{
+    if(heatStop || id.x >= texWidth || id.y >= texHeight) return;
+
+    int x = id.x - beginWidth;
+    int y = id.y - beginHeight;
+
+    if(x < 0 || y < 0 || x >= drawSize || y >= drawSize) return;
+
+    int index = x*drawSize + y;
+
+    float4 prevTemp = Result[id.xy];
+    
+    float drawVal = 0.95f * drawFilter[index];
+    if(prevTemp.y < drawVal)
+        prevTemp.y = min(drawFilter[index], prevTemp.y + drawVal * drawSpeed);
+
+    Result[id.xy] = prevTemp;
+};
+
+//Sets zero
+[numthreads(32,32,1)]
+void Init (uint3 id : SV_DispatchThreadID)
+{
+    if(id.x >= texWidth || id.y >= texHeight) return;
+    Result[id.xy] = float4(0.0,0.0,0.0,1.0);
+}

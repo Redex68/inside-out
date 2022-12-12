@@ -9,10 +9,18 @@ public class Laser : MonoBehaviour
     public LineRenderer lr;
     public Grabbable g;
 
-    float[,] drawFilter;
-    public float elipseFactor = 1.0f;
-    public int drawSize = 10;
-    public float drawSpeed = 1.0f;
+    public static float[,] drawFilter;
+    public static float elipseFactor = 0.9f;
+    public static int drawSize = 79;
+    public static float drawSpeed = 0.015f;
+    public static float coolSpeed = 0.002f;
+    public static float heatSpeed = 0.01f;
+
+
+    void Awake() 
+    {
+        initDrawFilter();    
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +28,10 @@ public class Laser : MonoBehaviour
         lr.startWidth = 0.01f;
         lr.endWidth = 0.01f;
         
+    }
+
+    void initDrawFilter()
+    {
         drawFilter = new float[drawSize,drawSize];
         float peak = 0;
 
@@ -42,6 +54,11 @@ public class Laser : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        updateLaser();
+    }
+
+    void updateLaser()
+    {
         if(g.BeingHeld)
         {
             Vector3[] positions = 
@@ -60,12 +77,18 @@ public class Laser : MonoBehaviour
 
                 if(Physics.Raycast(ray, out hit))
                 {
-                    if(hit.transform.name == "TexWrite")
+                    if(hit.transform.GetComponent<TextureWrite>() != null)
                     {
-                        Texture2D t = hit.transform.GetComponent<TextureWrite>().tex;
-                        int width = (int)   (hit.textureCoord.x * (float)t.width);
-                        int height = (int)  (hit.textureCoord.y * (float)t.height);
-                        drawOnTexure(t, width, height);
+                        ComputeShader weldShader = hit.transform.GetComponent<TextureWrite>().tempShader;
+                        RenderTexture weldTexture = hit.transform.GetComponent<TextureWrite>().getWeldTexture();
+
+                        int width = (int)   (hit.textureCoord.x * (float)weldTexture.width);
+                        int height = (int)  (hit.textureCoord.y * (float)weldTexture.height);
+
+                        weldShader.SetInt("beginWidth", width - drawSize / 2);
+                        weldShader.SetInt("beginHeight", height - drawSize / 2);
+
+                        weldShader.Dispatch(1, 32, 32, 1);
                     }
                 }
             }
@@ -78,28 +101,5 @@ public class Laser : MonoBehaviour
         {
             lr.enabled = false;
         }
-    }
-
-    void drawOnTexure(Texture2D tex, int centerWidth, int centerHeight)
-    {
-        float halfDrawSize = drawSize / 2.0f;
-        
-        int beginWidth = Mathf.CeilToInt(centerWidth - halfDrawSize);
-        int beginHeight = Mathf.CeilToInt(centerHeight - halfDrawSize);
-
-        Color[] pixels = tex.GetPixels(beginWidth, beginHeight, drawSize, drawSize);
-
-        for(int i = 0; i < drawSize; i++)
-            for(int j = 0; j < drawSize; j++)
-                if(pixels[i*drawSize+j].g < drawFilter[i,j])
-                    pixels[i*drawSize+j].g = Mathf.Min
-                    (
-                        drawFilter[i,j], 
-                        pixels[i*drawSize+j].g + drawFilter[i,j] * Time.deltaTime * drawSpeed
-                    );
-
-
-        tex.SetPixels(beginWidth, beginHeight, drawSize, drawSize, pixels);
-        tex.Apply();
     }
 }

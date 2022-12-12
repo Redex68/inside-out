@@ -5,10 +5,13 @@ Shader "Example/WeldShader"
     // has the default value (1, 1, 1, 1).
     Properties
     {
-        [MainTexture] _BaseMap("Main Texture", 2D) = "gray"
+        [MainTexture] _BaseMap("Main Texture", 2D) = "black"
+        _TexelWidth("Texel width", float) = 0.00125
+        _TexelHeight("Texel height", float) = 0.0125
+        _ScaleFactor("Scale factor", float) = 1.0
         _MinEdgeFactor("Min Edge Factor", float) = 1.0
         _MinInsideFactor("Min Inside Factor", float ) = 1.0
-        _MaxEdgeFactor("Max Edge Factor", float) = 10.0
+        _MaxEdgeFactor("Max Edge Factor", float) = 15.0
         _MaxInsideFactor("Max Inside Factor", float) = 15.0
         _PlayerDistance("Player Distance", float ) = 5.0
     }
@@ -34,7 +37,6 @@ Shader "Example/WeldShader"
             {
                 float4 positionOS   : POSITION;
                 float2 UV : TEXCOORD;
-                float3 normal : NORMAL;
                 UNITY_VERTEX_INPUT_INSTANCE_ID
             };
 
@@ -43,6 +45,8 @@ Shader "Example/WeldShader"
                 float3 positionWS : INTERNALTESSPOS;
                 float2 UV : TEXCOORD;
                 float3 normalWS : NORMAL;
+                float3 tangentWS : TANGENT;
+                float3 bitangentWS : BINORMAL;
                 UNITY_VERTEX_INPUT_INSTANCE_ID
             };
 
@@ -64,9 +68,12 @@ Shader "Example/WeldShader"
 
 
             TEXTURE2D(_BaseMap); SAMPLER(sampler_BaseMap);
-            
+
             CBUFFER_START(UnityPerMaterial)
                 float4 _BaseMap_ST;
+                float _ScaleFactor;
+                float _TexelWidth;
+                float _TexelHeight;
                 float _MinInsideFactor;
                 float _MinEdgeFactor;
                 float _MaxInsideFactor;
@@ -76,19 +83,21 @@ Shader "Example/WeldShader"
 
             TessellationControlPoint vert(Attributes IN)
             {
-                TessellationControlPoint OUT;
+               TessellationControlPoint OUT;
 
-                UNITY_SETUP_INSTANCE_ID(IN);
-                UNITY_TRANSFER_INSTANCE_ID(IN, OUT);
+               UNITY_SETUP_INSTANCE_ID(IN);
+               UNITY_TRANSFER_INSTANCE_ID(IN, OUT);
 
-                VertexPositionInputs vpi = GetVertexPositionInputs(IN.positionOS);
-                VertexNormalInputs vni = GetVertexNormalInputs(IN.normal);
+               OUT.positionWS = TransformObjectToWorld(IN.positionOS);
+               OUT.UV = TRANSFORM_TEX(IN.UV, _BaseMap);
 
-                OUT.positionWS = vpi.positionWS;
-                OUT.UV = TRANSFORM_TEX(IN.UV, _BaseMap);
-                OUT.normalWS = vni.normalWS;
+               VertexNormalInputs VNI = GetVertexNormalInputs(float3(0.0,1.0,0.0), float4(1.0,0.0,0.0,1.0));
 
-                return OUT;
+               OUT.normalWS = VNI.normalWS;
+               OUT.tangentWS = VNI.tangentWS;
+               OUT.bitangentWS = VNI.bitangentWS;
+
+               return OUT;
             }
 
             TessellationFactors PatchConstantFunction
@@ -137,30 +146,59 @@ Shader "Example/WeldShader"
                 float3 barycentricCoordinates : SV_DomainLocation
             )
             {
-                Varyings OUT;
+               Varyings OUT;
 
-                UNITY_SETUP_INSTANCE_ID(patch[0]);
-                UNITY_TRANSFER_INSTANCE_ID(patch[0], OUT);
-                UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(OUT);
+               UNITY_SETUP_INSTANCE_ID(patch[0]);
+               UNITY_TRANSFER_INSTANCE_ID(patch[0], OUT);
+               UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(OUT);
 
-                float3 positionWS = BARYCENTRIC_INTERPOLATE(positionWS);
-                float3 normalWS = BARYCENTRIC_INTERPOLATE(normalWS);
-                float2 UV = BARYCENTRIC_INTERPOLATE(UV);
+               float2 UV = BARYCENTRIC_INTERPOLATE(UV);
+               float3 normalWS = patch[0].normalWS;
+               float3 tangentWS = patch[0].tangentWS;
+               float3 bitangentWS = patch[0].bitangentWS;
 
-                float3 displacement = 0.1 * normalWS * SAMPLE_TEXTURE2D_LOD(_BaseMap, sampler_BaseMap, UV, 0).g;
+               float3 offsetY = _ScaleFactor * normalWS * 0.7;
+               float offsetX = _TexelWidth * _ScaleFactor;
+               float offsetZ = _TexelHeight * _ScaleFactor;
 
-                OUT.positionCS = TransformWorldToHClip(positionWS + displacement);
-                OUT.normalWS = normalWS;
-                OUT.positionWS = positionWS;
-                OUT.UV = UV;
+               float d = 1.0;
+               float3 height = offsetY * SAMPLE_TEXTURE2D_LOD(_BaseMap, sampler_BaseMap, UV, 0).g;
+               float3 heightx = offsetY * SAMPLE_TEXTURE2D_LOD(_BaseMap, sampler_BaseMap, UV - float2(_TexelWidth*d, 0), 0).g;
+               float3 heightz = offsetY * SAMPLE_TEXTURE2D_LOD(_BaseMap, sampler_BaseMap, UV + float2(0,_TexelHeight*d), 0).g;
 
-                return OUT;
+               float3 pos = BARYCENTRIC_INTERPOLATE(positionWS);
+               float3 positionWS =  pos + height;
+               float3 positionWSx = pos + tangentWS * offsetX + heightx;
+               float3 positionWSz = pos + bitangentWS * offsetZ + heightz;
+
+               float3 tangent = - positionWS + positionWSx; 
+               float3 bitangent = - positionWS + positionWSz; 
+
+               float3 newNormal = cross(tangent, bitangent);
+
+               OUT.positionCS = TransformWorldToHClip(positionWS);
+               OUT.normalWS = normalize(newNormal);
+               OUT.positionWS = positionWS;
+               OUT.UV = UV;
+
+               return OUT;
             }
 
             half4 frag(Varyings IN) : SV_Target
             {
-                // Returning the _BaseColor value.
-                return SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap, IN.UV);
+               Light light = GetMainLight();
+               float3 lightDir = light.direction;
+
+               float ndotl = dot(IN.normalWS, lightDir);
+               half4 defaultColor = half4(half3(0.3, 0.3, 0.3) * light.color * max(ndotl,0.2), 1.0);
+
+               half temp = SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap, IN.UV).r;
+               half4 tempColor = half4(temp,0,0,0.5);
+
+               return tempColor.r > 0.01 ? tempColor : defaultColor;
+               //  return tempColor;
+               //  return half4(IN.normalWS, 1.0);
+               // return half4(IN.UV, 0.0, 1.0);
             }
             ENDHLSL
         }
