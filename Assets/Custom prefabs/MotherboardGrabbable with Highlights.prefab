@@ -84,6 +84,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7562465715283286842, guid: 9f7dd633da188e041bc6961610a1dd0d,
         type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7562465715283286842, guid: 9f7dd633da188e041bc6961610a1dd0d,
+        type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -100,6 +105,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MotherboardGrabbable with Highlights
+      objectReference: {fileID: 0}
+    - target: {fileID: 2562953147166762971, guid: c49ba09b4d5c2144dbbc7cf051570f41,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2943842200882543969, guid: c49ba09b4d5c2144dbbc7cf051570f41,
         type: 3}
@@ -246,6 +256,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CoolerHighlight
       objectReference: {fileID: 0}
+    - target: {fileID: 7562465715283286842, guid: 9f7dd633da188e041bc6961610a1dd0d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f7dd633da188e041bc6961610a1dd0d, type: 3}
 --- !u!1001 &8049414540585877948
@@ -329,6 +344,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RamHighlight (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7562465715283286842, guid: 9f7dd633da188e041bc6961610a1dd0d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7562465715283286842, guid: 9f7dd633da188e041bc6961610a1dd0d,
         type: 3}
@@ -419,6 +439,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GraphicsCardHighlight
       objectReference: {fileID: 0}
+    - target: {fileID: 7562465715283286842, guid: 9f7dd633da188e041bc6961610a1dd0d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f7dd633da188e041bc6961610a1dd0d, type: 3}
 --- !u!1001 &8049414542269074881
@@ -502,6 +527,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RamHighlight
+      objectReference: {fileID: 0}
+    - target: {fileID: 7562465715283286842, guid: 9f7dd633da188e041bc6961610a1dd0d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7562465715283286842, guid: 9f7dd633da188e041bc6961610a1dd0d,
         type: 3}

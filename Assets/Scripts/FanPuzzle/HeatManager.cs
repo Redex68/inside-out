@@ -4,39 +4,49 @@ using UnityEngine;
 public class HeatManager : MonoBehaviour
 {
     [SerializeField]
+    [Tooltip("The average time a component will need to overheat in seconds.")]
     float averageTimeTillOverheat; 
-    
-    [SerializeField]
-    List<GameObject> heatedComponents;
 
     [SerializeField]
+    [Range(0.5f, 1f)]
+    [Tooltip("The minimum time a component can take to overheat as a percentage of averageTimeTillOverheat.")]
+    float minTimePercent;
+
+    [SerializeField]
+    [Range(1f, 2f)]
+    [Tooltip("The maximum time a component can take to overheat as a percentage of averageTimeTillOverheat.")]
+    float maxTimePercent;
+
+    [SerializeField]
+    [Tooltip("The maximum heat percentage a component can reach (dictates how red it will appear)")]
     float maxHeat;
 
+    [SerializeField]
+    [Tooltip("The prefab that contains a heated component's UI elements (the TextField for the name, the progress bar...)")]
+    GameObject heatedComponentUIEntryPrefab;
+
+    /// <summary> A list containing all of the active heated components' heatInfo descriptors </summary>
     private List<HeatInfo> heatInfos = new List<HeatInfo>();
+    /// <summary> The UI that is attached to the watch, displays progress bars </summary>
     
-    // Start is called before the first frame update
+    private HeatUIManager UIManager;
     void Start()
     {
+        GameObject[] heatedComponents = GameObject.FindGameObjectsWithTag("HeatedComponent");
 
-        foreach(GameObject obj in heatedComponents){
-            //Every object will have a different, random speed at which they heat up.
-            float actualTimeTillOverheat = averageTimeTillOverheat * Random.Range(0.7f, 1.5f);
-            float heatPerSecond = maxHeat / actualTimeTillOverheat;
-            HeatInfo info = new HeatInfo(obj, 0, heatPerSecond);
-            heatInfos.Add(info);
-
-            Color newColor = info.renderer.material.color;
-            newColor.a = 0;
-            info.renderer.material.color = newColor;
-        }
+        //Initialise the heatinfos of each component
+        foreach(GameObject obj in heatedComponents) setupHeatInfo(obj);
+        //Initialise the UIManager
+        UIManager = new HeatUIManager(heatInfos, heatedComponentUIEntryPrefab, maxHeat);
     }
 
     // Update is called once per frame
     void Update()
     {
+        UIManager.updateUI();
         foreach(HeatInfo heatInfo in heatInfos){
             Color newColor = heatInfo.renderer.material.color;
-            //Max heat is 75%
+            //Max heat is 60%
             if(heatInfo.heat < maxHeat){
                 heatInfo.heat += heatInfo.heatPerSecond * Time.deltaTime;
                 newColor.a = heatInfo.heat;
@@ -80,6 +90,33 @@ public class HeatManager : MonoBehaviour
         }
         throw new System.ArgumentException("Provided object is not in the list of HeatedComponents of the HeatManager.");
     }
+
+/**
+<summary>
+    Sets up a component's HeatInfo object.
+</summary>
+
+<param name="obj">
+    The component for which the HeatInfo object is being created.
+</param>
+
+<returns>
+    A newly created HeatInfo object for the given component.
+</returns>
+*/
+    private HeatInfo setupHeatInfo(GameObject obj){
+            //Every object will have a different, random speed at which they heat up.
+            float actualTimeTillOverheat = averageTimeTillOverheat * Random.Range(0.5f, 2f);
+            float heatPerSecond = maxHeat / actualTimeTillOverheat;
+            HeatInfo info = new HeatInfo(obj, 0, heatPerSecond);
+            heatInfos.Add(info);
+
+            Color newColor = info.renderer.material.color;
+            newColor.a = 0;
+            info.renderer.material.color = newColor;
+
+            return info;
+    }
 }
 
 /**
@@ -89,7 +126,7 @@ public class HeatManager : MonoBehaviour
     the object's current heat and the speed at which it heats up.
 </summary>
 */
-class HeatInfo{
+public class HeatInfo{
     public HeatInfo(GameObject heatedObject, float heat, float heatPerSecond){
         this.heatedObject = heatedObject;
         this.renderer = heatedObject.GetComponent<Renderer>();
@@ -100,4 +137,6 @@ class HeatInfo{
     public float heat;
     public readonly float heatPerSecond;
     public GameObject heatedObject;
+    public UnityEngine.UI.Slider slider;
+    public UnityEngine.UI.Button button;
 }

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5279456433782045482}
   - component: {fileID: -8667931200513542108}
   - component: {fileID: 5637536669321267579}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FanCoolerGrabbable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -214,7 +214,7 @@ GameObject:
   - component: {fileID: 9141422426820770451}
   - component: {fileID: 2648824851402822453}
   - component: {fileID: 4299969043004144017}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
