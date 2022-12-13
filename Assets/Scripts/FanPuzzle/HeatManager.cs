@@ -1,7 +1,9 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
-public class HeatManager : MonoBehaviour
+public class HeatManager : Puzzle
 {
     [SerializeField]
     [Tooltip("The average time a component will need to overheat in seconds.")]
@@ -25,37 +27,98 @@ public class HeatManager : MonoBehaviour
     [Tooltip("The prefab that contains a heated component's UI elements (the TextField for the name, the progress bar...)")]
     GameObject heatedComponentUIEntryPrefab;
 
-    /// <summary> A list containing all of the active heated components' heatInfo descriptors </summary>
-    private List<HeatInfo> heatInfos = new List<HeatInfo>();
+    [SerializeField]
+    [Range(0, 27)]
+    [Tooltip("The number of components that will be activated at the start of the puzzle.")]
+    int numberOfActiveComponents;
+
+    [SerializeField]
+    [Tooltip("The image that will represent the compass' needle.")]
+    Sprite compassNeedle;
+
+    [SerializeField]
+    [Tooltip("The prefab for the cooler.")]
+    GameObject coolerPrefab;
+
+    /// <summary> A list of all possible heatedComponents </summary>
+    private GameObject[] heatedComponents;
+    /// <summary> A list containing all of the active heated components' HeatInfo descriptors </summary>
+    private List<HeatInfo> heatInfos = new List<HeatInfo>();    
     /// <summary> The UI that is attached to the watch, displays progress bars </summary>
-    
     private HeatUIManager UIManager;
+    private bool puzzleActive = false;
+    private GameObject coolerInstance;
+    private GameObject player;
     void Start()
     {
-        GameObject[] heatedComponents = GameObject.FindGameObjectsWithTag("HeatedComponent");
+        heatedComponents = GameObject.FindGameObjectsWithTag("HeatedComponent");
+        foreach(GameObject obj in heatedComponents) obj.SetActive(false);
+    }
 
+    private void setupPuzzle(){
+        puzzleActive = true;
+        //Select a random subset of heatedComponents each time.
+        GameObject[] selectedComponents = heatedComponents.OrderBy(el => Random.value).Take(numberOfActiveComponents).ToArray();
+
+        //Disable components that weren't selected, enable components that were 
+        foreach(GameObject obj in heatedComponents){
+            if(!selectedComponents.Contains(obj)) obj.SetActive(false);
+            else obj.SetActive(true);
+        }
         //Initialise the heatinfos of each component
-        foreach(GameObject obj in heatedComponents) setupHeatInfo(obj);
+        foreach(GameObject obj in selectedComponents) setupHeatInfo(obj);
+
         //Initialise the UIManager
-        UIManager = new HeatUIManager(heatInfos, heatedComponentUIEntryPrefab, maxHeat);
+        UIManager = new HeatUIManager(heatInfos, heatedComponentUIEntryPrefab, maxHeat, compassNeedle);
     }
 
     // Update is called once per frame
     void Update()
     {
-        UIManager.updateUI();
-        foreach(HeatInfo heatInfo in heatInfos){
-            Color newColor = heatInfo.renderer.material.color;
-            //Max heat is 60%
-            if(heatInfo.heat < maxHeat){
-                heatInfo.heat += heatInfo.heatPerSecond * Time.deltaTime;
-                newColor.a = heatInfo.heat;
-                heatInfo.renderer.material.color = newColor;
-            }
-            else{
-                //TODO: when component overheats
+        if(puzzleActive){
+            UIManager.updateUI();
+            foreach(HeatInfo heatInfo in heatInfos){
+                Color newColor = heatInfo.renderer.material.color;
+                if(heatInfo.heat < maxHeat){
+                    heatInfo.heat += heatInfo.heatPerSecond * Time.deltaTime;
+                    newColor.a = heatInfo.heat;
+                    heatInfo.renderer.material.color = newColor;
+                }
+                else{
+                    failPuzzle();
+                    break;
+                }
             }
         }
+    }
+
+/// <summary>
+/// Called when the puzzle has been completed successfully.
+/// </summary>
+    private void puzzleCleared(){
+        puzzleActive = false;
+        UIManager.clearUI();
+        heatInfos.Clear();
+        Destroy(coolerInstance);
+        PromptScript.instance.updatePrompt("Congratulations! You have beaten the puzzle.", 5);
+        player.GetComponent<BNG.PlayerTeleport>().TeleportPlayer(new Vector3(0, 2.142f, 0), Quaternion.identity);
+    }
+
+/// <summary>
+/// Called when the player has failed the puzzle.
+/// </summary>
+    private void failPuzzle(){
+        PromptScript.instance.updatePrompt("Don't let the components overheat!", 3);
+        resetPuzzle();
+    }
+
+/// <summary>
+/// Resets the puzzle, clearing the UI and selecting new components.
+/// </summary>
+    private void resetPuzzle(){
+        UIManager.clearUI();
+        heatInfos.Clear();
+        setupPuzzle();
     }
 
 /**
@@ -85,10 +148,27 @@ public class HeatManager : MonoBehaviour
             if(info.heatedObject.Equals(obj)){
                 //This is so you can overcool a componet by a bit
                 info.heat = Mathf.Max(-0.2f, info.heat - coolingPercentage * maxHeat);
+                if(info.heat < 0) objectFullyCooledDown(info);
+                
+                //The puzzle has been cleared
+                if(heatInfos.Count == 0) puzzleCleared();
+
                 return;
-            }            
+            }
         }
         throw new System.ArgumentException("Provided object is not in the list of HeatedComponents of the HeatManager.");
+    }
+
+/// <summary>
+/// Called when an object has been fully cooled down. Disables the heat component of the
+/// object and prints a prompt that the component has successfully been cooled.
+/// </summary>
+/// <param name="info"> The HeatInfo descriptor of the heated object. </param>
+    private void objectFullyCooledDown(HeatInfo info){
+        heatInfos.Remove(info);
+        PromptScript.instance.updatePrompt("Completely cooled down " + info.heatedObject.name.ToLower() + "!", 3);
+        UIManager.removeUIEntry(info);
+        info.heatedObject.SetActive(false);
     }
 
 /**
@@ -117,13 +197,29 @@ public class HeatManager : MonoBehaviour
 
             return info;
     }
+
+    public override void initPuzzle(GameObject player)
+    {
+        this.player = player;
+        StartCoroutine(delayedTeleport());
+    }
+
+    private IEnumerator delayedTeleport(){
+        yield return new WaitForSeconds(1.5f);
+
+        setupPuzzle();
+        coolerInstance = Instantiate(coolerPrefab, new Vector3(-503, 183.15f, 995), Quaternion.identity);
+        coolerInstance.GetComponent<Cooler>().manager = this;
+        player.GetComponent<BNG.PlayerTeleport>().TeleportPlayer(new Vector3(-503.41f, 184.022f, 994.549f), Quaternion.identity);
+    }
 }
 
 /**
 <summary>
     Contains info needed for managing an object's heat. Includes a renderer
     through which the component's appearance can be changed (to look hotter),
-    the object's current heat and the speed at which it heats up.
+    the object's current heat and the speed at which it heats up. Also contains
+    references to the component's associated UI elements.
 </summary>
 */
 public class HeatInfo{

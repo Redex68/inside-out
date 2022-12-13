@@ -1,14 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PC : MonoBehaviour
 {
+
     [System.Serializable]
     struct Component
     {
         [SerializeField]
-        string name;
+        public string name;
         [SerializeField]
         public List<Vector3> snapPositions;
         [SerializeField]
@@ -23,7 +25,7 @@ public class PC : MonoBehaviour
     List<Component> components;
 
     [SerializeField]
-    GameObject transitionManager;
+    TransitionManager transitionManager;
 
     [SerializeField]
     float positionMargin;
@@ -112,6 +114,8 @@ public class PC : MonoBehaviour
             {
                 components.Add(subComponent);
             }
+            //Starts the puzzle
+            transitionManager.startPuzzle(components[componentIndex].name);
             components.RemoveAt(componentIndex);
         }
 
@@ -125,7 +129,6 @@ public class PC : MonoBehaviour
             BNG.Grabbable grab = obj.GetComponent<BNG.Grabbable>();
             grab.enabled = false;
             grab.DropItem(grab.GetPrimaryGrabber(), true, true);
-        } 
-        
+        }         
     }
 }

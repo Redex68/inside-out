@@ -111,6 +111,7 @@ GameObject:
   - component: {fileID: 6534395957766889087}
   - component: {fileID: 6534395957766889084}
   - component: {fileID: 6534395957766889083}
+  - component: {fileID: 7888315317770224856}
   m_Layer: 10
   m_Name: Cooler
   m_TagString: Untagged
@@ -125,8 +126,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6534395957766889073}
-  m_LocalRotation: {x: 0.000000973706, y: 0.9901887, z: 0.13973656, w: -0.0000068997883}
-  m_LocalPosition: {x: -588.011, y: 183.176, z: -179.99338}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.31304163, y: 0.3094562, z: 0.29060766}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -282,3 +283,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7888315317770224856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6534395957766889073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a443df58a51a80546a1e5e811324579f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 0}
+  timeToCool: 7
+  maxRange: 3.5
