@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2122843791083541294}
   - component: {fileID: 2122843791083541295}
   - component: {fileID: 2122843791083541293}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GraphicsCardGrabbable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -215,7 +215,7 @@ GameObject:
   - component: {fileID: 4559387046416817153}
   - component: {fileID: 4265132821564181295}
   - component: {fileID: 3879330700199642994}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube_30
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -298,7 +298,7 @@ GameObject:
   - component: {fileID: 5488053757074665755}
   - component: {fileID: 6325779316543295391}
   - component: {fileID: 4950636031233152933}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube_30_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
