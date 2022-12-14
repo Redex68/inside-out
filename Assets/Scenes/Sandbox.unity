@@ -2766,12 +2766,12 @@ PrefabInstance:
     - target: {fileID: 6415461624972336512, guid: b8ff1faeffed58c45b6b249eca46e594,
         type: 3}
       propertyPath: angleMargin
-      value: 50
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6415461624972336512, guid: b8ff1faeffed58c45b6b249eca46e594,
         type: 3}
       propertyPath: positionMargin
-      value: 10
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 6415461624972336512, guid: b8ff1faeffed58c45b6b249eca46e594,
         type: 3}
