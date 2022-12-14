@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - HeatedComponent
+  - motherboard
+  - cpuCooler
+  - cpuInCpuFanPuzzle
   layers:
   - Default
   - TransparentFX
