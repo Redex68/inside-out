@@ -11,10 +11,10 @@ public class Laser : MonoBehaviour
 
     public static float[,] drawFilter;
     public static float elipseFactor = 0.9f;
-    public static int drawSize = 79;
-    public static float drawSpeed = 0.015f;
+    public static int drawSize = 30;
+    public static float drawSpeed = 0.02f;
     public static float coolSpeed = 0.002f;
-    public static float heatSpeed = 0.01f;
+    public static float heatSpeed = 0.015f;
 
 
     void Awake() 
@@ -79,8 +79,10 @@ public class Laser : MonoBehaviour
                 {
                     if(hit.transform.GetComponent<TextureWrite>() != null)
                     {
-                        ComputeShader weldShader = hit.transform.GetComponent<TextureWrite>().tempShader;
-                        RenderTexture weldTexture = hit.transform.GetComponent<TextureWrite>().getWeldTexture();
+                        TextureWrite tw = hit.transform.GetComponent<TextureWrite>();
+
+                        ComputeShader weldShader = tw.tempShader;
+                        RenderTexture weldTexture = tw.getWeldTexture();
 
                         int width = (int)   (hit.textureCoord.x * (float)weldTexture.width);
                         int height = (int)  (hit.textureCoord.y * (float)weldTexture.height);
@@ -88,7 +90,7 @@ public class Laser : MonoBehaviour
                         weldShader.SetInt("beginWidth", width - drawSize / 2);
                         weldShader.SetInt("beginHeight", height - drawSize / 2);
 
-                        weldShader.Dispatch(1, 32, 32, 1);
+                        weldShader.Dispatch(1, 16, 16, 1);
                     }
                 }
             }

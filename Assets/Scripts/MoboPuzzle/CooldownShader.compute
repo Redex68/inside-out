@@ -2,16 +2,23 @@
 #pragma kernel Temperature
 #pragma kernel Height
 #pragma kernel Init
+#pragma kernel Edges
+#pragma kernel BFS
+#pragma kernel Reset
 
 // Create a RenderTexture with enableRandomWrite flag and set it
 // with cs.SetTexture
 
 //CONSTANT
 RWTexture2D<float4> Result;
+RWBuffer<int> bitBuffer;
 
 StructuredBuffer<float> drawFilter;
+StructuredBuffer<int> edges;
 
-int drawSize;
+int edgesCount;
+
+uint drawSize;
 float drawSpeed;
 
 float coolSpeed;
@@ -64,6 +71,8 @@ void Height (uint3 id : SV_DispatchThreadID)
     int index = x*drawSize + y;
 
     float4 prevTemp = Result[id.xy];
+
+    if(prevTemp.w > 0.0f) return;
     
     float drawVal = 0.95f * drawFilter[index];
     if(prevTemp.y < drawVal)
@@ -77,5 +86,105 @@ void Height (uint3 id : SV_DispatchThreadID)
 void Init (uint3 id : SV_DispatchThreadID)
 {
     if(id.x >= texWidth || id.y >= texHeight) return;
-    Result[id.xy] = float4(0.0,0.0,0.0,1.0);
+    Result[id.xy] = float4(0.0,0.0,0.0,0.0);
+}
+
+//Sets edges
+[numthreads(32,32,1)]
+void Edges(uint3 id : SV_DispatchThreadID)
+{
+    if(id.x >= texWidth || id.y >= texHeight) return;
+
+    uint bigDrawSize = drawSize * 1.5f;
+    for(uint i = 0; i < edgesCount * 2; i += 2)
+    {
+        int beginX = edges[i] - bigDrawSize / 2;
+        int beginY = edges[i+1] - bigDrawSize / 2;
+
+        int x = id.x - beginX;
+        int y = id.y - beginY;
+
+        if(x >= 1 && y >= 1 && x < bigDrawSize-1 && y < bigDrawSize-1)
+        {
+            float4 prevResult = Result[id.xy];
+            prevResult.z = (0.1f * floor(i / 4.0f) + 0.1f);
+            prevResult.w = prevResult.z;
+            Result[id.xy] = prevResult;
+            return;
+        }
+    }
+}
+
+static int2 dirs[] =
+{
+    int2(1,0),
+    int2(0,1),
+    int2(-1,0),
+    int2(0,-1)
+};
+
+//Spreads edges
+[numthreads(32,32,1)]
+void BFS(uint3 id : SV_DispatchThreadID)
+{
+    if(id.x >= texWidth 
+    || id.y >= texHeight 
+    || Result[id.xy].y < 0.03f) return;
+
+    float4 prevResult = Result[id.xy];
+
+    if(prevResult.z > 0.0f)
+    {
+        float val1 = prevResult.z;
+        [unroll]
+        for(uint i = 0; i < 4; i++)
+        {
+            float currVal = Result[id.xy+dirs[i]].z;
+            if (currVal > 0.0f && val1 != currVal)
+            {
+                bitBuffer[0] = 1;
+                return;
+            }
+        }
+    }
+    else
+    {
+        [unroll]
+        for(uint i = 0; i < 4; i++)
+        {
+            float2 coords = float2(clamp(id.x+dirs[i].x,0,texWidth-1),clamp(id.y+dirs[i].y,0,texHeight-1));
+            float currVal = Result[coords].z;
+            if (currVal > 0.0f)
+            {
+                bitBuffer[1] = 1;
+
+                prevResult.z = currVal;
+                Result[id.xy] = prevResult;
+                return;
+            }
+        }
+    }
+}
+
+//Resets panel
+[numthreads(32,32,1)]
+void Reset(uint3 id : SV_DispatchThreadID)
+{
+    if(id.x >= texWidth || id.y >= texHeight) return;
+
+    float4 prevResult = Result[id.xy];
+
+    if(prevResult.y == 0.0f || prevResult.w != 0.0f) return;
+
+
+    prevResult.y -= 0.005f;
+
+    if(prevResult.y <= 0.0f) 
+    {
+        prevResult.y = 0.0f;
+        prevResult.z = 0.0f;
+    }
+    else bitBuffer[2] = 1;
+
+    Result[id.xy] = prevResult;
 }
