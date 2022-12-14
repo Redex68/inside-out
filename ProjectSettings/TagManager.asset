@@ -4,8 +4,18 @@
 TagManager:
   serializedVersion: 2
   tags:
+<<<<<<< Updated upstream
   - cpuCooler
   - motherboard
+=======
+  - HeatedComponent
+  - motherboard
+  - cpuCooler
+  - cpuInCpuFanPuzzle
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX

@@ -12,8 +12,18 @@ GameObject:
   - component: {fileID: 4090261300747025672}
   - component: {fileID: 7781955792559030769}
   - component: {fileID: 63671115450100778}
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
   - component: {fileID: -1623145316341068057}
   - component: {fileID: 4813684525365921780}
+=======
+  - component: {fileID: 2657971862602808859}
+  - component: {fileID: 7264567512816811094}
+>>>>>>> Stashed changes
+=======
+  - component: {fileID: 2657971862602808859}
+  - component: {fileID: 7264567512816811094}
+>>>>>>> Stashed changes
   m_Layer: 0
   m_Name: Champagne
   m_TagString: Untagged
@@ -99,7 +109,15 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.098678, y: 0.2938835, z: 0.098678}
   m_Center: {x: -0.000000011175871, y: 0.14694196, z: 0.000000007450581}
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!54 &-1623145316341068057
+=======
+--- !u!54 &2657971862602808859
+>>>>>>> Stashed changes
+=======
+--- !u!54 &2657971862602808859
+>>>>>>> Stashed changes
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,7 +133,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!114 &4813684525365921780
+=======
+--- !u!114 &7264567512816811094
+>>>>>>> Stashed changes
+=======
+--- !u!114 &7264567512816811094
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

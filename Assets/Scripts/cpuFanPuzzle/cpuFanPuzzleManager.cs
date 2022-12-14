@@ -1,0 +1,142 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class cpuFanPuzzleManager : Puzzle
+{
+    [SerializeField]
+    [Tooltip("CPU temperature at the start of the puzzle")]
+    int startTemperature;
+
+    [SerializeField]
+    [Tooltip("How often CPU gains 1 °C")]
+    int delta;
+
+    [SerializeField]
+    [Tooltip("The maximum temperature the CPU can reach")]
+    int maxCpuTemp;
+
+    [SerializeField]
+    [Tooltip("Thermal paste object")]
+    private GameObject thermalPasteReference;
+
+    [SerializeField]
+    [Tooltip("4 possible spawn locations for thermal paste")]
+    private Transform position0, position1, position2, position3;
+
+    private GameObject spawnedThermalPaste;
+    private int randomPosition;
+
+    private GameObject[] cpu;
+
+    private bool puzzleActive = false;
+    private GameObject player;
+    private int currentTemperature;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        cpu = GameObject.FindGameObjectsWithTag("cpuInCpuFanPuzzle");
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (puzzleActive)
+        {
+            if (currentTemperature == maxCpuTemp)
+            {
+                currentTemperature = -1;
+                FailPuzzle();
+            }
+        }
+    }
+
+    IEnumerator CountdownOnWatch()
+    {
+        PromptScript.instance.updatePrompt("Find the thermal paste hidden inside the level before the CPU temperature reaches 100!", 3);
+        while (currentTemperature < maxCpuTemp)
+        {
+            if (currentTemperature < -2)
+            {
+                break;
+            }
+            else if (currentTemperature == startTemperature)
+            {
+                yield return new WaitForSeconds(5);
+                currentTemperature += 5;
+                PromptScript.instance.updatePrompt("Current CPU temperature is " + currentTemperature.ToString() + " °C", 1);
+            }
+            else
+            {
+                yield return new WaitForSeconds(delta);
+                currentTemperature++;
+                PromptScript.instance.updatePrompt("Current CPU temperature is " + currentTemperature.ToString() + " °C", 1);
+            }
+        }
+    }
+
+    public override void initPuzzle(GameObject player)
+    {
+        this.player = player;
+        this.currentTemperature = startTemperature;
+
+        StartCoroutine(DelayedTeleport());
+    }
+
+    private IEnumerator DelayedTeleport()
+    {
+        yield return new WaitForSeconds(1.5f);
+
+        SetupPuzzle();
+        Vector3 initialPosition = cpu[0].transform.position;
+        initialPosition.x += 5.1215f;
+        initialPosition.y += 5.1215f;
+        initialPosition.z += 5.1215f;
+        player.GetComponent<BNG.PlayerTeleport>().TeleportPlayer(initialPosition, Quaternion.identity);
+    }
+
+    private void SetupPuzzle()
+    {
+        puzzleActive = true;
+        this.currentTemperature = startTemperature;
+        StartCoroutine(CountdownOnWatch());
+        //Choose a random location to spawn thermal paste
+        randomPosition = UnityEngine.Random.Range(0, 4);
+        spawnedThermalPaste = Instantiate(thermalPasteReference);
+        if (randomPosition == 0)
+        {
+            spawnedThermalPaste.transform.position = position0.position;
+        }
+        else if (randomPosition == 1)
+        {
+            spawnedThermalPaste.transform.position = position1.position;
+        }
+        else if (randomPosition == 2)
+        {
+            spawnedThermalPaste.transform.position = position2.position;
+        }
+        else
+        {
+            spawnedThermalPaste.transform.position = position3.position;
+        }
+    }
+
+    private void FailPuzzle()
+    {
+        PromptScript.instance.updatePrompt("Don't let the CPU reach 100 °C!", 3);
+        GameObject champagneInstance = GameObject.Find("Champagne(Clone)");
+        Destroy(champagneInstance);
+        Invoke("SetupPuzzle", 5);
+    }
+
+    public void PuzzleCleared()
+    {
+        puzzleActive = false;
+        PromptScript.instance.updatePrompt("Congratulations! You have beaten the puzzle!", 3);
+        player.GetComponent<BNG.PlayerTeleport>().TeleportPlayer(new Vector3(0, 5.142f, 0), Quaternion.identity);
+        currentTemperature = -10;
+    }
+}
