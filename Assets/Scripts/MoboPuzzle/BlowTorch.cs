@@ -59,7 +59,7 @@ public class BlowTorch : MonoBehaviour
     void updateLaser()
     {
 
-        if(g.BeingHeld && Input.GetKey(KeyCode.Mouse0))
+        if(g.BeingHeld && (InputBridge.Instance.RightTrigger > 0.5f || Input.GetKey(KeyCode.Mouse0)))
         {
             ps.Emit((int)(emission * Time.deltaTime * 144));
             RaycastHit hit;

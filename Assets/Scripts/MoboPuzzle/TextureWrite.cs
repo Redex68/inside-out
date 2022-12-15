@@ -7,7 +7,7 @@ public class TextureWrite : MonoBehaviour
 {
     public Renderer r;
     public Rotator rot;
-    public Transform PlayerTransform;
+    private Transform PlayerTransform;
     public ComputeShader tempShader;
     public List<Vector4> edgesList;
     public GameObject chip;
@@ -30,6 +30,7 @@ public class TextureWrite : MonoBehaviour
     public bool cleaning = false;
     public bool dirty = false;
 
+    public static int successCount = 0;
     private void Awake() 
     {
         tempShader = (ComputeShader)Instantiate(tempShader);
@@ -90,6 +91,9 @@ public class TextureWrite : MonoBehaviour
    // Start is called before the first frame update
    void Start()
     {
+        //Find PlayerTransform
+        PlayerTransform = GameObject.Find("CenterEyeAnchor").transform;
+
         weldTexture = new RenderTexture(texWidth, texHeight, 1, UnityEngine.Experimental.Rendering.GraphicsFormat.R32G32B32A32_SFloat);
         weldTexture.enableRandomWrite = true;
         weldTexture.filterMode = FilterMode.Point;
@@ -314,5 +318,8 @@ public class TextureWrite : MonoBehaviour
     {
         electricity = true;
         rot.turnOn(150.0f);
+        successCount++;
+        PromptScript.instance.updatePrompt(successCount + "/3 weld stations complete!", 3);
+        if(successCount == 3) MoboPuzzleManager.Instance.completePuzzle();
     }
 }

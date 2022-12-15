@@ -5470,7 +5470,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4094343715866258734}
   - component: {fileID: 4094343715866258735}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Scaler
   m_TagString: Untagged
   m_Icon: {fileID: 0}

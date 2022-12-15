@@ -305,7 +305,7 @@ GameObject:
   - component: {fileID: 5146639140370381368}
   - component: {fileID: 5146639140370381371}
   - component: {fileID: 5146639140370381370}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Debris
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -586,7 +586,7 @@ GameObject:
   - component: {fileID: 5146639140723288207}
   - component: {fileID: 5146639140723288206}
   - component: {fileID: 5146639140723288201}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Debris
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -770,7 +770,7 @@ GameObject:
   - component: {fileID: 5146639140993489492}
   - component: {fileID: 5146639140993489495}
   - component: {fileID: 5146639140993489494}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Debris
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1479,6 +1479,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4747514119630653860, guid: c08ac8c5e1b316241ab8278ad6825309, type: 3}
+    - {fileID: 4747514119630653861, guid: c08ac8c5e1b316241ab8278ad6825309, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c08ac8c5e1b316241ab8278ad6825309, type: 3}
 --- !u!114 &472323770545756411 stripped
 MonoBehaviour:
