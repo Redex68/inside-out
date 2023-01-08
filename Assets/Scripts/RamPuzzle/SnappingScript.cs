@@ -19,6 +19,7 @@ public class SnappingScript : MonoBehaviour
     public float[] distance = new float[5];
     public bool[] rightOrder = new bool[5];
     public int[] cubeSequence;
+    public GameObject[] holders = new GameObject[5];
 
     void Start()
     {
@@ -35,6 +36,14 @@ public class SnappingScript : MonoBehaviour
         for(int i = 0; i < 5; z += 2f, i++){
             cubeSnapPosition[i] = new Vector3(-501.417f, 185.657f, z);
         }
+
+        holders[0] = GameObject.Find("BoxHolder (1)");
+        holders[1] = GameObject.Find("BoxHolder (2)");
+        holders[2] = GameObject.Find("BoxHolder (3)");
+        holders[3] = GameObject.Find("BoxHolder (4)");
+        holders[4] = GameObject.Find("BoxHolder (5)");
+
+
     }
 
     void Update()
@@ -52,11 +61,8 @@ public class SnappingScript : MonoBehaviour
                 if(all1Cubes[i] != null && Vector3.Distance(all1Cubes[i].transform.position, cubeSnapPosition[j]) < 0.2f)
                     snapped[j] = true;
 
-        if(snapped[0] == false) GameObject.Find("BoxHolder (1)").GetComponent<Renderer>().material = defaultBoxHolder;
-        if(snapped[1] == false) GameObject.Find("BoxHolder (2)").GetComponent<Renderer>().material = defaultBoxHolder;
-        if(snapped[2] == false) GameObject.Find("BoxHolder (3)").GetComponent<Renderer>().material = defaultBoxHolder;
-        if(snapped[3] == false) GameObject.Find("BoxHolder (4)").GetComponent<Renderer>().material = defaultBoxHolder;
-        if(snapped[4] == false) GameObject.Find("BoxHolder (5)").GetComponent<Renderer>().material = defaultBoxHolder;
+        for(int i = 0; i < 5; i++)
+            if(snapped[i] == false) holders[i].GetComponent<Renderer>().material = defaultBoxHolder;
 
         if(cubeInHand != null){
             cubeSequence = GameObject.Find("Timer").GetComponent<Timer>().cubeSequence;
