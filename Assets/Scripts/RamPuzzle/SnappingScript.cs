@@ -58,7 +58,6 @@ public class SnappingScript : MonoBehaviour
         if(snapped[3] == false) GameObject.Find("BoxHolder (4)").GetComponent<Renderer>().material = defaultBoxHolder;
         if(snapped[4] == false) GameObject.Find("BoxHolder (5)").GetComponent<Renderer>().material = defaultBoxHolder;
 
-        //snapping in box holders
         if(cubeInHand != null){
             cubeSequence = GameObject.Find("Timer").GetComponent<Timer>().cubeSequence;
 

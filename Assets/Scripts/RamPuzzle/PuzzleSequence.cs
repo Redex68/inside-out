@@ -15,14 +15,13 @@ public class PuzzleSequence : MonoBehaviour
         StartCoroutine(timerStart());
     }
 
-    // Update is called once per frame
     void Update()
     {
         
     }
 
     IEnumerator timerStart(){
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(5f);
         GameObject.Find("Timer").GetComponent<Timer>().enabled = true;
     }
 }

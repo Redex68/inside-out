@@ -14,14 +14,16 @@ public class Timer : MonoBehaviour
     {
         List<GameObject> all0Cubes = GameObject.Find("spawnPointCube0").GetComponent<CloneBox0>().all0Cubes;
         List<GameObject> all1Cubes = GameObject.Find("spawnPointCube1").GetComponent<CloneBox1>().all1Cubes;
-        /*for(int i = 0; i < all0Cubes.Count - 1; i++)
+        for(int i = 0; i < all0Cubes.Count - 1; i++)
             Destroy(all0Cubes[i]);
         for(int i = 0; i < all1Cubes.Count - 1; i++)
-            Destroy(all1Cubes[i]);*/
+            Destroy(all1Cubes[i]);
         for(int i = 0; i < 5; i++)
             cubeSequence[i] = Random.Range(0, 2);
+
         Debug.Log(cubeSequence[0] + " " + cubeSequence[1] + " " + cubeSequence[2] + " " + cubeSequence[3] + " " + cubeSequence[4]);
-        timeLeft = 5000f;
+        
+        timeLeft = 30f;
         timerOn = true;
     }
 
@@ -38,7 +40,6 @@ public class Timer : MonoBehaviour
                     if(rightOrder[i] == true)
                         counter++;
                 if(counter == 5){
-                    timeLeft = 0;
                     timerOn = false;
                     done = true;
                     PromptScript.instance.updatePrompt("Uspješno ste riješili zagonetku!");
