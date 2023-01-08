@@ -30,8 +30,6 @@ public class ResetButton : MonoBehaviour
     }
 
     IEnumerator reset(){
-        recentlyPressedButton = true;
-
         if((all0Cubes.Count + all1Cubes.Count) > 2){
             for(int i = 0; i < all0Cubes.Count - 1; i++)
                 Destroy(all0Cubes[i]);
@@ -40,8 +38,8 @@ public class ResetButton : MonoBehaviour
         }
         timer.Start();
 
+        recentlyPressedButton = true;
         yield return new WaitForSeconds(1f);
-
         recentlyPressedButton = false;
     }
 }
