@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1077845734060610307
+--- !u!1 &4566688909111036732
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5327277528097544678}
-  - component: {fileID: 7983374679792365672}
+  - component: {fileID: 5085141688718815}
+  - component: {fileID: 1188930714790701329}
   m_Layer: 0
   m_Name: Snapping
   m_TagString: Untagged
@@ -17,13 +17,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5327277528097544678
+--- !u!4 &5085141688718815
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1077845734060610307}
+  m_GameObject: {fileID: 4566688909111036732}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -32,13 +32,13 @@ Transform:
   m_Father: {fileID: 8213390219550786751}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7983374679792365672
+--- !u!114 &1188930714790701329
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1077845734060610307}
+  m_GameObject: {fileID: 4566688909111036732}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a6a524c50da11c74fa5d1f3d7378b834, type: 3}
@@ -48,9 +48,9 @@ MonoBehaviour:
   rightHand: {fileID: 0}
   leftGrabber: {fileID: 0}
   rightGrabber: {fileID: 0}
-  greenBoxHolder: {fileID: 2100000, guid: 8acff9c83d36b5c4bb32c345e78b4217, type: 2}
-  redBoxHolder: {fileID: 2100000, guid: bad92da0175b84646852bbcbe52de11c, type: 2}
-  defaultBoxHolder: {fileID: 2100000, guid: 5c385f7e5e86ec349bc367ce51b2bc66, type: 2}
+  greenBoxHolder: {fileID: 0}
+  redBoxHolder: {fileID: 0}
+  defaultBoxHolder: {fileID: 0}
   cubeInHand: {fileID: 0}
   cubeSnapPosition:
   - {x: 0, y: 0, z: 0}
@@ -84,7 +84,7 @@ GameObject:
   - component: {fileID: 8213390217864840870}
   m_Layer: 0
   m_Name: BoxHolders
-  m_TagString: Untagged
+  m_TagString: RamElements
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 8213390217869183329}
   m_Layer: 0
   m_Name: spawnPointCube0
-  m_TagString: Untagged
+  m_TagString: RamElements
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -173,7 +173,7 @@ GameObject:
   - component: {fileID: 8213390217929907929}
   m_Layer: 0
   m_Name: BoxHolder (1)
-  m_TagString: Untagged
+  m_TagString: RamElements
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -703,7 +703,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 3071
+  m_VersionIndex: 3074
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -815,7 +815,7 @@ GameObject:
   - component: {fileID: 8213390218055457514}
   m_Layer: 0
   m_Name: RomanNumbers
-  m_TagString: Untagged
+  m_TagString: RamElements
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -856,7 +856,7 @@ GameObject:
   - component: {fileID: 8213390218312122848}
   m_Layer: 0
   m_Name: Timer
-  m_TagString: Untagged
+  m_TagString: RamElements
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -908,7 +908,7 @@ GameObject:
   - component: {fileID: 8213390218490470116}
   m_Layer: 0
   m_Name: PolyShape
-  m_TagString: Untagged
+  m_TagString: RamElements
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1140,7 +1140,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1326
+  m_VersionIndex: 1329
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1246,7 +1246,7 @@ GameObject:
   - component: {fileID: 8213390218585356915}
   m_Layer: 0
   m_Name: PolyShape (7)
-  m_TagString: Untagged
+  m_TagString: RamElements
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1589,7 +1589,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 55
+  m_VersionIndex: 58
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1698,7 +1698,7 @@ GameObject:
   - component: {fileID: 8213390218600071102}
   m_Layer: 0
   m_Name: PolyShape (1)
-  m_TagString: Untagged
+  m_TagString: RamElements
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1930,7 +1930,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1335
+  m_VersionIndex: 1338
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -2036,7 +2036,7 @@ GameObject:
   - component: {fileID: 8213390218660284541}
   m_Layer: 0
   m_Name: PolyShape (3)
-  m_TagString: Untagged
+  m_TagString: RamElements
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2268,7 +2268,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1329
+  m_VersionIndex: 1332
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -2374,7 +2374,7 @@ GameObject:
   - component: {fileID: 8213390218805524456}
   m_Layer: 0
   m_Name: BoxHolder (4)
-  m_TagString: Untagged
+  m_TagString: RamElements
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2904,7 +2904,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 3077
+  m_VersionIndex: 3080
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -3021,7 +3021,7 @@ GameObject:
   - component: {fileID: 8213390218893138059}
   m_Layer: 0
   m_Name: PolyShape (8)
-  m_TagString: Untagged
+  m_TagString: RamElements
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3364,7 +3364,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 61
+  m_VersionIndex: 64
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -3473,7 +3473,7 @@ GameObject:
   - component: {fileID: 8213390218979366933}
   m_Layer: 0
   m_Name: PolyShape (2)
-  m_TagString: Untagged
+  m_TagString: RamElements
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3705,7 +3705,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1329
+  m_VersionIndex: 1332
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -3811,7 +3811,7 @@ GameObject:
   - component: {fileID: 8213390219030989257}
   m_Layer: 0
   m_Name: BoxHolder (3)
-  m_TagString: Untagged
+  m_TagString: RamElements
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4341,7 +4341,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 3080
+  m_VersionIndex: 3083
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -4458,7 +4458,7 @@ GameObject:
   - component: {fileID: 8213390219084837989}
   m_Layer: 0
   m_Name: PolyShape (4)
-  m_TagString: Untagged
+  m_TagString: RamElements
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4690,7 +4690,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1332
+  m_VersionIndex: 1335
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -4796,7 +4796,7 @@ GameObject:
   - component: {fileID: 8213390219132202441}
   m_Layer: 0
   m_Name: BoxHolder (5)
-  m_TagString: Untagged
+  m_TagString: RamElements
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5326,7 +5326,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 3077
+  m_VersionIndex: 3080
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -5446,7 +5446,7 @@ GameObject:
   - component: {fileID: 8213390219330932797}
   m_Layer: 0
   m_Name: ResetButton
-  m_TagString: Untagged
+  m_TagString: RamElements
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39600,7 +39600,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 815
+  m_VersionIndex: 818
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -39816,7 +39816,7 @@ GameObject:
   - component: {fileID: 8213390219358179777}
   m_Layer: 0
   m_Name: spawnPointCube1
-  m_TagString: Untagged
+  m_TagString: RamElements
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39867,7 +39867,7 @@ GameObject:
   - component: {fileID: 8213390219400289435}
   m_Layer: 0
   m_Name: PolyShape (6)
-  m_TagString: Untagged
+  m_TagString: RamElements
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40099,7 +40099,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1335
+  m_VersionIndex: 1338
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -40205,7 +40205,7 @@ GameObject:
   - component: {fileID: 8213390219472126917}
   m_Layer: 0
   m_Name: PolyShape (5)
-  m_TagString: Untagged
+  m_TagString: RamElements
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40437,7 +40437,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1341
+  m_VersionIndex: 1344
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -40538,7 +40538,7 @@ GameObject:
   - component: {fileID: 8213390219550786751}
   m_Layer: 0
   m_Name: RamPuzzleElements
-  m_TagString: Untagged
+  m_TagString: RamElements
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40562,7 +40562,7 @@ Transform:
   - {fileID: 8213390219358179782}
   - {fileID: 8213390218312122849}
   - {fileID: 8213390219658996939}
-  - {fileID: 5327277528097544678}
+  - {fileID: 5085141688718815}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -40578,7 +40578,7 @@ GameObject:
   - component: {fileID: 8213390219658996938}
   m_Layer: 0
   m_Name: PuzzleSequence
-  m_TagString: Untagged
+  m_TagString: RamElements
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40626,7 +40626,7 @@ GameObject:
   - component: {fileID: 8213390219707193967}
   m_Layer: 0
   m_Name: BoxHolder (2)
-  m_TagString: Untagged
+  m_TagString: RamElements
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41156,7 +41156,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 3077
+  m_VersionIndex: 3080
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -41272,7 +41272,7 @@ GameObject:
   - component: {fileID: 8213390219938410920}
   m_Layer: 0
   m_Name: jarst_RAM_puzzle
-  m_TagString: Untagged
+  m_TagString: RamElements
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -45760,7 +45760,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 10
+  m_VersionIndex: 13
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []

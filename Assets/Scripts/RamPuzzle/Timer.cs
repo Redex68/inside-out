@@ -34,7 +34,7 @@ public class Timer : MonoBehaviour
                 timeLeft -= Time.deltaTime;
                 updateTimer(timeLeft);
 
-                bool[] rightOrder = GameObject.Find("PlayerController").GetComponent<SnappingScript>().rightOrder;
+                bool[] rightOrder = GameObject.Find("Snapping").GetComponent<SnappingScript>().rightOrder;
                 int counter = 0;
                 for(int i = 0; i < 5; i++)
                     if(rightOrder[i] == true)
@@ -73,6 +73,7 @@ public class Timer : MonoBehaviour
     IEnumerator success(){
         PromptScript.instance.updatePrompt("Uspješno ste riješili zagonetku!");
         yield return new WaitForSeconds(2f);
+
         PromptScript.instance.updatePrompt("");
         RamPuzzleManager.Instance.completePuzzle();
     }
