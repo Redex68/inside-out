@@ -29,6 +29,7 @@ public class RamPuzzleManager : Puzzle
     public void completePuzzle(){
         foreach(GameObject obj in GameObject.FindGameObjectsWithTag("cube0")) Destroy(obj);
         foreach(GameObject obj in GameObject.FindGameObjectsWithTag("cube1")) Destroy(obj);
+        foreach(GameObject obj in ramComponents) Destroy(obj);
         player.GetComponent<BNG.PlayerTeleport>().TeleportPlayer(new Vector3(0, 5f, 0), Quaternion.identity);
     }
 }
