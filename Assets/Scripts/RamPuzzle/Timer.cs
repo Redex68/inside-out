@@ -42,7 +42,8 @@ public class Timer : MonoBehaviour
                 if(counter == 5){
                     timerOn = false;
                     done = true;
-                    PromptScript.instance.updatePrompt("Uspješno ste riješili zagonetku!");
+                    
+                    StartCoroutine(success());
                 }
             }
             else{
@@ -67,5 +68,12 @@ public class Timer : MonoBehaviour
         PromptScript.instance.updatePrompt("Vrijeme isteklo! Probaj opet.");
         yield return new WaitForSeconds(3f);
         Start();
+    }
+
+    IEnumerator success(){
+        PromptScript.instance.updatePrompt("Uspješno ste riješili zagonetku!");
+        yield return new WaitForSeconds(2f);
+        PromptScript.instance.updatePrompt("");
+        RamPuzzleManager.Instance.completePuzzle();
     }
 }

@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class SnappingScript : MonoBehaviour
 {
-    [Tooltip("The hand GameObjects that contain the left hand's Grabber script that needs to be referenced")]
     public GameObject leftHand;
-    [Tooltip("The hand GameObjects that contain the right hand's Grabber script that needs to be referenced")]
     public GameObject rightHand;
     public BNG.Grabber leftGrabber;
     public BNG.Grabber rightGrabber;
