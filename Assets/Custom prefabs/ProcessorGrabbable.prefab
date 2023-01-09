@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3754283927447010152}
   - component: {fileID: 9039411821521842907}
   - component: {fileID: 8748537184680302849}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ProcessorGrabbable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
