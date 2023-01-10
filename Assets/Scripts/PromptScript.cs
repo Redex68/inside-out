@@ -25,7 +25,7 @@ public class PromptScript: MonoBehaviour
         else 
         { 
             instance = this; 
-            TMPtext = GameObject.Find("Watch").GetComponentInChildren<TMPro.TMP_Text>();
+            TMPtext = GameObject.Find("WatchParent/WatchCanvas/PromptText").GetComponent<TMPro.TMP_Text>();
         }
     }
 
@@ -47,14 +47,30 @@ public class PromptScript: MonoBehaviour
         Updates the currently displayed prompt with the provided text. The old prompt is
         overriden.
     </summary>
-
-    <returns>
-        The new text value of the prompt.
-    </returns>
+    <param name="text"> The new prompt text. </param>
+    <returns> The new text value of the prompt. </returns>
 */
     public void updatePrompt(string text){
         if(text == null) throw new NullReferenceException("Prompt text atempted to be changed to null");
         TMPtext.text = text;
+        TMPtext.CrossFadeAlpha(1, 0, false);
+    }
+
+/**
+    <summary>
+        Same as regular updatePrompt but the text fades out after the specified time.
+    </summary>
+    <param name="text"> The new prompt text. </param>
+    <param name="fadeOutDelay"> The time in seconds till the fadeout should start. </param>
+    <returns> The new text value of the prompt. </returns>
+*/
+    public void updatePrompt(string text, float fadeOutDelay){
+        updatePrompt(text);
+        StartCoroutine(fadeOut(fadeOutDelay));
+    }
+    public IEnumerator fadeOut(float fadeOutDelay){
+        yield return new WaitForSeconds(fadeOutDelay);
+        TMPtext.CrossFadeAlpha(0, 1, false);
     }
 
     public void updatePrompt(string text, float fadeOutDelay){

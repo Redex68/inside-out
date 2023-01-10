@@ -12,5 +12,6 @@ public class ButtonTeleport : MonoBehaviour
             player.transform.position = new Vector3(-504.106f, 183.744f, 993.669f);
             player.transform.rotation = Quaternion.Euler(0,-175,0);
         }
+        print("Here");
     }
 }

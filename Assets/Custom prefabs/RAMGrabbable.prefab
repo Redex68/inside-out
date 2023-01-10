@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3143090477077306612}
   - component: {fileID: 3143090477077306613}
   - component: {fileID: 3143090477077306618}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RAMGrabbable
   m_TagString: Untagged
   m_Icon: {fileID: 0}

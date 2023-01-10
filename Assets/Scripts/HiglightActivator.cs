@@ -60,7 +60,6 @@ public class HiglightActivator : MonoBehaviour
             throw new NullReferenceException("Missing the coresponding highlight GameObject for component " + component);
 
         highlight.SetActive(true);
-        PromptScript.instance.updatePrompt("Activated " + highlight);
     }
 
 /**
@@ -88,6 +87,5 @@ public class HiglightActivator : MonoBehaviour
             throw new NullReferenceException("Missing the coresponding highlight GameObject for component " + component);
             
         highlight.SetActive(false);
-        PromptScript.instance.updatePrompt("Deactivated " + highlight);
     }
 }

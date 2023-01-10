@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6100150732217469245}
   - component: {fileID: 3342109446619257782}
   - component: {fileID: 1193350102225497130}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube_6_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: -8483630204085869396}
   - component: {fileID: -2858861815926217709}
   - component: {fileID: 2866036698016258665}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PSUGrabbable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -280,7 +280,7 @@ GameObject:
   - component: {fileID: 9193436615886556661}
   - component: {fileID: 2705531481217541203}
   - component: {fileID: 4244063931481198327}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}

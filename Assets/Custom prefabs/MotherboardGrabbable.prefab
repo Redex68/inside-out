@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8162628684616992339}
   - component: {fileID: 8162628684616992332}
   - component: {fileID: 6949485263260008784}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MotherboardGrabbable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
