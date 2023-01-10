@@ -56,4 +56,14 @@ public class PromptScript: MonoBehaviour
         if(text == null) throw new NullReferenceException("Prompt text atempted to be changed to null");
         TMPtext.text = text;
     }
+
+    public void updatePrompt(string text, float fadeOutDelay){
+        updatePrompt(text);
+        StartCoroutine(fadeOut(fadeOutDelay));
+    }
+    
+    public IEnumerator fadeOut(float fadeOutDelay){
+        yield return new WaitForSeconds(fadeOutDelay);
+        TMPtext.CrossFadeAlpha(0, 1, false);
+    }
 }

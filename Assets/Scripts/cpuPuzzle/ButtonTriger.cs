@@ -16,9 +16,13 @@ public class ButtonTriger : MonoBehaviour
     private Vector3 _startPosition;
     private ConfigurableJoint _joint;
 
+    private Vector3 found;
+
+
     // Start is called before the first frame update
     void Start()
     {
+        _isPressed = false;
         _startPosition = transform.localPosition;
         _joint = GetComponent<ConfigurableJoint>();
         
@@ -27,10 +31,11 @@ public class ButtonTriger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!_isPressed && GetValue() + threshold >= 1){
+        
+        if(!_isPressed && (GetValue() + threshold >= 1)){
             Pressed();
         }
-        if(_isPressed && GetValue() - threshold <= 0) {
+        if(_isPressed && (GetValue() - threshold <= 0)) {
             Released();
         }
 
@@ -52,6 +57,11 @@ public class ButtonTriger : MonoBehaviour
         _isPressed = true;
         onPressed.Invoke();
         Debug.Log("Pressed");
+        // Debug.Log(_startPosition);
+        // _startPosition = GameObject.Find("Push").transform.localPosition;
+        // Debug.Log(_startPosition);
+        // Debug.Log(GameObject.Find("Push").transform.localPosition);
+        // Debug.Log(transform.localPosition);
     }
 
     private void Released() {
