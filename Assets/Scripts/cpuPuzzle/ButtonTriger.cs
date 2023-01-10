@@ -57,11 +57,6 @@ public class ButtonTriger : MonoBehaviour
         _isPressed = true;
         onPressed.Invoke();
         Debug.Log("Pressed");
-        // Debug.Log(_startPosition);
-        // _startPosition = GameObject.Find("Push").transform.localPosition;
-        // Debug.Log(_startPosition);
-        // Debug.Log(GameObject.Find("Push").transform.localPosition);
-        // Debug.Log(transform.localPosition);
     }
 
     private void Released() {
