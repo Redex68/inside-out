@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17680787, g: 0.21437606, b: 0.26381502, a: 1}
+  m_IndirectSpecularColor: {r: 0.17680752, g: 0.2143754, b: 0.263814, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1127,6 +1127,8 @@ MonoBehaviour:
     initializer: {fileID: 369849088}
   - name: MOBO
     initializer: {fileID: 1164604335}
+  - name: CPU
+    initializer: {fileID: 0}
 --- !u!4 &482135415
 Transform:
   m_ObjectHideFlags: 0

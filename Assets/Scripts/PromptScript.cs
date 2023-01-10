@@ -68,15 +68,7 @@ public class PromptScript: MonoBehaviour
         updatePrompt(text);
         StartCoroutine(fadeOut(fadeOutDelay));
     }
-    public IEnumerator fadeOut(float fadeOutDelay){
-        yield return new WaitForSeconds(fadeOutDelay);
-        TMPtext.CrossFadeAlpha(0, 1, false);
-    }
 
-    public void updatePrompt(string text, float fadeOutDelay){
-        updatePrompt(text);
-        StartCoroutine(fadeOut(fadeOutDelay));
-    }
     
     public IEnumerator fadeOut(float fadeOutDelay){
         yield return new WaitForSeconds(fadeOutDelay);

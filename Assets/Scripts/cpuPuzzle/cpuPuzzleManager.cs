@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class cpuPuzzleManager : MonoBehaviour  //Puzzle
+public class cpuPuzzleManager : Puzzle
 {
 
     private bool puzzleActive = false;
@@ -51,12 +51,12 @@ public class cpuPuzzleManager : MonoBehaviour  //Puzzle
         player.GetComponent<BNG.PlayerTeleport>().TeleportPlayer(new Vector3(-484.75f,186f,1006.78003f), Quaternion.identity);
     }
 
-    // public override void initPuzzle(GameObject player)
-    // {
-    //     this.player = player;
-    //     StartCoroutine(DelayedTeleport());
+    public override void initPuzzle(GameObject player)
+    {
+        this.player = player;
+        StartCoroutine(DelayedTeleport());
 
-    // }
+    }
 
     public void TaskCorrect() {
         string text = PromptScript.instance.getPrompt();
