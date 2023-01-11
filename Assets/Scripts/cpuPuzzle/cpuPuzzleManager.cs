@@ -16,9 +16,9 @@ public class cpuPuzzleManager : Puzzle
     void Start()
     {
         //disable components
-        cpuPuzzleComponents = GameObject.FindGameObjectsWithTag("task");
-        foreach(GameObject obj in cpuPuzzleComponents) obj.SetActive(false);
-        PromptScript.instance.updatePrompt("Choose the correct logic operation that was applied to get right from left objects!", 3);
+        // cpuPuzzleComponents = GameObject.FindGameObjectsWithTag("task");
+        // foreach(GameObject obj in cpuPuzzleComponents) obj.SetActive(false);
+        PromptScript.instance.updatePrompt("Choose the correct logic operation that was applied to get right from left objects!", 3f);
         
     }
 
@@ -37,7 +37,7 @@ public class cpuPuzzleManager : Puzzle
     private void SetupPuzzle()
     {
         //enable components
-        foreach(GameObject obj in cpuPuzzleComponents) obj.SetActive(true);
+        //foreach(GameObject obj in cpuPuzzleComponents) obj.SetActive(true);
         puzzleActive = true;
         this.counter = 0;
        
