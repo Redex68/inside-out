@@ -30,3 +30,6 @@ public class MoboPuzzleManager : Puzzle
         Destroy(puzzleInstance);
     }
 }
+
+//Camera position 0 1.125-0.57+2.142 0
+//Camera rotation 0 -90 0
