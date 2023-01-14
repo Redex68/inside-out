@@ -9,6 +9,8 @@ public class BlowTorch : MonoBehaviour
     public ParticleSystem ps;
     public Grabbable g;
 
+    AudioSource blowSound;
+
     public static float[,] drawFilter;
     public static float elipseFactor = 0.9f;
     public static int drawSize = 20;
@@ -27,6 +29,7 @@ public class BlowTorch : MonoBehaviour
     void Start()
     {
         ps.Stop();
+        blowSound = GetComponent<AudioSource>();
     }
 
     void initDrawFilter()
@@ -61,6 +64,9 @@ public class BlowTorch : MonoBehaviour
 
         if(g.BeingHeld && (InputBridge.Instance.RightTrigger > 0.5f || Input.GetKey(KeyCode.Mouse0)))
         {
+            if(!blowSound.isPlaying) blowSound.Play();
+            else if(blowSound.time > 3.0f) blowSound.time = 1.0f;
+
             ps.Emit((int)(emission * Time.deltaTime * 144));
             RaycastHit hit;
             Ray ray = new Ray(transform.position, transform.TransformDirection(Vector3.right) * 2.0f);
@@ -83,6 +89,14 @@ public class BlowTorch : MonoBehaviour
 
                     weldShader.Dispatch(1, 16, 16, 1);
                 }
+            }
+        }
+        else
+        {
+            if(blowSound.isPlaying)
+            {
+                if(blowSound.time < 0.3f) blowSound.Stop();
+                else if(blowSound.time < 13.3f) blowSound.time = 13.4f;
             }
         }
     }

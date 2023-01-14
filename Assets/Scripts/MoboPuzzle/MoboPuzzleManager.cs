@@ -22,7 +22,7 @@ public class MoboPuzzleManager : Puzzle
     {
         this.player = player;
         puzzleInstance = Instantiate(puzzlePrefab);
-        player.GetComponent<BNG.PlayerTeleport>().TeleportPlayer(new Vector3(-503.41f, 185.022f, 994.549f), Quaternion.identity);
+        player.GetComponent<BNG.PlayerTeleport>().TeleportPlayer(new Vector3(-503.41f, 185.5f, 994.549f), Quaternion.identity);
     }
 
     public void completePuzzle(){
