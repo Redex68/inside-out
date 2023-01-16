@@ -34,7 +34,7 @@ public class Timer : MonoBehaviour
                 timeLeft -= Time.deltaTime;
                 updateTimer(timeLeft);
 
-                bool[] rightOrder = GameObject.Find("Snapping").GetComponent<SnappingScript>().rightOrder;
+                bool[] rightOrder = GameObject.Find("RamManager").GetComponent<SnappingScript>().rightOrder;
                 int counter = 0;
                 for(int i = 0; i < 5; i++)
                     if(rightOrder[i] == true)
