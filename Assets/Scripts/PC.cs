@@ -7,8 +7,17 @@ public class PC : MonoBehaviour
 {
 
     [System.Serializable]
-    struct Component
+    public struct Component
     {
+        public Component(Component other)
+        {
+            this.name = other.name;
+            this.snapPositions = new List<Vector3>(other.snapPositions);
+            this.snapAngles = new List<Vector3>(other.snapAngles);
+            this.gameObjects = new List<GameObject>(other.gameObjects);
+            this.subComponents = new List<Component>(other.subComponents);
+        }
+
         [SerializeField]
         public string name;
         [SerializeField]
@@ -22,10 +31,10 @@ public class PC : MonoBehaviour
     }
 
     [SerializeField]
-    List<Component> components;
+    public static List<Component> components;
 
-    [SerializeField]
-    TransitionManager transitionManager;
+    public static Dictionary<String, Component> defaultComponents;
+    public static Dictionary<String, List<Vector3>> defaultComponentPositions;
 
     [SerializeField]
     float positionMargin;
@@ -39,15 +48,33 @@ public class PC : MonoBehaviour
     void Start()
     {
         tf = GetComponent<Transform>();
+        cacheComponents();
     }
 
     // Update is called once per frame
     void Update()
     {
-        snapComponents();
-        
+        if(components.Count > 0) snapComponents();
     }
 
+    void cacheComponents()
+    {
+        Stack<Component> componentsStack = new Stack<Component>(components);
+
+        while (componentsStack.Count > 0)
+        {
+            Component comp = componentsStack.Pop();
+
+            foreach(var c in comp.subComponents) componentsStack.Push(c);
+
+            defaultComponents[comp.name] = new Component(comp);
+
+            List<Vector3> componentDefaultPositions = new List<Vector3>();
+            foreach(var obj in comp.gameObjects) componentDefaultPositions.Add(obj.transform.position); 
+
+            defaultComponentPositions[comp.name] = componentDefaultPositions;
+        }
+    }
 
     public void snapComponents()
     {
@@ -108,14 +135,10 @@ public class PC : MonoBehaviour
 
         components[componentIndex].snapPositions.RemoveAt(snapPosIndex);
         components[componentIndex].gameObjects.RemoveAt(gameObjectIndex);
-        if (components[componentIndex].snapPositions.Count == 0) 
+
+        if(components[componentIndex].snapPositions.Count == 0) 
         {
-            foreach (Component subComponent in components[componentIndex].subComponents)
-            {
-                components.Add(subComponent);
-            }
-            //Starts the puzzle
-            transitionManager.startPuzzle(components[componentIndex].name);
+            TransitionManager.startPuzzle(defaultComponents[components[componentIndex].name]);
             components.RemoveAt(componentIndex);
         }
 
@@ -123,8 +146,6 @@ public class PC : MonoBehaviour
         obj.transform.localEulerAngles = angle;
 
         if (obj.GetComponent<Rigidbody>() != null) Destroy(obj.GetComponent<Rigidbody>());
-        // if (obj.GetComponent<MeshCollider>() != null) Destroy(obj.GetComponent<MeshCollider>());
-        // if (obj.GetComponent<BoxCollider>() != null) Destroy(obj.GetComponent<BoxCollider>());
         if (obj.GetComponent<BNG.Grabbable>() != null){
             BNG.Grabbable grab = obj.GetComponent<BNG.Grabbable>();
             grab.enabled = false;

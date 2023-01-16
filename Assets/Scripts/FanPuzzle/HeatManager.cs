@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class HeatManager : Puzzle
-{
+
+public class HeatManager : MonoBehaviour {
     [SerializeField]
     [Tooltip("The average time a component will need to overheat in seconds.")]
     float averageTimeTillOverheat; 
@@ -49,6 +49,7 @@ public class HeatManager : Puzzle
     private bool puzzleActive = false;
     private GameObject coolerInstance;
     private GameObject player;
+    
     void Start()
     {
         heatedComponents = GameObject.FindGameObjectsWithTag("HeatedComponent");
@@ -198,7 +199,7 @@ public class HeatManager : Puzzle
             return info;
     }
 
-    public override void initPuzzle(GameObject player)
+    public void initPuzzle(GameObject player)
     {
         this.player = player;
         StartCoroutine(delayedTeleport());

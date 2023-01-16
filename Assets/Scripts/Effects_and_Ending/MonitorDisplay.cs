@@ -7,15 +7,15 @@ using UnityEngine.Events;
 [ExecuteAlways]
 public class MonitorDisplay : MonoBehaviour
 {
-    public Camera startPosCamera;
     public BNG.Button resetButton;
     public TMPro.TextMeshPro monitorText;
     
-    public Transform playerEyeTransform;
     public Transform firstLerpTransform;
     public Transform secondLerpTransform;
     public float lerpSpeedFactor = 0.25f;
 
+    Camera startPosCamera;
+    Transform playerEyeTransform;
     RenderTexture rt;
     MeshRenderer r;
 
@@ -37,6 +37,8 @@ public class MonitorDisplay : MonoBehaviour
         rt = new RenderTexture(1832, 1920, 1);
         rt.antiAliasing = 4;
 
+        startPosCamera = FindObjectOfType<StartPosCamera>().GetComponent<Camera>();
+        playerEyeTransform = FindObjectOfType<PlayerCameraTransform>().transform;
         startPosCamera.targetTexture = rt;
         r.sharedMaterial.SetTexture("_BaseMap", rt);
         r.sharedMaterial.SetFloat("_ResetTime", 0.0f);

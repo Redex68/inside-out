@@ -57589,6 +57589,7 @@ GameObject:
   - component: {fileID: 176141780863037652}
   - component: {fileID: 8144220433185392150}
   - component: {fileID: 1593059790}
+  - component: {fileID: 8195280090966177901}
   m_Layer: 0
   m_Name: ImprovedPlayer
   m_TagString: Untagged
@@ -57850,6 +57851,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8195280090966177901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6069362580920209503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b758082d53dbb1349bda8fc3d26f292a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6069362580950950281
 GameObject:
   m_ObjectHideFlags: 0
@@ -58216,6 +58229,7 @@ GameObject:
   - component: {fileID: 5359207575466342887}
   - component: {fileID: 8144220433688945805}
   - component: {fileID: 1647491959}
+  - component: {fileID: 8780676722393601382}
   m_Layer: 0
   m_Name: CenterEyeAnchor
   m_TagString: MainCamera
@@ -58373,6 +58387,18 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!114 &8780676722393601382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6069362580951064119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b24dc35a804f62246a30ab0ed46f3701, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6069362580951064127
 GameObject:
   m_ObjectHideFlags: 0
