@@ -206,11 +206,11 @@ public class HeatManager : MonoBehaviour {
     }
 
     private IEnumerator delayedTeleport(){
+        coolerInstance = Instantiate(coolerPrefab, new Vector3(-503, 183.5f, 995), Quaternion.identity);
         yield return new WaitForSeconds(1.5f);
 
         setupPuzzle();
-        coolerInstance = Instantiate(coolerPrefab, new Vector3(-503, 183.15f, 995), Quaternion.identity);
-        coolerInstance.GetComponent<Cooler>().manager = this;
+        coolerInstance.GetComponentInChildren<Cooler>().manager = this;
         player.GetComponent<BNG.PlayerTeleport>().TeleportPlayer(new Vector3(-503.41f, 184.022f, 994.549f), Quaternion.identity);
     }
 }

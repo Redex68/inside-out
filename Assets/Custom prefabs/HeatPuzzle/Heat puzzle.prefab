@@ -1469,7 +1469,7 @@ MonoBehaviour:
     type: 3}
   numberOfActiveComponents: 5
   compassNeedle: {fileID: 21300000, guid: a964d5363b9d503499eeb584d451c425, type: 3}
-  coolerPrefab: {fileID: 6534395957766889073, guid: 6c04253e7f2c52a409778b4573ef8864,
+  coolerPrefab: {fileID: 7605801642077729617, guid: 27e203b8ae5feb44991538282a5a6586,
     type: 3}
 --- !u!1 &3304761936899128519
 GameObject:
