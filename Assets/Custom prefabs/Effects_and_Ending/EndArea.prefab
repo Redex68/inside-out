@@ -1074,10 +1074,14 @@ PrefabInstance:
     - target: {fileID: 1830463576, guid: b4a00fec99861234c8fd1208e23d6533, type: 3}
       propertyPath: resetButton
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3592557371062451923}
     - target: {fileID: 1830463576, guid: b4a00fec99861234c8fd1208e23d6533, type: 3}
       propertyPath: startPosCamera
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1830463576, guid: b4a00fec99861234c8fd1208e23d6533, type: 3}
+      propertyPath: lerpSpeedFactor
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1830463576, guid: b4a00fec99861234c8fd1208e23d6533, type: 3}
       propertyPath: firstLerpTransform
@@ -1153,6 +1157,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4a00fec99861234c8fd1208e23d6533, type: 3}
+--- !u!114 &3592557371062451923 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 364518690677995970, guid: b4a00fec99861234c8fd1208e23d6533,
+    type: 3}
+  m_PrefabInstance: {fileID: 3806760168670709521}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 805c63d9eece83044b451b679354399c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &6922858227002370289 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6108775367028551648, guid: b4a00fec99861234c8fd1208e23d6533,
