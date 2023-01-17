@@ -119,7 +119,8 @@ public class cpuFanPuzzleManager : MonoBehaviour
     {
         puzzleActive = false;
         PromptScript.instance.updatePrompt("Congratulations! You have beaten the puzzle!", 3);
-        player.GetComponent<BNG.PlayerTeleport>().TeleportPlayer(new Vector3(0, 5.142f, 0), Quaternion.identity);
+        // player.GetComponent<BNG.PlayerTeleport>().TeleportPlayer(new Vector3(0, 5.142f, 0), Quaternion.identity);
         currentTemperature = -10;
+        TransitionManager.completePuzzle();
     }
 }

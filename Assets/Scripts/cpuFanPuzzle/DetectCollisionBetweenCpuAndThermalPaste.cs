@@ -5,10 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class DetectCollisionBetweenCpuAndThermalPaste : MonoBehaviour
 {
-    [SerializeField]
     private cpuFanPuzzleManager manager;
 
     private int counter = 0;
+
+    void Start() {
+        manager = FindObjectOfType<cpuFanPuzzleManager>();
+    }
+
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.name == "Champagne(Clone)" && counter == 0)
