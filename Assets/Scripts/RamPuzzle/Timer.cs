@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Timer : MonoBehaviour
 {
     public bool timerOn = false;
-    public float timeLeft = 30f; 
+    public float timeLeft = 150f; 
     public int[] cubeSequence = new int[5];
     public bool done = false;
 
@@ -23,7 +23,7 @@ public class Timer : MonoBehaviour
 
         Debug.Log(cubeSequence[0] + " " + cubeSequence[1] + " " + cubeSequence[2] + " " + cubeSequence[3] + " " + cubeSequence[4]);
         
-        timeLeft = 30f;
+        timeLeft = 150f;
         timerOn = true;
     }
 
