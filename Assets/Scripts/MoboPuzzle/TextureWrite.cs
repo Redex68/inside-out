@@ -320,6 +320,6 @@ public class TextureWrite : MonoBehaviour
         rot.turnOn(150.0f);
         successCount++;
         PromptScript.instance.updatePrompt(successCount + "/3 weld stations complete!", 3);
-        if(successCount == 3) MoboPuzzleManager.Instance.completePuzzle();
+        if(successCount == 3) TransitionManager.completePuzzle();
     }
 }

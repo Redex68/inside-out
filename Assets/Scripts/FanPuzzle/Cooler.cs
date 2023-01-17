@@ -23,7 +23,7 @@ public class Cooler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Ray ray = new Ray(transform.position, transform.forward);
+        Ray ray = new Ray(transform.position, -transform.forward);
         RaycastHit hitInfo;
         Physics.Raycast(ray, out hitInfo, maxRange);
         if(hitInfo.collider){
