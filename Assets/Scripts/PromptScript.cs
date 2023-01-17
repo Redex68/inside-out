@@ -60,8 +60,8 @@ public class PromptScript: MonoBehaviour
     public void updatePrompt(string text){
         if(text == null) throw new NullReferenceException("Prompt text atempted to be changed to null");
         TMPtext.text = text;
-        TMPtext.CrossFadeAlpha(1, 0, false);
-        promptBackground.CrossFadeAlpha(1, 0, false);
+        TMPtext.CrossFadeAlpha(1, 0.5f, false);
+        promptBackground.CrossFadeAlpha(1, 0.5f, false);
     }
 
 /**
@@ -77,7 +77,7 @@ public class PromptScript: MonoBehaviour
         StartCoroutine(fadeOut(fadeOutDelay));
     }
     public IEnumerator fadeOut(float fadeOutDelay){
-        yield return new WaitForSeconds(fadeOutDelay);
+        yield return new WaitForSeconds(fadeOutDelay + 0.5f);
         TMPtext.CrossFadeAlpha(0, 1, false);
         promptBackground.CrossFadeAlpha(0, 1, false);
     }
