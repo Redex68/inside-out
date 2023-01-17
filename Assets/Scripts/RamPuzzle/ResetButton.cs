@@ -4,29 +4,42 @@ using UnityEngine;
 
 public class ResetButton : MonoBehaviour
 {
+    public CloneBox0 cubes0Script;
+    public CloneBox1 cubes1Script;
     public List<GameObject> all0Cubes;
     public List<GameObject> all1Cubes;
+    public Timer timer;
+    public BNG.Grabbable resetButton;
+    public bool recentlyPressedButton = false;
     void Start()
     {
-        
+        cubes0Script = GameObject.Find("spawnPointCube0").GetComponent<CloneBox0>();
+        cubes1Script = GameObject.Find("spawnPointCube1").GetComponent<CloneBox1>();
+        timer = GameObject.Find("Timer").GetComponent<Timer>();
+        resetButton = GameObject.Find("ResetButton").GetComponent<BNG.Grabbable>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        all0Cubes = GameObject.Find("spawnPointCube0").GetComponent<CloneBox0>().all0Cubes;
-        all1Cubes = GameObject.Find("spawnPointCube1").GetComponent<CloneBox1>().all1Cubes;
+        all0Cubes = cubes0Script.all0Cubes;
+        all1Cubes = cubes1Script.all1Cubes;
 
-        //Debug.Log(all0Cubes.Count + " " + all1Cubes.Count);
-        if(GameObject.Find("ResetButton").GetComponent<BNG.Grabbable>().BeingHeld && (all0Cubes.Count + all1Cubes.Count) > 2){
-            for(int i = 0; i < all0Cubes.Count - 1; i++){
+        if(resetButton.BeingHeld && recentlyPressedButton == false)
+            StartCoroutine(reset());
+
+    }
+
+    IEnumerator reset(){
+        if((all0Cubes.Count + all1Cubes.Count) > 2){
+            for(int i = 0; i < all0Cubes.Count - 1; i++)
                 Destroy(all0Cubes[i]);
-            }
-            for(int i = 0; i < all1Cubes.Count - 1; i++){
+            for(int i = 0; i < all1Cubes.Count - 1; i++)
                 Destroy(all1Cubes[i]);
-            }
         }
+        timer.Start();
 
-        //reset time (ili samo da se maknu kocke?)
+        recentlyPressedButton = true;
+        yield return new WaitForSeconds(1f);
+        recentlyPressedButton = false;
     }
 }

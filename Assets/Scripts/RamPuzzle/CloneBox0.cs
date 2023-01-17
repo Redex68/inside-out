@@ -4,17 +4,14 @@ using UnityEngine;
 
 public class CloneBox0 : MonoBehaviour
 {
-
     public GameObject cubeClone;
     public List<GameObject> all0Cubes = new List<GameObject>();
 
-    // Start is called before the first frame update
     void Awake()
     {
         all0Cubes.Add(Instantiate(cubeClone, transform.position, Quaternion.identity));
     }
 
-    // Update is called once per frame
     void Update()
     {
         //cloning new boxes

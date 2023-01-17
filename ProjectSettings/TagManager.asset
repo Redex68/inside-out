@@ -4,10 +4,13 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Fire
   - cube0
   - cube1
-  - task
   - HeatedComponent
+  - RamElements
+  - leftHandGrabber
+  - rightHandGrabber
   layers:
   - Default
   - TransparentFX
