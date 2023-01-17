@@ -6,70 +6,99 @@ using System.Linq;
 using System.Threading.Tasks;
 
 public class TransitionManager : MonoBehaviour{
-    public struct Puzzle
+    public static TransitionManager Instance { get; private set; }
+    
+    private static PC pc = PC.Instance;
+
+    [Serializable]
+    public class Puzzle
     {
+        [SerializeField]
         public String PuzzleName;
+        [SerializeField]
         public GameObject PuzzleObject;
+        [SerializeField]
         public Vector3 PuzzleStartPos;
+        [SerializeField]
         public bool PuzzleCompleted;
     }
 
     //Triba settat u editoru
     //Soba -503.41f, 185.5f, 994.549f
     //Mini soba - 0, 2.142f, 0
-    public static Vector3 SpawnPosition = new Vector3(0, 2.142f, 0);
+    public Vector3 SpawnPosition = new Vector3(0, 2.142f, 0);
 
-    //TREBA SERIALIZAT 
-    public static Dictionary<String, Puzzle> Puzzles;
+    [SerializeField]
+    public List<Puzzle> Puzzles;
 
-    static PC.Component currentPuzzleComponent;
-    static GameObject currentPuzzleInstance = null;
+    PC.Component currentPuzzleComponent;
+    GameObject currentPuzzleInstance = null;
+
+    private void Awake(){
+        if(Instance != null && Instance != this) Destroy(this);
+        else Instance = this;
+    }
+
 
     public static void startPuzzle(PC.Component comp)
     {
-        if(!Puzzles.ContainsKey(comp.name)) throw new Exception("Komponenta nema puzlu");
+        //Throws if none are found
+        Puzzle puzzle = Instance.Puzzles.FirstOrDefault(puzzle => puzzle.PuzzleName == comp.name);
+        if(puzzle == null) throw new InvalidOperationException("Komponenta nema puzlu \"" + comp.name + "\"");
 
-        Task.Delay(1500).ContinueWith(x => 
-        {
-            currentPuzzleComponent = comp;
-            currentPuzzleInstance = Instantiate(Puzzles[currentPuzzleComponent.name].PuzzleObject);
-            FindObjectOfType<BNG.PlayerTeleport>().TeleportPlayer(Puzzles[currentPuzzleComponent.name].PuzzleStartPos, Quaternion.identity); 
-        });
+        Instance.currentPuzzleComponent = comp;
+
+        Instance.StartCoroutine(delayedInit(puzzle));
+    }
+
+    private static IEnumerator delayedInit(Puzzle puzzle){
+        //Find the coresponding puzzle object
+        yield return new WaitForSeconds(1.5f);
+        
+        //Instantiate the puzzle and teleport the player
+        Instance.currentPuzzleInstance = Instantiate(puzzle.PuzzleObject);
+        //TODO: add delay and transition
+        FindObjectOfType<BNG.PlayerTeleport>().TeleportPlayer(puzzle.PuzzleStartPos, Quaternion.identity);
     }
 
     public static void quitPuzzle()
     {
-        Task.Delay(1500).ContinueWith(x => 
-        {
-            FindObjectOfType<PlayerID>().transform.position = SpawnPosition; 
-            Destroy(currentPuzzleInstance);
+        Instance.StartCoroutine(delayedQuit());
+    }
 
-            //Resetting component (Adding back to component list, reseting positions, adding physics, adding grabbable)
-            PC.components.Add(new PC.Component(currentPuzzleComponent));
-            for(int i = 0; i < currentPuzzleComponent.gameObjects.Count; i++)
-            {
-                currentPuzzleComponent.gameObjects[i].transform.position = PC.defaultComponentPositions[currentPuzzleComponent.name][i];
-                currentPuzzleComponent.gameObjects[i].AddComponent<Rigidbody>();
-                currentPuzzleComponent.gameObjects[i].GetComponent<BNG.Grabbable>().enabled = true;
-            }
-        });
+    private static IEnumerator delayedQuit(){
+        yield return new WaitForSeconds(1.5f);
+
+        FindObjectOfType<PlayerID>().transform.position = Instance.SpawnPosition; 
+        Destroy(Instance.currentPuzzleInstance);
+
+        //Resetting component (Adding back to component list, reseting positions, adding physics, adding grabbable)
+        pc.components.Add(new PC.Component(Instance.currentPuzzleComponent));
+        for(int i = 0; i < Instance.currentPuzzleComponent.gameObjects.Count; i++)
+        {
+            Instance.currentPuzzleComponent.gameObjects[i].transform.position = pc.defaultComponentPositions[Instance.currentPuzzleComponent.name][i];
+            Instance.currentPuzzleComponent.gameObjects[i].AddComponent<Rigidbody>();
+            Instance.currentPuzzleComponent.gameObjects[i].GetComponent<BNG.Grabbable>().enabled = true;
+        }
     }
 
     public static void completePuzzle()
     {
-        Task.Delay(1500).ContinueWith(x =>
-        {
-            Puzzle currentPuzzle = Puzzles[TransitionManager.currentPuzzleComponent.name];
-            currentPuzzle.PuzzleCompleted = true;
-
-            foreach(var comp in currentPuzzleComponent.subComponents) PC.components.Add(comp);
-
-            if(PC.components.Count > 0) FindObjectOfType<BNG.PlayerTeleport>().TeleportPlayer(SpawnPosition, Quaternion.identity);
-            else
-            {
-                //Game finished, TODO: Perkan
-            }
-        });
+        Instance.StartCoroutine(delayedComplete());
     }
 
+    private static IEnumerator delayedComplete(){
+        yield return new WaitForSeconds(1.5f);
+
+        Puzzle currentPuzzle = Instance.Puzzles.FirstOrDefault(puzzle => puzzle.PuzzleName == Instance.currentPuzzleComponent.name);
+        currentPuzzle.PuzzleCompleted = true;
+
+        foreach(var comp in Instance.currentPuzzleComponent.subComponents) pc.components.Add(comp);
+
+        if(pc.components.Count > 0) FindObjectOfType<BNG.PlayerTeleport>().TeleportPlayer(Instance.SpawnPosition, Quaternion.identity);
+        else
+        {
+            //Game finished, TODO: Perkan
+        }
+    }
 }
