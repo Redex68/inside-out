@@ -1,10 +1,10 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PC : MonoBehaviour
 {
+    public static PC Instance;
 
     [System.Serializable]
     public struct Component
@@ -31,10 +31,10 @@ public class PC : MonoBehaviour
     }
 
     [SerializeField]
-    public static List<Component> components;
+    public List<Component> components;
 
-    public static Dictionary<String, Component> defaultComponents;
-    public static Dictionary<String, List<Vector3>> defaultComponentPositions;
+    public Dictionary<String, Component> defaultComponents = new Dictionary<String, Component>();
+    public Dictionary<String, List<Vector3>> defaultComponentPositions = new Dictionary<String, List<Vector3>>();
 
     [SerializeField]
     float positionMargin;
@@ -43,6 +43,11 @@ public class PC : MonoBehaviour
 
     Transform tf;
 
+
+    private void Awake(){
+        if(Instance != null && Instance != this) Destroy(this);
+        else Instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()
