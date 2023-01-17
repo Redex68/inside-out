@@ -49,8 +49,11 @@ public class TransitionManager : MonoBehaviour{
     public static void startPuzzle(PC.Component comp)
     {
         //Throws if none are found
-        Puzzle puzzle = Instance.Puzzles.FirstOrDefault(puzzle => puzzle.PuzzleName == "RAM");
-        if(puzzle == null) throw new InvalidOperationException("Komponenta nema puzlu \"" + comp.name + "\"");
+        Puzzle puzzle = Instance.Puzzles.FirstOrDefault(puzzle => puzzle.PuzzleName == comp.name);
+        if(puzzle == null) {
+            Debug.Log("Komponenta nema puzlu \"" + comp.name + "\"");
+            return;
+        }
 
         Instance.currentPuzzleComponent = comp;
 
