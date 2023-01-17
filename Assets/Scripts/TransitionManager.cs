@@ -8,7 +8,9 @@ using System.Threading.Tasks;
 public class TransitionManager : MonoBehaviour{
     public static TransitionManager Instance { get; private set; }
     
-    private static PC pc = PC.Instance;
+    private static PC pc;
+
+    private static BNG.PlayerTeleport player;
 
     [Serializable]
     public class Puzzle
@@ -39,6 +41,10 @@ public class TransitionManager : MonoBehaviour{
         else Instance = this;
     }
 
+    private void Start(){
+        player = GameObject.FindObjectOfType<BNG.PlayerTeleport>();
+        pc = PC.Instance;
+    }
 
     public static void startPuzzle(PC.Component comp)
     {
@@ -58,7 +64,7 @@ public class TransitionManager : MonoBehaviour{
         //Instantiate the puzzle and teleport the player
         Instance.currentPuzzleInstance = Instantiate(puzzle.PuzzleObject);
         //TODO: add delay and transition
-        FindObjectOfType<BNG.PlayerTeleport>().TeleportPlayer(puzzle.PuzzleStartPos, Quaternion.identity);
+        player.TeleportPlayer(puzzle.PuzzleStartPos, Quaternion.identity);
     }
 
     public static void quitPuzzle()
@@ -69,7 +75,7 @@ public class TransitionManager : MonoBehaviour{
     private static IEnumerator delayedQuit(){
         yield return new WaitForSeconds(1.5f);
 
-        FindObjectOfType<PlayerID>().transform.position = Instance.SpawnPosition; 
+        player.TeleportPlayer(Instance.SpawnPosition, Quaternion.identity);
         Destroy(Instance.currentPuzzleInstance);
 
         //Resetting component (Adding back to component list, reseting positions, adding physics, adding grabbable)
@@ -95,7 +101,8 @@ public class TransitionManager : MonoBehaviour{
 
         foreach(var comp in Instance.currentPuzzleComponent.subComponents) pc.components.Add(comp);
 
-        if(pc.components.Count > 0) FindObjectOfType<BNG.PlayerTeleport>().TeleportPlayer(Instance.SpawnPosition, Quaternion.identity);
+        Destroy(Instance.currentPuzzleInstance);
+        if(pc.components.Count > 0) player.TeleportPlayer(Instance.SpawnPosition, Quaternion.identity);
         else
         {
             //Game finished, TODO: Perkan
