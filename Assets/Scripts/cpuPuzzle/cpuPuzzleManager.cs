@@ -9,9 +9,6 @@ public class cpuPuzzleManager : MonoBehaviour
     private bool puzzleActive = false;
     private int counter;
 
-
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +33,6 @@ public class cpuPuzzleManager : MonoBehaviour
     private void SetupPuzzle()
     {
 
-        
         puzzleActive = true;
         this.counter = 0;
        
@@ -45,7 +41,7 @@ public class cpuPuzzleManager : MonoBehaviour
     public void TaskCorrect() {
         string text = PromptScript.instance.getPrompt();
         this.counter++;
-        PromptScript.instance.updatePrompt("Correct! Solved: " + counter + " / 3", 3);
+        PromptScript.instance.updatePrompt("Correct! Currently solved: " + counter + " / 3", 3);
         PromptScript.instance.updatePrompt(text, 3);
         Debug.Log("Correct! Solved: " + counter + " / 3");
 
@@ -53,7 +49,7 @@ public class cpuPuzzleManager : MonoBehaviour
 
     public void TaskInCorrect() {
         string text = PromptScript.instance.getPrompt();
-        PromptScript.instance.updatePrompt("Incorrect! Solved: " + counter + " / 3", 3);
+        PromptScript.instance.updatePrompt("Incorrect! Currently solved: " + counter + " / 3", 3);
         PromptScript.instance.updatePrompt(text, 3);
         Debug.Log("Incorrect! Solved: " + counter + " / 3");
 
@@ -66,5 +62,6 @@ public class cpuPuzzleManager : MonoBehaviour
         puzzleActive = false;
         PromptScript.instance.updatePrompt("Congratulations! You have beaten the puzzle!", 3);
         counter = 0;
+        TransitionManager.completePuzzle();
     }
 }
