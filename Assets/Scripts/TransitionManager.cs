@@ -20,7 +20,7 @@ public class TransitionManager : MonoBehaviour{
         [SerializeField]
         public GameObject PuzzleObject;
         [SerializeField]
-        public Vector3 PuzzleStartPos;
+        public GameObject StartPos;
         [SerializeField]
         public bool PuzzleCompleted;
     }
@@ -36,6 +36,25 @@ public class TransitionManager : MonoBehaviour{
     PC.Component currentPuzzleComponent;
     GameObject currentPuzzleInstance = null;
 
+    //A list of the larger versions of the components which are added into the miniature world
+    //as the player completes puzzles
+    private List<GameObject> largeComponents = new List<GameObject>();
+
+    private List<String> componentNames = new List<String>{ 
+        "FAN1",
+        "FAN2",
+        "PSU",
+        "CABLES",
+        "CPU",
+        "GPU",
+        "RAM1",
+        "RAM2",
+        "COOLER"
+     };
+
+    [SerializeField]
+     public List<GameObject> locations;
+
     private void Awake(){
         if(Instance != null && Instance != this) Destroy(this);
         else Instance = this;
@@ -44,6 +63,14 @@ public class TransitionManager : MonoBehaviour{
     private void Start(){
         player = GameObject.FindObjectOfType<BNG.PlayerTeleport>();
         pc = PC.Instance;
+
+        componentNames.ForEach(name => {
+            GameObject component = GameObject.Find(name);
+            largeComponents.Add(component);
+            component.SetActive(false);
+        });
+
+
     }
 
     public static void startPuzzle(PC.Component comp)
@@ -52,6 +79,7 @@ public class TransitionManager : MonoBehaviour{
         Puzzle puzzle = Instance.Puzzles.FirstOrDefault(puzzle => puzzle.PuzzleName == comp.name);
         if(puzzle == null) {
             Debug.Log("Komponenta nema puzlu \"" + comp.name + "\"");
+            Instance.addToMiniatureWorld(comp.name);
             return;
         }
 
@@ -67,7 +95,7 @@ public class TransitionManager : MonoBehaviour{
         //Instantiate the puzzle and teleport the player
         Instance.currentPuzzleInstance = Instantiate(puzzle.PuzzleObject);
         //TODO: add delay and transition
-        player.TeleportPlayer(puzzle.PuzzleStartPos, Quaternion.identity);
+        player.TeleportPlayer(puzzle.StartPos.transform.position, Quaternion.Euler(puzzle.StartPos.transform.eulerAngles));
     }
 
     public static void quitPuzzle()
@@ -104,11 +132,52 @@ public class TransitionManager : MonoBehaviour{
 
         foreach(var comp in Instance.currentPuzzleComponent.subComponents) pc.components.Add(comp);
 
-        Destroy(Instance.currentPuzzleInstance);
+        Instance.addToMiniatureWorld(Instance.currentPuzzleComponent.name);
+        
+        Destroy(Instance.currentPuzzleInstance);      
+
         if(pc.components.Count > 0) player.TeleportPlayer(Instance.SpawnPosition, Quaternion.identity);
         else
         {
             //Game finished, TODO: Perkan
         }
+    }
+
+    //add component to miniature world
+    //scale = 100, position(world), prefabs of components -> funkcija(imeKomponente) [switch -> instantiate]
+    //ako je MOBO nista ne radi, ako je GPU ili PSU -> u start pozvat f-ju u if == null
+    private void addToMiniatureWorld(string name){
+        Vector3 scale = new Vector3(100, 100, 100);
+        switch (name){
+            case "FAN":
+                largeComponents[0].SetActive(true);
+                largeComponents[1].SetActive(true);
+                break;
+
+            case "PSU":
+                largeComponents[2].SetActive(true);
+                largeComponents[3].SetActive(true);
+                break;
+
+            case "CPU":
+                largeComponents[4].SetActive(true);
+                break;
+
+            case "GPU":
+                largeComponents[5].SetActive(true);
+                break;
+
+            case "RAM":
+                largeComponents[6].SetActive(true);
+                largeComponents[7].SetActive(true);
+                break;
+
+            case "COOLER":
+                largeComponents[8].SetActive(true);
+                break;
+
+            default:
+                break;
+            }
     }
 }
