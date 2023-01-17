@@ -188,12 +188,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87ae9f1680838d94aa21882869af7bdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1776780194}
-  PuzzleInitializers:
-  - name: FAN
-    initializer: {fileID: 0}
-  - name: MOBO
-    initializer: {fileID: 1164604335}
+  SpawnPosition: {x: 0, y: 2.142, z: 0}
+  Puzzles:
+  - PuzzleName: MOBO
+    PuzzleObject: {fileID: 7506085363045154520, guid: a819b9a5b700a094fbb037271613cf26,
+      type: 3}
+    PuzzleStartPos: {x: -503.41, y: 185.5, z: 994.549}
+    PuzzleCompleted: 0
+  - PuzzleName: FAN
+    PuzzleObject: {fileID: 8328177253699819229, guid: 489108d502a14d0439fa189353b364dd,
+      type: 3}
+    PuzzleStartPos: {x: -503.41, y: 185.5, z: 994.549}
+    PuzzleCompleted: 0
 --- !u!4 &482135415
 Transform:
   m_ObjectHideFlags: 0
@@ -215,6 +221,74 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7516992335759242669}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &548400121
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 548400122}
+  m_Layer: 0
+  m_Name: PlayerTeleportLocation (Purely informational)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &548400122
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 548400121}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -503.41, y: 185.5, z: 994.549}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!84 &1018376250
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_IsAlphaChannelOptional: 0
+  serializedVersion: 5
+  m_Width: 1832
+  m_Height: 1920
+  m_AntiAliasing: 4
+  m_MipCount: -1
+  m_DepthStencilFormat: 90
+  m_ColorFormat: 4
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 1
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_EnableCompatibleFormat: 1
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
+  m_ShadowSamplingMode: 2
 --- !u!1 &1032439037 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3487737395474192865, guid: b6730aab83fd0bd488d6f505c8f149d9,
@@ -486,8 +560,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d89ac14179cbd34faa7c5c8a4e96e04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  puzzlePrefab: {fileID: 7506085363045154520, guid: a819b9a5b700a094fbb037271613cf26,
-    type: 3}
 --- !u!1 &1362718400 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6384740926655813890, guid: b6730aab83fd0bd488d6f505c8f149d9,
@@ -530,55 +602,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7516992335759242669}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1776780194 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7785181877062863132, guid: da7cb42398646f541b79585efb71bdbf,
-    type: 3}
-  m_PrefabInstance: {fileID: 1074280723}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1907197293 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 893941604392625651, guid: b6730aab83fd0bd488d6f505c8f149d9,
     type: 3}
   m_PrefabInstance: {fileID: 7516992335759242669}
   m_PrefabAsset: {fileID: 0}
---- !u!84 &2035522598
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_IsAlphaChannelOptional: 0
-  serializedVersion: 5
-  m_Width: 1832
-  m_Height: 1920
-  m_AntiAliasing: 4
-  m_MipCount: -1
-  m_DepthStencilFormat: 90
-  m_ColorFormat: 4
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 1
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_EnableCompatibleFormat: 1
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
-  m_ShadowSamplingMode: 2
 --- !u!1001 &674272801774426401
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -733,7 +762,22 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TargetTexture
       value: 
-      objectReference: {fileID: 2035522598}
+      objectReference: {fileID: 1018376250}
+    - target: {fileID: 7413839646006684882, guid: b6730aab83fd0bd488d6f505c8f149d9,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.144
+      objectReference: {fileID: 0}
+    - target: {fileID: 7413839646006684882, guid: b6730aab83fd0bd488d6f505c8f149d9,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.994
+      objectReference: {fileID: 0}
+    - target: {fileID: 7413839646006684882, guid: b6730aab83fd0bd488d6f505c8f149d9,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.306
+      objectReference: {fileID: 0}
     - target: {fileID: 7516992335592174921, guid: b6730aab83fd0bd488d6f505c8f149d9,
         type: 3}
       propertyPath: m_RootOrder
