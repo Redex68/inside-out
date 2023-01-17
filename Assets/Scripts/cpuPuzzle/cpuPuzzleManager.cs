@@ -7,7 +7,7 @@ public class cpuPuzzleManager : Puzzle
 {
 
     private bool puzzleActive = false;
-    private GameObject player;
+    //private GameObject player;
     private int counter;
     private GameObject[] cpuPuzzleComponents;
 
@@ -48,12 +48,12 @@ public class cpuPuzzleManager : Puzzle
         yield return new WaitForSeconds(1.5f);
 
         SetupPuzzle();
-        player.GetComponent<BNG.PlayerTeleport>().TeleportPlayer(new Vector3(-484.75f,186f,1006.78003f), Quaternion.identity);
+        //player.GetComponent<BNG.PlayerTeleport>().TeleportPlayer(new Vector3(-484.75f,186f,1006.78003f), Quaternion.identity);
     }
 
     public override void initPuzzle(GameObject player)
     {
-        this.player = player;
+        //this.player = player;
         StartCoroutine(DelayedTeleport());
 
     }
@@ -83,7 +83,7 @@ public class cpuPuzzleManager : Puzzle
         foreach(GameObject obj in cpuPuzzleComponents) obj.SetActive(false);
         puzzleActive = false;
         PromptScript.instance.updatePrompt("Congratulations! You have beaten the puzzle!", 3);
-        player.GetComponent<BNG.PlayerTeleport>().TeleportPlayer(new Vector3(0, 5.142f, 0), Quaternion.identity);
+        //player.GetComponent<BNG.PlayerTeleport>().TeleportPlayer(new Vector3(0, 5.142f, 0), Quaternion.identity);
         counter = 0;
     }
 }
