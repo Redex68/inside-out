@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17680767, g: 0.21437557, b: 0.26381442, a: 1}
+  m_IndirectSpecularColor: {r: 0.17680787, g: 0.21437606, b: 0.26381502, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -189,7 +189,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpawnPosition: {x: 0, y: 2.142, z: 0}
-  Puzzles: []
+  Puzzles:
+  - PuzzleName: FAN
+    PuzzleObject: {fileID: 8328177253699819229, guid: 489108d502a14d0439fa189353b364dd,
+      type: 3}
+    PuzzleStartPos: {x: -503.41, y: 185.5, z: 994.549}
+    PuzzleCompleted: 0
+  - PuzzleName: MOBO
+    PuzzleObject: {fileID: 7506085363045154520, guid: a819b9a5b700a094fbb037271613cf26,
+      type: 3}
+    PuzzleStartPos: {x: -503.41, y: 185.5, z: 994.549}
+    PuzzleCompleted: 0
+  - PuzzleName: RAM
+    PuzzleObject: {fileID: 8213390219550786748, guid: 89c34c7690ebf7649bcff3e0ba3899a7,
+      type: 3}
+    PuzzleStartPos: {x: -498.33, y: 187.55, z: 991.3}
+    PuzzleCompleted: 0
 --- !u!4 &482135415
 Transform:
   m_ObjectHideFlags: 0
@@ -242,6 +257,43 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!84 &818423174
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_IsAlphaChannelOptional: 0
+  serializedVersion: 5
+  m_Width: 1832
+  m_Height: 1920
+  m_AntiAliasing: 4
+  m_MipCount: -1
+  m_DepthStencilFormat: 90
+  m_ColorFormat: 4
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 1
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_EnableCompatibleFormat: 1
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
+  m_ShadowSamplingMode: 2
 --- !u!1 &1032439037 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3487737395474192865, guid: b6730aab83fd0bd488d6f505c8f149d9,
