@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class SnappingScript : MonoBehaviour
 {
-    public GameObject leftHand;
-    public GameObject rightHand;
     public Material greenBoxHolder;
     public Material redBoxHolder;
     public Material defaultBoxHolder;
@@ -19,14 +17,11 @@ public class SnappingScript : MonoBehaviour
 
     void Start()
     {
-        BNG.Grabber leftGrabber = leftHand.GetComponent<BNG.Grabber>();
-        BNG.Grabber rightGrabber = rightHand.GetComponent<BNG.Grabber>();
+        BNG.Grabber leftGrabber = GameObject.FindGameObjectWithTag("leftHandGrabber").GetComponent<BNG.Grabber>();
+        BNG.Grabber rightGrabber = GameObject.FindGameObjectWithTag("rightHandGrabber").GetComponent<BNG.Grabber>();
 
         leftGrabber.onGrabEvent.AddListener(getCubeInHand);
         rightGrabber.onGrabEvent.AddListener(getCubeInHand);
-
-        leftGrabber.onReleaseEvent.AddListener(releaseCube);  
-        rightGrabber.onReleaseEvent.AddListener(releaseCube);
 
         float z = 990.844f;
         for(int i = 0; i < 5; z += 2f, i++){
@@ -44,8 +39,6 @@ public class SnappingScript : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("!!!!!");
-        Debug.Log(GameObject.Find("RamPuzzleElements(Clone)").transform.position);
         List<GameObject> all0Cubes = GameObject.Find("spawnPointCube0").GetComponent<CloneBox0>().all0Cubes;
         List<GameObject> all1Cubes = GameObject.Find("spawnPointCube1").GetComponent<CloneBox1>().all1Cubes;
         bool[] snapped = new bool[5];
@@ -133,9 +126,5 @@ public class SnappingScript : MonoBehaviour
 
     public void getCubeInHand(BNG.Grabbable grabbable){
         cubeInHand = grabbable.gameObject;
-    }
-
-    public void releaseCube(BNG.Grabbable grabbable){
-        
     }
 }

@@ -1,5 +1,76 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1599368325983872168
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5654726462880189551}
+  - component: {fileID: 499907467727392850}
+  m_Layer: 0
+  m_Name: Snapping
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5654726462880189551
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1599368325983872168}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8213390219550786751}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &499907467727392850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1599368325983872168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6a524c50da11c74fa5d1f3d7378b834, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftHand: {fileID: 0}
+  rightHand: {fileID: 0}
+  greenBoxHolder: {fileID: 2100000, guid: 8acff9c83d36b5c4bb32c345e78b4217, type: 2}
+  redBoxHolder: {fileID: 2100000, guid: bad92da0175b84646852bbcbe52de11c, type: 2}
+  defaultBoxHolder: {fileID: 2100000, guid: 5c385f7e5e86ec349bc367ce51b2bc66, type: 2}
+  cubeInHand: {fileID: 0}
+  cubeSnapPosition:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  cubeSnapRotation: {x: 0, y: 180, z: -38}
+  distance:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  rightOrder: 0000000000
+  cubeSequence: 
+  holders:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &8213390217864840871
 GameObject:
   m_ObjectHideFlags: 0
@@ -40489,6 +40560,7 @@ Transform:
   - {fileID: 8213390219358179782}
   - {fileID: 8213390218312122849}
   - {fileID: 8213390219658996939}
+  - {fileID: 5654726462880189551}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

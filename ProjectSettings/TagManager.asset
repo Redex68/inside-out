@@ -9,6 +9,8 @@ TagManager:
   - cube1
   - HeatedComponent
   - RamElements
+  - leftHandGrabber
+  - rightHandGrabber
   layers:
   - Default
   - TransparentFX

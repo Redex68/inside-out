@@ -34,7 +34,7 @@ public class Timer : MonoBehaviour
                 timeLeft -= Time.deltaTime;
                 updateTimer(timeLeft);
 
-                bool[] rightOrder = GameObject.Find("RamManager").GetComponent<SnappingScript>().rightOrder;
+                bool[] rightOrder = GameObject.Find("Snapping").GetComponent<SnappingScript>().rightOrder;
                 int counter = 0;
                 for(int i = 0; i < 5; i++)
                     if(rightOrder[i] == true)
@@ -43,13 +43,17 @@ public class Timer : MonoBehaviour
                     timerOn = false;
                     done = true;
                     
-                    StartCoroutine(success());
+                    PromptScript.instance.updatePrompt("Uspješno ste riješili zagonetku!", 2f);
+                    foreach(GameObject obj in GameObject.FindGameObjectsWithTag("cube0")) Destroy(obj);
+                    foreach(GameObject obj in GameObject.FindGameObjectsWithTag("cube1")) Destroy(obj);
+                    TransitionManager.completePuzzle();
                 }
             }
             else{
                 timeLeft = 0;
                 timerOn = false;
-                if(done == false)   StartCoroutine(startAgain());
+                if(done == false)
+                    StartCoroutine(startAgain());
             }
         }
     }
@@ -68,13 +72,5 @@ public class Timer : MonoBehaviour
         PromptScript.instance.updatePrompt("Vrijeme isteklo! Probaj opet.");
         yield return new WaitForSeconds(3f);
         Start();
-    }
-
-    IEnumerator success(){
-        PromptScript.instance.updatePrompt("Uspješno ste riješili zagonetku!");
-        yield return new WaitForSeconds(2f);
-
-        PromptScript.instance.updatePrompt("");
-        RamPuzzleManager.Instance.completePuzzle();
     }
 }
