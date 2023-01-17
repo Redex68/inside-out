@@ -8,6 +8,9 @@ TagManager:
   - cube0
   - cube1
   - HeatedComponent
+  - motherboard
+  - cpuCooler
+  - cpuInCpuFanPuzzle
   - RamElements
   - leftHandGrabber
   - rightHandGrabber
