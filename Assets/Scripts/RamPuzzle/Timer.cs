@@ -46,7 +46,7 @@ public class Timer : MonoBehaviour
                 for(int i = 0; i < 5; i++)
                     if(rightOrder[i] == true)
                         counter++;
-                if(counter == 1){
+                if(counter == 5){
                     timerOn = false;
                     done = true;
                     
