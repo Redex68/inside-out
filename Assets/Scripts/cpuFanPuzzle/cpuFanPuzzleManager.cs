@@ -3,14 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class cpuFanPuzzleManager : Puzzle
+public class cpuFanPuzzleManager : MonoBehaviour
 {
     [SerializeField]
     [Tooltip("CPU temperature at the start of the puzzle")]
     int startTemperature;
 
     [SerializeField]
-    [Tooltip("How often CPU gains 1 °C")]
+    [Tooltip("How often CPU gains 1 ï¿½C")]
     int delta;
 
     [SerializeField]
@@ -38,6 +38,8 @@ public class cpuFanPuzzleManager : Puzzle
     void Start()
     {
         cpu = GameObject.FindGameObjectsWithTag("cpuInCpuFanPuzzle");
+        this.currentTemperature = startTemperature;
+        SetupPuzzle();
 
     }
 
@@ -67,36 +69,17 @@ public class cpuFanPuzzleManager : Puzzle
             {
                 yield return new WaitForSeconds(5);
                 currentTemperature += 5;
-                PromptScript.instance.updatePrompt("Current CPU temperature is " + currentTemperature.ToString() + " °C", 1);
+                PromptScript.instance.updatePrompt("Current CPU temperature is " + currentTemperature.ToString() + " ï¿½C", 1);
             }
             else
             {
                 yield return new WaitForSeconds(delta);
                 currentTemperature++;
-                PromptScript.instance.updatePrompt("Current CPU temperature is " + currentTemperature.ToString() + " °C", 1);
+                PromptScript.instance.updatePrompt("Current CPU temperature is " + currentTemperature.ToString() + " ï¿½C", 1);
             }
         }
     }
 
-    public override void initPuzzle(GameObject player)
-    {
-        this.player = player;
-        this.currentTemperature = startTemperature;
-
-        StartCoroutine(DelayedTeleport());
-    }
-
-    private IEnumerator DelayedTeleport()
-    {
-        yield return new WaitForSeconds(1.5f);
-
-        SetupPuzzle();
-        Vector3 initialPosition = cpu[0].transform.position;
-        initialPosition.x += 5.1215f;
-        initialPosition.y += 5.1215f;
-        initialPosition.z += 5.1215f;
-        player.GetComponent<BNG.PlayerTeleport>().TeleportPlayer(initialPosition, Quaternion.identity);
-    }
 
     private void SetupPuzzle()
     {
@@ -126,7 +109,7 @@ public class cpuFanPuzzleManager : Puzzle
 
     private void FailPuzzle()
     {
-        PromptScript.instance.updatePrompt("Don't let the CPU reach 100 °C!", 3);
+        PromptScript.instance.updatePrompt("Don't let the CPU reach 100 ï¿½C!", 3);
         GameObject champagneInstance = GameObject.Find("Champagne(Clone)");
         Destroy(champagneInstance);
         Invoke("SetupPuzzle", 5);
