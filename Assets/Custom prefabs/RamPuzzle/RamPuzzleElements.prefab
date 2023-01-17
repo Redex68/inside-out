@@ -888,6 +888,10 @@ MonoBehaviour:
   timeLeft: 5
   cubeSequence: 0000000000000000000000000000000000000000
   done: 0
+  cube0: {fileID: 0}
+  cube1: {fileID: 0}
+  cubeSnapPosition: []
+  cubeSnapRotation: {x: 0, y: 180, z: -38}
 --- !u!1 &8213390218490470122
 GameObject:
   m_ObjectHideFlags: 0

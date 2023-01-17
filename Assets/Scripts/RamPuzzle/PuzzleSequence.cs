@@ -11,7 +11,7 @@ public class PuzzleSequence : MonoBehaviour
     }
     void Start()
     {
-        PromptScript.instance.updatePrompt("Stavi kutije na mjesto pripadajućim rasporedom. Pazi, svako ponavljanje ima različiti raspored! Imaš 30 sekundi.", 5f);
+        PromptScript.instance.updatePrompt("Place the boxes in the correct order. Watch out, each time you get a different order! You have two and a half minutes", 5f);
         StartCoroutine(timerStart());
     }
 
