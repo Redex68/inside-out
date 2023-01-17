@@ -102,7 +102,7 @@ namespace BNG {
         Grabbable grab;
         Rigidbody rb;
         AudioSource audioSource;
-        bool switchedOn;
+        public bool switchedOn;
 
         ConfigurableJoint configJoint;
         HingeJoint hingedJoint;

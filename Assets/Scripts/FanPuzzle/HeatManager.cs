@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class HeatManager : Puzzle
-{
+
+public class HeatManager : MonoBehaviour {
     [SerializeField]
     [Tooltip("The average time a component will need to overheat in seconds.")]
     float averageTimeTillOverheat; 
@@ -49,10 +49,15 @@ public class HeatManager : Puzzle
     private bool puzzleActive = false;
     private GameObject coolerInstance;
     private GameObject player;
+    
     void Start()
     {
         heatedComponents = GameObject.FindGameObjectsWithTag("HeatedComponent");
-        foreach(GameObject obj in heatedComponents) obj.SetActive(false);
+        // foreach(GameObject obj in heatedComponents) obj.SetActive(false);
+        coolerInstance = Instantiate(coolerPrefab, new Vector3(-501.581f, 184.8f, 995.3754f), Quaternion.Euler(0,-142.623f,0));
+
+        setupPuzzle();
+        coolerInstance.GetComponentInChildren<Cooler>().manager = this;
     }
 
     private void setupPuzzle(){
@@ -101,7 +106,8 @@ public class HeatManager : Puzzle
         heatInfos.Clear();
         Destroy(coolerInstance);
         PromptScript.instance.updatePrompt("Congratulations! You have beaten the puzzle.", 5);
-        player.GetComponent<BNG.PlayerTeleport>().TeleportPlayer(new Vector3(0, 2.142f, 0), Quaternion.identity);
+
+        TransitionManager.completePuzzle();
     }
 
 /// <summary>
@@ -196,21 +202,6 @@ public class HeatManager : Puzzle
             info.renderer.material.color = newColor;
 
             return info;
-    }
-
-    public override void initPuzzle(GameObject player)
-    {
-        this.player = player;
-        StartCoroutine(delayedTeleport());
-    }
-
-    private IEnumerator delayedTeleport(){
-        yield return new WaitForSeconds(1.5f);
-
-        setupPuzzle();
-        coolerInstance = Instantiate(coolerPrefab, new Vector3(-503, 183.15f, 995), Quaternion.identity);
-        coolerInstance.GetComponent<Cooler>().manager = this;
-        player.GetComponent<BNG.PlayerTeleport>().TeleportPlayer(new Vector3(-503.41f, 184.022f, 994.549f), Quaternion.identity);
     }
 }
 

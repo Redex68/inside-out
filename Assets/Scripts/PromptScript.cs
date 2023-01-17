@@ -14,6 +14,7 @@ public class PromptScript: MonoBehaviour
 {
     public static PromptScript instance {get; private set;}
     private TMPro.TMP_Text TMPtext;
+    private UnityEngine.UI.Image promptBackground;
 
     private void Awake() 
     { 
@@ -24,9 +25,15 @@ public class PromptScript: MonoBehaviour
         } 
         else 
         { 
-            instance = this; 
-            TMPtext = GameObject.Find("WatchParent/WatchCanvas/PromptText").GetComponent<TMPro.TMP_Text>();
+            instance = this;     
         }
+    }
+
+    private void Start()
+    {
+        TMPtext = GameObject.Find("WatchParent/WatchCanvas/PromptText").GetComponent<TMPro.TMP_Text>();
+        promptBackground = GameObject.Find("WatchParent/WatchCanvas").GetComponent<UnityEngine.UI.Image>();
+        promptBackground.CrossFadeAlpha(0, 0, false);
     }
 
 /**
@@ -53,7 +60,8 @@ public class PromptScript: MonoBehaviour
     public void updatePrompt(string text){
         if(text == null) throw new NullReferenceException("Prompt text atempted to be changed to null");
         TMPtext.text = text;
-        TMPtext.CrossFadeAlpha(1, 0, false);
+        TMPtext.CrossFadeAlpha(1, 0.5f, false);
+        promptBackground.CrossFadeAlpha(1, 0.5f, false);
     }
 
 /**
@@ -69,7 +77,8 @@ public class PromptScript: MonoBehaviour
         StartCoroutine(fadeOut(fadeOutDelay));
     }
     public IEnumerator fadeOut(float fadeOutDelay){
-        yield return new WaitForSeconds(fadeOutDelay);
+        yield return new WaitForSeconds(fadeOutDelay + 0.5f);
         TMPtext.CrossFadeAlpha(0, 1, false);
+        promptBackground.CrossFadeAlpha(0, 1, false);
     }
 }
