@@ -40,6 +40,8 @@ public class TransitionManager : MonoBehaviour{
     //as the player completes puzzles
     private List<GameObject> largeComponents = new List<GameObject>();
 
+    private static bool quitting = false;
+
     private List<String> componentNames = new List<String>{ 
         "FAN1",
         "FAN2",
@@ -102,10 +104,11 @@ public class TransitionManager : MonoBehaviour{
 
     public static void quitPuzzle()
     {
-        Instance.StartCoroutine(delayedQuit());
+        if(!quitting) Instance.StartCoroutine(delayedQuit());
     }
 
     private static IEnumerator delayedQuit(){
+        quitting = true;
         yield return new WaitForSeconds(1.5f);
 
         player.TeleportPlayer(Instance.SpawnPosition, Quaternion.identity);
@@ -117,8 +120,11 @@ public class TransitionManager : MonoBehaviour{
         {
             Instance.currentPuzzleComponent.gameObjects[i].transform.position = pc.defaultComponentPositions[Instance.currentPuzzleComponent.name][i];
             Instance.currentPuzzleComponent.gameObjects[i].AddComponent<Rigidbody>();
-            Instance.currentPuzzleComponent.gameObjects[i].GetComponent<BNG.Grabbable>().enabled = true;
+            Destroy(Instance.currentPuzzleComponent.gameObjects[i].GetComponent<BNG.Grabbable>());
+            Instance.currentPuzzleComponent.gameObjects[i].AddComponent<BNG.Grabbable>();
         }
+
+        quitting = false;
     }
 
     public static void completePuzzle()

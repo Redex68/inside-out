@@ -17,7 +17,7 @@ public class ThermalPasteSpawner : MonoBehaviour
     void Start()
     {
         randomPosition = Random.Range(0, 4);
-        spawnedThermalPaste = Instantiate(thermalPasteReference);
+        spawnedThermalPaste = Instantiate(thermalPasteReference, transform);
         if (randomPosition == 0)
         {
             spawnedThermalPaste.transform.position = position0.position;
