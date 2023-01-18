@@ -6,12 +6,13 @@ using UnityEngine.UI;
 public class Timer : MonoBehaviour
 {
     public bool timerOn = false;
-    public float timeLeft = 150f; 
+    public float timeLeft = 90f; 
     public int[] cubeSequence = new int[5];
     public bool done = false;
     public GameObject cube0, cube1;
     public Vector3[] cubeSnapPosition;
     public Vector3 cubeSnapRotation = new Vector3(0, 180, -38f);
+    private GameObject puzzleInstantiatedPrefab;
 
     public void Start()
     {
@@ -20,6 +21,7 @@ public class Timer : MonoBehaviour
         cube0 = GameObject.Find("spawnPointCube0").GetComponent<CloneBox0>().cubeClone;
         cube1 = GameObject.Find("spawnPointCube1").GetComponent<CloneBox1>().cubeClone;
         cubeSnapPosition = GameObject.Find("Snapping").GetComponent<SnappingScript>().cubeSnapPosition;
+        puzzleInstantiatedPrefab = GameObject.Find("RamPuzzleElements(Clone)");
 
         for(int i = 0; i < all0Cubes.Count - 1; i++)
             Destroy(all0Cubes[i]);
@@ -30,7 +32,7 @@ public class Timer : MonoBehaviour
 
         Debug.Log(cubeSequence[0] + " " + cubeSequence[1] + " " + cubeSequence[2] + " " + cubeSequence[3] + " " + cubeSequence[4]);
         
-        timeLeft = 150f;
+        timeLeft = 90f;
         timerOn = true;
     }
 
@@ -50,8 +52,7 @@ public class Timer : MonoBehaviour
                     timerOn = false;
                     done = true;
                     
-                    PromptScript.instance.updatePrompt("You have successfully solved the puzzle!", 5f);
-                    cubeSnapPosition = GameObject.Find("Snapping").GetComponent<SnappingScript>().cubeSnapPosition;
+                    PromptScript.instance.updatePrompt("You have successfully solved the puzzle!", 6f);
                     StartCoroutine(endPuzzle());
                 }
             }
@@ -71,11 +72,17 @@ public class Timer : MonoBehaviour
         float minutes = Mathf.FloorToInt(currentTime / 60);
         float seconds = Mathf.FloorToInt(currentTime % 60);
 
-        PromptScript.instance.updatePrompt(string.Format("{0:00} : {1:00}", minutes, seconds));
+        bool[] rightOrder = GameObject.Find("Snapping").GetComponent<SnappingScript>().rightOrder;
+        int counter = 0;
+        for(int i = 0; i < 5; i++)
+            if(rightOrder[i] == true)
+                counter++;
+
+        PromptScript.instance.updatePrompt("Solved " + counter + "/5 \n" + string.Format("{0:00} : {1:00}", minutes, seconds));
     }
 
     IEnumerator startAgain(){
-        PromptScript.instance.updatePrompt("Vrijeme isteklo! Probaj opet.");
+        PromptScript.instance.updatePrompt("Time is up! \nTry again!");
         yield return new WaitForSeconds(3f);
         Start();
     }
@@ -83,16 +90,14 @@ public class Timer : MonoBehaviour
     IEnumerator endPuzzle(){
         yield return new WaitForSeconds(1f);
         for(int i = 0; i < 40; i++){
-            Instantiate(i%2==0 ? cube0 : cube1, cubeSnapPosition[0], Quaternion.Euler(cubeSnapRotation));
-            Instantiate(i%2==0 ? cube1 : cube0, cubeSnapPosition[1], Quaternion.Euler(cubeSnapRotation));
-            Instantiate(i%2==0 ? cube0 : cube1, cubeSnapPosition[2], Quaternion.Euler(cubeSnapRotation));
-            Instantiate(i%2==0 ? cube1 : cube0, cubeSnapPosition[3], Quaternion.Euler(cubeSnapRotation));
-            Instantiate(i%2==0 ? cube0 : cube1, cubeSnapPosition[4], Quaternion.Euler(cubeSnapRotation));
+            (Instantiate(i%2==0 ? cube0 : cube1, cubeSnapPosition[0], Quaternion.Euler(cubeSnapRotation)) as GameObject).transform.parent = puzzleInstantiatedPrefab.transform;
+            (Instantiate(i%2==0 ? cube1 : cube0, cubeSnapPosition[1], Quaternion.Euler(cubeSnapRotation)) as GameObject).transform.parent = puzzleInstantiatedPrefab.transform;
+            (Instantiate(i%2==0 ? cube0 : cube1, cubeSnapPosition[2], Quaternion.Euler(cubeSnapRotation)) as GameObject).transform.parent = puzzleInstantiatedPrefab.transform;
+            (Instantiate(i%2==0 ? cube1 : cube0, cubeSnapPosition[3], Quaternion.Euler(cubeSnapRotation)) as GameObject).transform.parent = puzzleInstantiatedPrefab.transform;
+            (Instantiate(i%2==0 ? cube0 : cube1, cubeSnapPosition[4], Quaternion.Euler(cubeSnapRotation)) as GameObject).transform.parent = puzzleInstantiatedPrefab.transform;
             yield return new WaitForSeconds(0.15f);
         }
-        TransitionManager.completePuzzle();
         yield return new WaitForSeconds(3f);
-        foreach(GameObject obj in GameObject.FindGameObjectsWithTag("cube0")) Destroy(obj);
-        foreach(GameObject obj in GameObject.FindGameObjectsWithTag("cube1")) Destroy(obj);
+        TransitionManager.completePuzzle();
     }
 }

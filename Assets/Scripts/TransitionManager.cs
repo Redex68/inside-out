@@ -144,8 +144,6 @@ public class TransitionManager : MonoBehaviour{
     }
 
     //add component to miniature world
-    //scale = 100, position(world), prefabs of components -> funkcija(imeKomponente) [switch -> instantiate]
-    //ako je MOBO nista ne radi, ako je GPU ili PSU -> u start pozvat f-ju u if == null
     private void addToMiniatureWorld(string name){
         Vector3 scale = new Vector3(100, 100, 100);
         switch (name){
