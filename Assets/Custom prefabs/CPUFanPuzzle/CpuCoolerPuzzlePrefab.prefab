@@ -210,7 +210,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startTemperature: 20
-  delta: 1
+  delta: 2
   maxCpuTemp: 100
   thermalPasteReference: {fileID: 8341750201623803181, guid: 300d3d30823aa0041bb3fd7ed385a079,
     type: 3}

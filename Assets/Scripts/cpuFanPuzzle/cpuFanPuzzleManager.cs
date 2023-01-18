@@ -54,7 +54,7 @@ public class cpuFanPuzzleManager : MonoBehaviour
 
     IEnumerator CountdownOnWatch()
     {
-        PromptScript.instance.updatePrompt("Find the thermal paste hidden inside the level before the CPU temperature reaches 100!", 3);
+        PromptScript.instance.updatePrompt("Find the thermal paste hidden inside the level before the CPU temperature reaches 100!\n Once you find the thermal paste, splash it on the CPU", 6);
         while (currentTemperature < maxCpuTemp)
         {
             if (currentTemperature < -2)
@@ -67,7 +67,7 @@ public class cpuFanPuzzleManager : MonoBehaviour
                 currentTemperature += 5;
                 PromptScript.instance.updatePrompt("Current CPU temperature is " + currentTemperature.ToString() + " �C", 1);
             }
-            else
+            else if (currentTemperature > 0 && currentTemperature < 100)
             {
                 yield return new WaitForSeconds(delta);
                 currentTemperature++;
@@ -117,6 +117,7 @@ public class cpuFanPuzzleManager : MonoBehaviour
         PromptScript.instance.updatePrompt("Congratulations! You have beaten the puzzle!", 3);
         // player.GetComponent<BNG.PlayerTeleport>().TeleportPlayer(new Vector3(0, 5.142f, 0), Quaternion.identity);
         currentTemperature = -10;
+
         TransitionManager.completePuzzle();
     }
 }
