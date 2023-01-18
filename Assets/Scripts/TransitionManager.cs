@@ -76,7 +76,7 @@ public class TransitionManager : MonoBehaviour{
     public static void startPuzzle(PC.Component comp)
     {
         //Throws if none are found
-        Puzzle puzzle = Instance.Puzzles.FirstOrDefault(puzzle => puzzle.PuzzleName == "FAN");
+        Puzzle puzzle = Instance.Puzzles.FirstOrDefault(puzzle => puzzle.PuzzleName == comp.name);
         if(puzzle == null) {
             Debug.Log("Komponenta nema puzlu \"" + comp.name + "\"");
             Instance.addToMiniatureWorld(comp.name);
@@ -127,7 +127,7 @@ public class TransitionManager : MonoBehaviour{
     private static IEnumerator delayedComplete(){
         yield return new WaitForSeconds(1.5f);
 
-        Puzzle currentPuzzle = Instance.Puzzles.FirstOrDefault(puzzle => puzzle.PuzzleName == "FAN");
+        Puzzle currentPuzzle = Instance.Puzzles.FirstOrDefault(puzzle => puzzle.PuzzleName == Instance.currentPuzzleComponent.name);
         currentPuzzle.PuzzleCompleted = true;
 
         foreach(var comp in Instance.currentPuzzleComponent.subComponents) pc.components.Add(comp);
