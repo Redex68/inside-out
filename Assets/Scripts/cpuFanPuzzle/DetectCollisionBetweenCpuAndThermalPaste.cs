@@ -16,7 +16,7 @@ public class DetectCollisionBetweenCpuAndThermalPaste : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name == "Champagne(Clone)" && counter == 0)
+        if (collision.gameObject.name == "CPU" && counter == 0)
         {
             counter++;
             manager.PuzzleCleared();

@@ -27,9 +27,6 @@ public class cpuFanPuzzleManager : MonoBehaviour
 
     private GameObject spawnedThermalPaste;
     private int randomPosition;
-
-    private GameObject[] cpu;
-
     private bool puzzleActive = false;
     private GameObject player;
     private int currentTemperature;
@@ -37,7 +34,6 @@ public class cpuFanPuzzleManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        cpu = GameObject.FindGameObjectsWithTag("cpuInCpuFanPuzzle");
         this.currentTemperature = startTemperature;
         SetupPuzzle();
 
