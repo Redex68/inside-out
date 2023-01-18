@@ -627,6 +627,35 @@ namespace BNG {
             }
         }
 
+        public void TeleportImmediate(Vector3 playerDestination, Quaternion playerRotation)
+        {
+            if(!setVariables) setupVariables();
+
+            BeforeTeleport();
+
+            float yOffset = 1 + cameraRig.localPosition.y - playerController.CharacterControllerYOffset;
+
+            if(controller)
+            {
+                controller.transform.position = playerDestination;
+                controller.transform.localPosition -= new Vector3(0, yOffset, 0);
+                controller.transform.rotation = playerRotation;
+            }
+
+            // Reset the player's velocity
+            if (playerRigid) {
+                playerRigid.velocity = Vector3.zero;
+            }
+
+            // Update last teleport time
+            if (playerController) {
+                playerController.LastTeleportTime = Time.time;
+            }
+            
+            // Call events, etc.
+            AfterTeleport();
+        }
+
         public void TeleportPlayer(Vector3 destination, Quaternion rotation) {
             StartCoroutine(doTeleport(destination, rotation, true));
         }

@@ -57,38 +57,47 @@ public class MonitorDisplay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        resetGame();
+    }
+
+    void resetGame()
+    {
         if(isResetting)
         {
             
-            if(firstLerpTime < 1.0f)
-            {
-                firstLerpTime += Time.deltaTime * lerpSpeedFactor;
+            // if(firstLerpTime < 1.0f)
+            // {
+            //     firstLerpTime += Time.deltaTime * lerpSpeedFactor;
 
-                playerEyeTransform.position = Vector3.Slerp(firstLerpBeginPos, firstLerpTransform.position, firstLerpTime);
-                playerEyeTransform.rotation = Quaternion.Slerp(firstLerpBeginRot, firstLerpTransform.rotation, firstLerpTime);
-            }
-            else if(resetTime < 1.0f)
+            //     playerEyeTransform.position = Vector3.Slerp(firstLerpBeginPos, firstLerpTransform.position, firstLerpTime);
+            //     playerEyeTransform.rotation = Quaternion.Slerp(firstLerpBeginRot, firstLerpTransform.rotation, firstLerpTime);
+            // }
+            // else 
+            if(resetTime < 1.0f)
             {
                 resetTime += Time.deltaTime * lerpSpeedFactor;
 
                 monitorText.alpha = Mathf.Max(0.0f, 1.0f - resetTime);
                 r.sharedMaterial.SetFloat("_ResetTime", resetTime);
             }
-            else if(secondLerpTime < 1.0f)
-            {
-                secondLerpTime += Time.deltaTime * lerpSpeedFactor;
+            // else if(secondLerpTime < 1.0f)
+            // {
+            //     secondLerpTime += Time.deltaTime * lerpSpeedFactor;
 
-                playerEyeTransform.position = Vector3.Slerp(firstLerpTransform.position, secondLerpTransform.position, secondLerpTime);
-                playerEyeTransform.rotation = Quaternion.Slerp(firstLerpTransform.rotation, secondLerpTransform.rotation, secondLerpTime);
+            //     playerEyeTransform.position = Vector3.Slerp(firstLerpTransform.position, secondLerpTransform.position, secondLerpTime);
+            //     playerEyeTransform.rotation = Quaternion.Slerp(firstLerpTransform.rotation, secondLerpTransform.rotation, secondLerpTime);
 
-                Debug.Log("Second lerp");
-            }
-            else if(lerpDelay < 1.0f)
+            //     Debug.Log("Second lerp");
+            // }
+            else if(lerpDelay < 2.0f)
             {
-                lerpDelay += lerpDelay * lerpSpeedFactor;
+                if(lerpDelay == 0.0f) resetPC();
+                lerpDelay += Time.deltaTime * lerpSpeedFactor;
             }
             else
             {
+                reposition();
+
                 firstLerpTime = 0.0f;
                 secondLerpTime = 0.0f;
                 lerpDelay = 0.0f;
@@ -96,7 +105,45 @@ public class MonitorDisplay : MonoBehaviour
 
                 monitorText.alpha = 1.0f;
                 r.sharedMaterial.SetFloat("_ResetTime", 0.0f);
+
+                isResetting = false;
             }
         }
     }
+
+
+    void reposition()
+    {
+        playerEyeTransform.localPosition = Vector3.zero;
+        playerEyeTransform.localRotation = Quaternion.identity;
+        FindObjectOfType<BNG.PlayerTeleport>().TeleportImmediate(new Vector3(0, 5.2f, 0), Quaternion.Euler(0,-90,0));
+    }
+
+    void resetPC()
+    {
+        string[] startingComponents = { "PSU", "MOBO", "FAN" };
+
+        PC.Instance.components.Clear();
+        foreach (var startComp in startingComponents)
+            PC.Instance.components.Add(new PC.Component(PC.Instance.defaultComponents[startComp]));
+
+        //Resetting component (Adding back to component list, reseting positions, adding physics, adding grabbable)
+        foreach (var entry in PC.Instance.defaultComponents)
+        {
+            for(int i = 0; i < PC.Instance.defaultComponentPositions[entry.Key].Count; i++)
+            {
+                entry.Value.gameObjects[i].transform.position = PC.Instance.defaultComponentPositions[entry.Key][i] + new Vector3(0,2,0);
+
+                if(PC.Instance.defaultComponents[entry.Key].gameObjects[i].GetComponent<Rigidbody>() == null)
+                    PC.Instance.defaultComponents[entry.Key].gameObjects[i].AddComponent<Rigidbody>();
+                
+                if(PC.Instance.defaultComponents[entry.Key].gameObjects[i].GetComponent<BNG.Grabbable>() != null)
+                {
+                    Destroy(PC.Instance.defaultComponents[entry.Key].gameObjects[i].GetComponent<BNG.Grabbable>());
+                    PC.Instance.defaultComponents[entry.Key].gameObjects[i].AddComponent<BNG.Grabbable>();
+                }
+            }
+        }
+    }
+
 }

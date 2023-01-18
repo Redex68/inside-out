@@ -14,6 +14,7 @@ public class Cooler : MonoBehaviour
     float maxRange;
 
     private Animator animator;
+    private AudioSource fanBlowing;
     private BNG.Grabbable grabbable;
 
     private float coolPerSecond;
@@ -22,11 +23,12 @@ public class Cooler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        coolPerSecond = 1f / timeToCool;
+        coolPerSecond = 1f / timeToCool;    	
         animator = GetComponentInChildren<Animator>();
         animator.speed = 0;
 
         grabbable = GetComponent<BNG.Grabbable>();
+        fanBlowing = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -36,23 +38,25 @@ public class Cooler : MonoBehaviour
         if(grabbable.BeingHeld){
             if(grabbable.HeldByGrabbers[0].HandSide == BNG.ControllerHand.Left){
                 if(BNG.InputBridge.Instance.LeftTrigger > 0.5){
+                    checkSoundClip();
                     fireCoolingRay();
                 }
 
                 if(BNG.InputBridge.Instance.LeftTriggerDown){
                     animator.Rebind();
-                    animator.speed = 2;
+                    animator.speed = 1;
                     wasActivatedInLeft = true;
                 }
             }
             else if(grabbable.HeldByGrabbers[0].HandSide == BNG.ControllerHand.Right){
                 if(BNG.InputBridge.Instance.RightTrigger > 0.5){
+                    checkSoundClip();
                     fireCoolingRay();
                 }
 
                 if(BNG.InputBridge.Instance.RightTriggerDown){
                     animator.Rebind();
-                    animator.speed = 2;
+                    animator.speed = .5f;
                     wasActivatedInRight = true;
                 }
             }
@@ -61,12 +65,32 @@ public class Cooler : MonoBehaviour
         if((BNG.InputBridge.Instance.LeftTriggerUp || !grabbable.BeingHeld) && wasActivatedInLeft){
             animator.CrossFade("Rotation stop", 0, 0);
             wasActivatedInLeft = false;
+            endSoundClip();
         }
 
         if((BNG.InputBridge.Instance.RightTriggerUp || !grabbable.BeingHeld) && wasActivatedInRight){
             animator.CrossFade("Rotation stop", 0, 0);
             wasActivatedInRight = false;
+            endSoundClip();
         }
+    }
+
+    private void checkSoundClip(){
+        if(!fanBlowing.isPlaying) {
+            fanBlowing.Play();
+            fanBlowing.time = 1;
+        }
+        else if(fanBlowing.time > 25.1){
+            fanBlowing.time = 1;
+        }
+        else if(fanBlowing.time > 25){
+            fanBlowing.time = 5.1f;
+        }
+    }
+
+    private void endSoundClip(){
+        if(fanBlowing.time > 5) fanBlowing.time = 25.5f;
+        else fanBlowing.time = 27.385f - Mathf.InverseLerp(0, 5, fanBlowing.time) * 2.5f;
     }
 
     private void fireCoolingRay(){

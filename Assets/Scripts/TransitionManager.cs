@@ -40,6 +40,8 @@ public class TransitionManager : MonoBehaviour{
     //as the player completes puzzles
     private List<GameObject> largeComponents = new List<GameObject>();
 
+    private static bool quitting = false;
+
     private List<String> componentNames = new List<String>{ 
         "FAN1",
         "FAN2",
@@ -80,6 +82,7 @@ public class TransitionManager : MonoBehaviour{
         if(puzzle == null) {
             Debug.Log("Komponenta nema puzlu \"" + comp.name + "\"");
             Instance.addToMiniatureWorld(comp.name);
+            if(pc.components.Count == 0) finish();
             return;
         }
 
@@ -100,10 +103,11 @@ public class TransitionManager : MonoBehaviour{
 
     public static void quitPuzzle()
     {
-        Instance.StartCoroutine(delayedQuit());
+        if(!quitting) Instance.StartCoroutine(delayedQuit());
     }
 
     private static IEnumerator delayedQuit(){
+        quitting = true;
         yield return new WaitForSeconds(1.5f);
 
         player.TeleportPlayer(Instance.SpawnPosition, Quaternion.identity);
@@ -115,8 +119,11 @@ public class TransitionManager : MonoBehaviour{
         {
             Instance.currentPuzzleComponent.gameObjects[i].transform.position = pc.defaultComponentPositions[Instance.currentPuzzleComponent.name][i];
             Instance.currentPuzzleComponent.gameObjects[i].AddComponent<Rigidbody>();
-            Instance.currentPuzzleComponent.gameObjects[i].GetComponent<BNG.Grabbable>().enabled = true;
+            Destroy(Instance.currentPuzzleComponent.gameObjects[i].GetComponent<BNG.Grabbable>());
+            Instance.currentPuzzleComponent.gameObjects[i].AddComponent<BNG.Grabbable>();
         }
+
+        quitting = false;
     }
 
     public static void completePuzzle()
@@ -137,10 +144,7 @@ public class TransitionManager : MonoBehaviour{
         Destroy(Instance.currentPuzzleInstance);      
 
         if(pc.components.Count > 0) player.TeleportPlayer(Instance.SpawnPosition, Quaternion.identity);
-        else
-        {
-            //Game finished, TODO: Perkan
-        }
+        else finish();
     }
 
     //add component to miniature world
@@ -177,5 +181,10 @@ public class TransitionManager : MonoBehaviour{
             default:
                 break;
             }
+    }
+
+    private static void finish()
+    {
+        player.TeleportPlayer(FindObjectOfType<EndTP>().transform.position, Quaternion.identity);
     }
 }

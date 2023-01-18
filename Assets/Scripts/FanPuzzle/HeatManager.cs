@@ -54,7 +54,7 @@ public class HeatManager : MonoBehaviour {
     {
         heatedComponents = GameObject.FindGameObjectsWithTag("HeatedComponent");
         // foreach(GameObject obj in heatedComponents) obj.SetActive(false);
-        coolerInstance = Instantiate(coolerPrefab, new Vector3(-501.581f, 184.8f, 995.3754f), Quaternion.Euler(0,-142.623f,0));
+        coolerInstance = Instantiate(coolerPrefab, new Vector3(-501.581f, 184.8f, 995.3754f), Quaternion.Euler(0,-142.623f,0), transform);
 
         setupPuzzle();
         coolerInstance.GetComponentInChildren<Cooler>().manager = this;

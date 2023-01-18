@@ -150,7 +150,9 @@ public class PC : MonoBehaviour
         obj.transform.localPosition = position;
         obj.transform.localEulerAngles = angle;
 
-        if (obj.GetComponent<Rigidbody>() != null) Destroy(obj.GetComponent<Rigidbody>());
+        if (obj.GetComponent<Rigidbody>() != null) {
+            Destroy(obj.GetComponent<Rigidbody>());
+        }
         if (obj.GetComponent<BNG.Grabbable>() != null){
             BNG.Grabbable grab = obj.GetComponent<BNG.Grabbable>();
             grab.enabled = false;
