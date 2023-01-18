@@ -80,6 +80,8 @@ public class TransitionManager : MonoBehaviour{
         if(puzzle == null) {
             Debug.Log("Komponenta nema puzlu \"" + comp.name + "\"");
             Instance.addToMiniatureWorld(comp.name);
+
+            if(pc.components.Count == 0); //ENDING TODO
             return;
         }
 
