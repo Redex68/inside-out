@@ -42,7 +42,7 @@ public class cpuPuzzleManager : MonoBehaviour
         string text = PromptScript.instance.getPrompt();
         this.counter++;
         PromptScript.instance.updatePrompt("Correct! Currently solved: " + counter + " / 3", 3);
-        PromptScript.instance.updatePrompt(text, 3);
+        StartCoroutine(delayedPrompt(text));
         Debug.Log("Correct! Solved: " + counter + " / 3");
 
     }
@@ -50,11 +50,15 @@ public class cpuPuzzleManager : MonoBehaviour
     public void TaskInCorrect() {
         string text = PromptScript.instance.getPrompt();
         PromptScript.instance.updatePrompt("Incorrect! Currently solved: " + counter + " / 3", 3);
-        PromptScript.instance.updatePrompt(text, 3);
+        StartCoroutine(delayedPrompt(text));
         Debug.Log("Incorrect! Solved: " + counter + " / 3");
 
     }
 
+    private static IEnumerator delayedPrompt(String text){
+        yield return new WaitForSeconds(5);
+        PromptScript.instance.updatePrompt(text, 3);
+    }
 
     public void PuzzleCleared()
     {
