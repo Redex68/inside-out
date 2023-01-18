@@ -76,7 +76,7 @@ public class TransitionManager : MonoBehaviour{
     public static void startPuzzle(PC.Component comp)
     {
         //Throws if none are found
-        Puzzle puzzle = Instance.Puzzles.FirstOrDefault(puzzle => puzzle.PuzzleName == "RAM");
+        Puzzle puzzle = Instance.Puzzles.FirstOrDefault(puzzle => puzzle.PuzzleName == comp.name);
         if(puzzle == null) {
             Debug.Log("Komponenta nema puzlu \"" + comp.name + "\"");
             Instance.addToMiniatureWorld(comp.name);
@@ -127,7 +127,7 @@ public class TransitionManager : MonoBehaviour{
     private static IEnumerator delayedComplete(){
         yield return new WaitForSeconds(1.5f);
 
-        Puzzle currentPuzzle = Instance.Puzzles.FirstOrDefault(puzzle => puzzle.PuzzleName == "RAM");
+        Puzzle currentPuzzle = Instance.Puzzles.FirstOrDefault(puzzle => puzzle.PuzzleName == Instance.currentPuzzleComponent.name);
         currentPuzzle.PuzzleCompleted = true;
 
         foreach(var comp in Instance.currentPuzzleComponent.subComponents) pc.components.Add(comp);
@@ -144,8 +144,6 @@ public class TransitionManager : MonoBehaviour{
     }
 
     //add component to miniature world
-    //scale = 100, position(world), prefabs of components -> funkcija(imeKomponente) [switch -> instantiate]
-    //ako je MOBO nista ne radi, ako je GPU ili PSU -> u start pozvat f-ju u if == null
     private void addToMiniatureWorld(string name){
         Vector3 scale = new Vector3(100, 100, 100);
         switch (name){
