@@ -95,7 +95,7 @@ public class MonitorDisplay : MonoBehaviour
             }
             else
             {
-                reposition();
+                StartCoroutine("reposition");
 
                 firstLerpTime = 0.0f;
                 secondLerpTime = 0.0f;
@@ -111,10 +111,35 @@ public class MonitorDisplay : MonoBehaviour
     }
 
 
-    void reposition()
+    IEnumerator reposition()
     {
+        resetPC();
+
+        yield return new WaitForSeconds(1.2f);
+
         playerEyeTransform.localPosition = Vector3.zero;
         playerEyeTransform.localRotation = Quaternion.identity;
         FindObjectOfType<BNG.PlayerTeleport>().TeleportImmediate(new Vector3(0, 5.2f, 0), Quaternion.Euler(0,-90,0));
     }
+
+    void resetPC()
+    {
+        string[] startingComponents = { "PSU", "MOBO", "FAN" };
+
+        foreach (var startComp in startingComponents)
+            PC.Instance.components.Add(new PC.Component(PC.Instance.defaultComponents[startComp]));
+
+        //Resetting component (Adding back to component list, reseting positions, adding physics, adding grabbable)
+        foreach (var entry in PC.Instance.defaultComponents)
+        {
+            for(int i = 0; i < PC.Instance.defaultComponentPositions[entry.Key].Count; i++)
+            {
+                entry.Value.gameObjects[i].transform.position = PC.Instance.defaultComponentPositions[entry.Key][i];
+                PC.Instance.defaultComponents[entry.Key].gameObjects[i].AddComponent<Rigidbody>();
+                Destroy(PC.Instance.defaultComponents[entry.Key].gameObjects[i].GetComponent<BNG.Grabbable>());
+                PC.Instance.defaultComponents[entry.Key].gameObjects[i].AddComponent<BNG.Grabbable>();
+            }
+        }
+    }
+
 }
