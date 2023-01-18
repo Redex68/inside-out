@@ -57,6 +57,11 @@ public class MonitorDisplay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        resetGame();
+    }
+
+    void resetGame()
+    {
         if(isResetting)
         {
             
@@ -85,10 +90,12 @@ public class MonitorDisplay : MonoBehaviour
             }
             else if(lerpDelay < 1.0f)
             {
-                lerpDelay += lerpDelay * lerpSpeedFactor;
+                lerpDelay += Time.deltaTime * lerpSpeedFactor;
             }
             else
             {
+                reposition();
+
                 firstLerpTime = 0.0f;
                 secondLerpTime = 0.0f;
                 lerpDelay = 0.0f;
@@ -96,7 +103,17 @@ public class MonitorDisplay : MonoBehaviour
 
                 monitorText.alpha = 1.0f;
                 r.sharedMaterial.SetFloat("_ResetTime", 0.0f);
+
+                isResetting = false;
             }
         }
+    }
+
+
+    void reposition()
+    {
+        playerEyeTransform.localPosition = Vector3.zero;
+        playerEyeTransform.localRotation = Quaternion.identity;
+        FindObjectOfType<BNG.PlayerTeleport>().TeleportImmediate(new Vector3(0, 5.2f, 0), Quaternion.Euler(0,-90,0));
     }
 }
