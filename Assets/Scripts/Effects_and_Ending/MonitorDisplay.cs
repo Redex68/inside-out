@@ -116,7 +116,7 @@ public class MonitorDisplay : MonoBehaviour
     {
         playerEyeTransform.localPosition = Vector3.zero;
         playerEyeTransform.localRotation = Quaternion.identity;
-        FindObjectOfType<BNG.PlayerTeleport>().TeleportImmediate(new Vector3(0, 5.2f, 0), Quaternion.Euler(0,-90,0));
+        FindObjectOfType<BNG.PlayerTeleport>().TeleportImmediate(new Vector3(0, 3.2f, 0), Quaternion.Euler(0,-90,0));
     }
 
     void resetPC()
