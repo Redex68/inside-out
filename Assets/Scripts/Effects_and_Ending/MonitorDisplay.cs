@@ -65,29 +65,30 @@ public class MonitorDisplay : MonoBehaviour
         if(isResetting)
         {
             
-            if(firstLerpTime < 1.0f)
-            {
-                firstLerpTime += Time.deltaTime * lerpSpeedFactor;
+            // if(firstLerpTime < 1.0f)
+            // {
+            //     firstLerpTime += Time.deltaTime * lerpSpeedFactor;
 
-                playerEyeTransform.position = Vector3.Slerp(firstLerpBeginPos, firstLerpTransform.position, firstLerpTime);
-                playerEyeTransform.rotation = Quaternion.Slerp(firstLerpBeginRot, firstLerpTransform.rotation, firstLerpTime);
-            }
-            else if(resetTime < 1.0f)
+            //     playerEyeTransform.position = Vector3.Slerp(firstLerpBeginPos, firstLerpTransform.position, firstLerpTime);
+            //     playerEyeTransform.rotation = Quaternion.Slerp(firstLerpBeginRot, firstLerpTransform.rotation, firstLerpTime);
+            // }
+            // else 
+            if(resetTime < 1.0f)
             {
                 resetTime += Time.deltaTime * lerpSpeedFactor;
 
                 monitorText.alpha = Mathf.Max(0.0f, 1.0f - resetTime);
                 r.sharedMaterial.SetFloat("_ResetTime", resetTime);
             }
-            else if(secondLerpTime < 1.0f)
-            {
-                secondLerpTime += Time.deltaTime * lerpSpeedFactor;
+            // else if(secondLerpTime < 1.0f)
+            // {
+            //     secondLerpTime += Time.deltaTime * lerpSpeedFactor;
 
-                playerEyeTransform.position = Vector3.Slerp(firstLerpTransform.position, secondLerpTransform.position, secondLerpTime);
-                playerEyeTransform.rotation = Quaternion.Slerp(firstLerpTransform.rotation, secondLerpTransform.rotation, secondLerpTime);
+            //     playerEyeTransform.position = Vector3.Slerp(firstLerpTransform.position, secondLerpTransform.position, secondLerpTime);
+            //     playerEyeTransform.rotation = Quaternion.Slerp(firstLerpTransform.rotation, secondLerpTransform.rotation, secondLerpTime);
 
-                Debug.Log("Second lerp");
-            }
+            //     Debug.Log("Second lerp");
+            // }
             else if(lerpDelay < 1.0f)
             {
                 lerpDelay += Time.deltaTime * lerpSpeedFactor;

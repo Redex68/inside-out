@@ -80,6 +80,7 @@ public class TransitionManager : MonoBehaviour{
         if(puzzle == null) {
             Debug.Log("Komponenta nema puzlu \"" + comp.name + "\"");
             Instance.addToMiniatureWorld(comp.name);
+            if(pc.components.Count == 0) finish();
             return;
         }
 
@@ -137,10 +138,7 @@ public class TransitionManager : MonoBehaviour{
         Destroy(Instance.currentPuzzleInstance);      
 
         if(pc.components.Count > 0) player.TeleportPlayer(Instance.SpawnPosition, Quaternion.identity);
-        else
-        {
-            //Game finished, TODO: Perkan
-        }
+        else finish();
     }
 
     //add component to miniature world
@@ -177,5 +175,28 @@ public class TransitionManager : MonoBehaviour{
             default:
                 break;
             }
+    }
+
+    private static void finish()
+    {
+        String[] startingComponents = { "PSU", "MOBO", "FAN" };
+
+        foreach (var startComp in startingComponents)
+            pc.components.Add(new PC.Component(Instance.currentPuzzleComponent));
+
+
+        player.TeleportPlayer(FindObjectOfType<EndTP>().transform.position, Quaternion.identity);
+
+        //Resetting component (Adding back to component list, reseting positions, adding physics, adding grabbable)
+        foreach (var entry in pc.defaultComponents)
+        {
+            for(int i = 0; i < pc.defaultComponentPositions[entry.Key].Count; i++)
+            {
+                entry.Value.gameObjects[i].transform.position = pc.defaultComponentPositions[entry.Key][i];
+                pc.defaultComponents[entry.Key].gameObjects[i].AddComponent<Rigidbody>();
+                Destroy(pc.defaultComponents[entry.Key].gameObjects[i].GetComponent<BNG.Grabbable>());
+                pc.defaultComponents[entry.Key].gameObjects[i].AddComponent<BNG.Grabbable>();
+            }
+        }
     }
 }
