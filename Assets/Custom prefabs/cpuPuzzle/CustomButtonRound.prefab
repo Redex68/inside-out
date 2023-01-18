@@ -54,7 +54,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f4d1c14f9d7087643856f2c5965d05f7, type: 2}
+  - {fileID: 2100000, guid: fb9b31b83efee9b41853e02529429805, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -161,9 +161,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3473158130971867753}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -493.765, y: 184.54028, z: 987.529}
-  m_LocalScale: {x: 2.5114, y: 2.5114, z: 2.5114}
+  m_LocalScale: {x: 2.824157, y: 1.9024792, z: 2.9217396}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1877869914227312887}
@@ -532,9 +532,10 @@ MonoBehaviour:
   onButtonDown:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3785780561498903360, guid: f74813f360cd2c147be57bd39d3adc8a,
+          type: 3}
         m_TargetAssemblyTypeName: cpuPuzzleManager, Assembly-CSharp
-        m_MethodName: TaskCorrect
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
