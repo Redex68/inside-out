@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class PlayerCameraTransform : MonoBehaviour
 {
+    Camera cam;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        cam = GetComponent<Camera>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

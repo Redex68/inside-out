@@ -873,6 +873,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1647491959, guid: da7cb42398646f541b79585efb71bdbf, type: 3}
+      propertyPath: m_RenderPostProcessing
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4213648178317930638, guid: da7cb42398646f541b79585efb71bdbf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5359207575466342887, guid: da7cb42398646f541b79585efb71bdbf,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6069362580920209501, guid: da7cb42398646f541b79585efb71bdbf,
         type: 3}
       propertyPath: m_RootOrder
@@ -1593,7 +1607,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.294954, y: 0.18703869, z: 0.35334715}
   m_Center: {x: -0.00000011920929, y: 0.09215407, z: 0}
---- !u!84 &1434757510
+--- !u!84 &1479854692
 RenderTexture:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3241,7 +3255,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TargetTexture
       value: 
-      objectReference: {fileID: 1434757510}
+      objectReference: {fileID: 1479854692}
     - target: {fileID: 7516992335592174921, guid: b6730aab83fd0bd488d6f505c8f149d9,
         type: 3}
       propertyPath: m_RootOrder
