@@ -11,7 +11,7 @@ public class CloneBox1 : MonoBehaviour
     void Awake()
     {
         puzzleInstantiatedPrefab = GameObject.Find("RamPuzzleElements(Clone)");
-        GameObject cube = (Instantiate (cubeClone, transform.position, Quaternion.identity));
+        GameObject cube = (Instantiate (cubeClone, transform.position, Quaternion.identity, transform));
         cube.transform.parent = puzzleInstantiatedPrefab.transform;
         all1Cubes.Add(cube);
     }
@@ -20,7 +20,7 @@ public class CloneBox1 : MonoBehaviour
     {
         //cloning new boxes
         if(Vector3.Distance(transform.position, all1Cubes[all1Cubes.Count - 1].transform.position) > 1.2f){
-            GameObject cube = Instantiate (cubeClone, transform.position, Quaternion.identity);
+            GameObject cube = Instantiate (cubeClone, transform.position, Quaternion.identity, transform);
             cube.transform.parent = puzzleInstantiatedPrefab.transform;
             all1Cubes.Add(cube);
         }

@@ -92,11 +92,11 @@ public class Timer : MonoBehaviour
     IEnumerator endPuzzle(){
         yield return new WaitForSeconds(1f);
         for(int i = 0; i < 40; i++){
-            (Instantiate(i%2==0 ? cube0 : cube1, cubeSnapPosition[0], Quaternion.Euler(cubeSnapRotation)) as GameObject).transform.parent = puzzleInstantiatedPrefab.transform;
-            (Instantiate(i%2==0 ? cube1 : cube0, cubeSnapPosition[1], Quaternion.Euler(cubeSnapRotation)) as GameObject).transform.parent = puzzleInstantiatedPrefab.transform;
-            (Instantiate(i%2==0 ? cube0 : cube1, cubeSnapPosition[2], Quaternion.Euler(cubeSnapRotation)) as GameObject).transform.parent = puzzleInstantiatedPrefab.transform;
-            (Instantiate(i%2==0 ? cube1 : cube0, cubeSnapPosition[3], Quaternion.Euler(cubeSnapRotation)) as GameObject).transform.parent = puzzleInstantiatedPrefab.transform;
-            (Instantiate(i%2==0 ? cube0 : cube1, cubeSnapPosition[4], Quaternion.Euler(cubeSnapRotation)) as GameObject).transform.parent = puzzleInstantiatedPrefab.transform;
+            (Instantiate(i%2==0 ? cube0 : cube1, cubeSnapPosition[0], Quaternion.Euler(cubeSnapRotation), transform) as GameObject).transform.parent = puzzleInstantiatedPrefab.transform;
+            (Instantiate(i%2==0 ? cube1 : cube0, cubeSnapPosition[1], Quaternion.Euler(cubeSnapRotation), transform) as GameObject).transform.parent = puzzleInstantiatedPrefab.transform;
+            (Instantiate(i%2==0 ? cube0 : cube1, cubeSnapPosition[2], Quaternion.Euler(cubeSnapRotation), transform) as GameObject).transform.parent = puzzleInstantiatedPrefab.transform;
+            (Instantiate(i%2==0 ? cube1 : cube0, cubeSnapPosition[3], Quaternion.Euler(cubeSnapRotation), transform) as GameObject).transform.parent = puzzleInstantiatedPrefab.transform;
+            (Instantiate(i%2==0 ? cube0 : cube1, cubeSnapPosition[4], Quaternion.Euler(cubeSnapRotation), transform) as GameObject).transform.parent = puzzleInstantiatedPrefab.transform;
             yield return new WaitForSeconds(0.15f);
         }
         yield return new WaitForSeconds(3f);

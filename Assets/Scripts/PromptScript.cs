@@ -34,6 +34,17 @@ public class PromptScript: MonoBehaviour
         TMPtext = GameObject.Find("WatchParent/WatchCanvas/PromptText").GetComponent<TMPro.TMP_Text>();
         promptBackground = GameObject.Find("WatchParent/WatchCanvas").GetComponent<UnityEngine.UI.Image>();
         promptBackground.CrossFadeAlpha(0, 0, false);
+        
+        StartCoroutine(test("Test 1", 0));
+        StartCoroutine(test("Jako dugi teaskj lksd jklas djklasd jklasd ljkaskljd assaljkdk ad klčad klččklad sklčas ddklčaklčasd klč asdd klčas asdklč", 2f));
+        StartCoroutine(test("asodj aslkd jaksld ja \n asdo aslkd ajkd askd alk d\n asjdaskjd ajsk", 4f));
+        StartCoroutine(test("Translacija tvoje stare u tvoju novu", 6f));
+        
+    }
+
+    IEnumerator test(String text, float time){
+        yield return new WaitForSeconds(time);
+        updatePrompt(text, 1.0f);
     }
 
 /**
@@ -59,11 +70,17 @@ public class PromptScript: MonoBehaviour
 */
     public void updatePrompt(string text){
         if(text == null) throw new NullReferenceException("Prompt text atempted to be changed to null");
+        promptBackground.rectTransform.sizeDelta = new Vector2(400, 300);
         TMPtext.text = text;
+        TMPtext.ForceMeshUpdate();
+        Bounds bounds = TMPtext.bounds;
+        Debug.Log(bounds);
+        Debug.Log(bounds.size);
+        Debug.Log(promptBackground.rectTransform.sizeDelta);
+        promptBackground.rectTransform.sizeDelta = new Vector2(bounds.size.x, bounds.size.y) + new Vector2(10, 40) ;
         TMPtext.CrossFadeAlpha(1, 0.5f, false);
         promptBackground.CrossFadeAlpha(1, 0.5f, false);
     }
-
 /**
     <summary>
         Same as regular updatePrompt but the text fades out after the specified time.
