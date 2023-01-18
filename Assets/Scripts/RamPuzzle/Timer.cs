@@ -82,8 +82,10 @@ public class Timer : MonoBehaviour
     }
 
     IEnumerator startAgain(){
-        PromptScript.instance.updatePrompt("Time is up! \nTry again!");
-        yield return new WaitForSeconds(3f);
+        for(int i = 5; i >= 0; i--){
+            PromptScript.instance.updatePrompt("Time is up! Try again! \n" + string.Format("{0:00} : {1:00}", 0,  Mathf.FloorToInt(i % 60)));
+            yield return new WaitForSeconds(1f);
+        }
         Start();
     }
 
