@@ -16,7 +16,7 @@ public class cpuPuzzleManager : MonoBehaviour
     void Start()
     {
         player = GameObject.FindObjectOfType<BNG.PlayerTeleport>();
-        PromptScript.instance.updatePrompt("Choose the correct logic operation that was applied to get right from left objects! You can make a mistake 3 times!", 3f);
+        PromptScript.instance.updatePrompt("Choose the correct logic operation that was applied to left objects to get the right object! You can make a mistake 3 times!", 3f);
         SetupPuzzle();
         
     }
@@ -25,10 +25,10 @@ public class cpuPuzzleManager : MonoBehaviour
     void Update()
     {
         if(puzzleActive) {
-            if(counter == 3) {
+            if(counter == 5) {
                 PuzzleCleared();
             }
-            else if(failed == 3) {
+            else if(failed == 4) {
                 PuzzleFailed();
             }
 
@@ -58,9 +58,9 @@ public class cpuPuzzleManager : MonoBehaviour
             tasks.Remove(currentTask);
             string text = PromptScript.instance.getPrompt();
             this.counter++;
-            PromptScript.instance.updatePrompt("Correct! Currently solved: " + counter + " / 3", 3);
+            PromptScript.instance.updatePrompt("Correct! Currently solved: " + counter + " / 5", 3);
             StartCoroutine(delayedPrompt(text));
-            Debug.Log("Correct! Solved: " + counter + " / 3" + index);
+            Debug.Log("Correct! Solved: " + counter + " / 5" + index);
         }
         
 
@@ -73,7 +73,7 @@ public class cpuPuzzleManager : MonoBehaviour
             this.failed++;
             PromptScript.instance.updatePrompt("Incorrect! Mistakes: " + failed + " / 3", 3);
             StartCoroutine(delayedPrompt(text));
-            Debug.Log("Incorrect! Solved: " + counter + " / 3" + index);
+            Debug.Log("Incorrect! Solved: " + counter + " / 5" + index);
         }
         
 
