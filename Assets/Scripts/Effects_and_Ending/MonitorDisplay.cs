@@ -91,7 +91,10 @@ public class MonitorDisplay : MonoBehaviour
             // }
             else if(lerpDelay < 2.0f)
             {
-                if(lerpDelay == 0.0f) resetPC();
+                if(lerpDelay == 0.0f) {
+                    resetPC();
+                    TransitionManager.resetManager();
+                }
                 lerpDelay += Time.deltaTime * lerpSpeedFactor;
             }
             else

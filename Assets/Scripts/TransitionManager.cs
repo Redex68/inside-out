@@ -63,16 +63,18 @@ public class TransitionManager : MonoBehaviour{
     }
 
     private void Start(){
+        resetManager();
+    }
+
+    public static void resetManager(){
         player = GameObject.FindObjectOfType<BNG.PlayerTeleport>();
         pc = PC.Instance;
 
-        componentNames.ForEach(name => {
+        Instance.componentNames.ForEach(name => {
             GameObject component = GameObject.Find(name);
-            largeComponents.Add(component);
+            Instance.largeComponents.Add(component);
             component.SetActive(false);
         });
-
-
     }
 
     public static void startPuzzle(PC.Component comp)
