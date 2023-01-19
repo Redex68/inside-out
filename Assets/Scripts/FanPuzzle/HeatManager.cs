@@ -45,7 +45,7 @@ public class HeatManager : MonoBehaviour {
     /// <summary> A list containing all of the active heated components' HeatInfo descriptors </summary>
     private List<HeatInfo> heatInfos = new List<HeatInfo>();    
     /// <summary> The UI that is attached to the watch, displays progress bars </summary>
-    private HeatUIManager UIManager;
+    public HeatUIManager UIManager;
     private bool puzzleActive = false;
     private GameObject coolerInstance;
     private GameObject player;

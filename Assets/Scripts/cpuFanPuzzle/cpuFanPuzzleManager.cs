@@ -84,7 +84,7 @@ public class cpuFanPuzzleManager : MonoBehaviour
         StartCoroutine(CountdownOnWatch());
         //Choose a random location to spawn thermal paste
         randomPosition = UnityEngine.Random.Range(0, 4);
-        spawnedThermalPaste = Instantiate(thermalPasteReference);
+        spawnedThermalPaste = Instantiate(thermalPasteReference, transform);
         if (randomPosition == 0)
         {
             spawnedThermalPaste.transform.position = position0.position;

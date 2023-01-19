@@ -110,6 +110,18 @@ public class TransitionManager : MonoBehaviour{
         quitting = true;
         yield return new WaitForSeconds(1.5f);
 
+        if(Instance.currentPuzzleComponent.name == "FAN"){
+            Instance.currentPuzzleInstance.GetComponentInChildren<HeatManager>().UIManager.clearUI();
+        }
+
+        if(Instance.currentPuzzleComponent.name == "FAN"){
+            Instance.currentPuzzleInstance.GetComponentInChildren<HeatManager>().UIManager.clearUI();
+        }
+
+        if(Instance.currentPuzzleComponent.name == "FAN"){
+            Instance.currentPuzzleInstance.GetComponentInChildren<HeatManager>().UIManager.clearUI();
+        }
+
         teleport(Instance.SpawnPosition, Quaternion.identity, 0.5f);
         Destroy(Instance.currentPuzzleInstance);
 
