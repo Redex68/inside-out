@@ -35,16 +35,6 @@ public class PromptScript: MonoBehaviour
         promptBackground = GameObject.Find("WatchParent/WatchCanvas").GetComponent<UnityEngine.UI.Image>();
         promptBackground.CrossFadeAlpha(0, 0, false);
         
-        StartCoroutine(test("Test 1", 0));
-        StartCoroutine(test("Jako dugi teaskj lksd jklas djklasd jklasd ljkaskljd assaljkdk ad klčad klččklad sklčas ddklčaklčasd klč asdd klčas asdklč", 2f));
-        StartCoroutine(test("asodj aslkd jaksld ja \n asdo aslkd ajkd askd alk d\n asjdaskjd ajsk", 4f));
-        StartCoroutine(test("Translacija tvoje stare u tvoju novu", 6f));
-        
-    }
-
-    IEnumerator test(String text, float time){
-        yield return new WaitForSeconds(time);
-        updatePrompt(text, 1.0f);
     }
 
 /**
