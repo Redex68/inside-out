@@ -64,9 +64,6 @@ public class PromptScript: MonoBehaviour
         TMPtext.text = text;
         TMPtext.ForceMeshUpdate();
         Bounds bounds = TMPtext.bounds;
-        Debug.Log(bounds);
-        Debug.Log(bounds.size);
-        Debug.Log(promptBackground.rectTransform.sizeDelta);
         promptBackground.rectTransform.sizeDelta = new Vector2(bounds.size.x, bounds.size.y) + new Vector2(10, 40) ;
         TMPtext.CrossFadeAlpha(1, 0.5f, false);
         promptBackground.CrossFadeAlpha(1, 0.5f, false);

@@ -143,8 +143,9 @@ public class PC : MonoBehaviour
 
         if(components[componentIndex].snapPositions.Count == 0) 
         {
-            TransitionManager.startPuzzle(defaultComponents[components[componentIndex].name]);
+            String componentName = components[componentIndex].name;
             components.RemoveAt(componentIndex);
+            TransitionManager.startPuzzle(defaultComponents[componentName]);
         }
 
         obj.transform.localPosition = position;
