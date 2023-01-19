@@ -20,7 +20,7 @@ public class EasterEgg : MonoBehaviour
         if(other != null)
         {
             Debug.Log("Ante");
-            FindObjectOfType<BNG.PlayerTeleport>().TeleportPlayer(FindObjectOfType<EndTP>().transform.position + new Vector3(0,2,0), Quaternion.identity);
+            TransitionManager.teleport(FindObjectOfType<EndTP>().transform.position + new Vector3(0,3,0), Quaternion.identity, 0.5f);
         }
     }
 }

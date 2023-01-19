@@ -98,7 +98,7 @@ public class TransitionManager : MonoBehaviour{
         //Instantiate the puzzle and teleport the player
         Instance.currentPuzzleInstance = Instantiate(puzzle.PuzzleObject);
         //TODO: add delay and transition
-        player.TeleportPlayer(puzzle.StartPos.transform.position, Quaternion.Euler(puzzle.StartPos.transform.eulerAngles));
+        teleport(puzzle.StartPos.transform.position, Quaternion.Euler(puzzle.StartPos.transform.eulerAngles), 0.5f);
     }
 
     public static void quitPuzzle()
@@ -110,7 +110,7 @@ public class TransitionManager : MonoBehaviour{
         quitting = true;
         yield return new WaitForSeconds(1.5f);
 
-        player.TeleportPlayer(Instance.SpawnPosition, Quaternion.identity);
+        teleport(Instance.SpawnPosition, Quaternion.identity, 0.5f);
         Destroy(Instance.currentPuzzleInstance);
 
         //Resetting component (Adding back to component list, reseting positions, adding physics, adding grabbable)
@@ -143,7 +143,7 @@ public class TransitionManager : MonoBehaviour{
         
         Destroy(Instance.currentPuzzleInstance);      
 
-        if(pc.components.Count > 0) player.TeleportPlayer(Instance.SpawnPosition, Quaternion.identity);
+        if(pc.components.Count > 0) teleport(Instance.SpawnPosition, Quaternion.identity, 0.5f);
         else finish();
     }
 
@@ -185,6 +185,41 @@ public class TransitionManager : MonoBehaviour{
 
     private static void finish()
     {
-        player.TeleportPlayer(FindObjectOfType<EndTP>().transform.position, Quaternion.identity);
+        teleport(FindObjectOfType<EndTP>().transform.position, Quaternion.identity, 0.5f);
+    }
+
+    public static float fadeTime;
+    public static Vector3 fadeTeleportPosition;
+    public static Quaternion fadeTeleportRotation;
+
+    public static void teleport(Vector3 position, Quaternion rotation, float fadeTime)
+    {
+        fadeTeleportPosition = position;
+        fadeTeleportRotation = rotation;
+        TransitionManager.fadeTime = fadeTime;
+        Instance.StartCoroutine("teleportFader");
+    }
+
+    IEnumerator teleportFader()
+    {
+        float fadeIn = 0.0f;
+
+        while(fadeIn < fadeTime)
+        {
+            fadeIn += Time.deltaTime;
+            Fader.Instance.setTransparency(fadeIn / fadeTime);
+            yield return new WaitForEndOfFrame();
+        }
+
+        player.TeleportPlayer(fadeTeleportPosition, fadeTeleportRotation);
+
+        yield return new WaitForSeconds(0.2f);
+        
+        while(fadeIn > 0.0f)
+        {
+            fadeIn -= Time.deltaTime;
+            Fader.Instance.setTransparency(fadeIn / fadeTime);
+            yield return new WaitForEndOfFrame();
+        }
     }
 }
