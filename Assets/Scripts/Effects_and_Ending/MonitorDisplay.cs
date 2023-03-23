@@ -21,8 +21,8 @@ public class MonitorDisplay : MonoBehaviour
 
     bool isResetting = false;
     float resetTime = 0.0f;
-    float firstLerpTime = 0.0f;
-    float secondLerpTime = 0.0f;
+    // float firstLerpTime = 0.0f;
+    // float secondLerpTime = 0.0f;
     float lerpDelay = 0.0f;
 
     Vector3 firstLerpBeginPos;
@@ -101,8 +101,8 @@ public class MonitorDisplay : MonoBehaviour
             {
                 reposition();
 
-                firstLerpTime = 0.0f;
-                secondLerpTime = 0.0f;
+                // firstLerpTime = 0.0f;
+                // secondLerpTime = 0.0f;
                 lerpDelay = 0.0f;
                 resetTime = 0.0f;
 
