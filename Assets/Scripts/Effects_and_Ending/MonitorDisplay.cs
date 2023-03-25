@@ -92,6 +92,7 @@ public class MonitorDisplay : MonoBehaviour
             else if(lerpDelay < 2.0f)
             {
                 if(lerpDelay == 0.0f) {
+                    Debug.Log("Reset");
                     resetPC();
                     TransitionManager.resetManager();
                 }

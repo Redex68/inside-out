@@ -63,18 +63,23 @@ public class TransitionManager : MonoBehaviour{
     }
 
     private void Start(){
+        fillLargeComponents();
         resetManager();
+    }
+
+    private void fillLargeComponents()
+    {
+        Instance.componentNames.ForEach(name => 
+        {
+            GameObject comp = GameObject.Find(name);
+            if(comp != null) Instance.largeComponents.Add(comp);
+        });
     }
 
     public static void resetManager(){
         player = GameObject.FindObjectOfType<BNG.PlayerTeleport>();
         pc = PC.Instance;
-
-        Instance.componentNames.ForEach(name => {
-            GameObject component = GameObject.Find(name);
-            Instance.largeComponents.Add(component);
-            component.SetActive(false);
-        });
+        Instance.removeAllFromMiniatureWorld();
     }
 
     public static void startPuzzle(PC.Component comp)
@@ -159,6 +164,14 @@ public class TransitionManager : MonoBehaviour{
 
         if(pc.components.Count > 0) teleport(Instance.SpawnPosition, Quaternion.identity, 0.5f);
         else finish();
+    }
+
+    private void removeAllFromMiniatureWorld()
+    {
+        foreach (var largeComp in largeComponents)
+        {
+            largeComp.SetActive(false);
+        }
     }
 
     //add component to miniature world
