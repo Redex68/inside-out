@@ -94,7 +94,6 @@ public class TransitionManager : MonoBehaviour{
         }
 
         Instance.currentPuzzleComponent = comp;
-
         Instance.StartCoroutine(delayedInit(puzzle));
     }
 
