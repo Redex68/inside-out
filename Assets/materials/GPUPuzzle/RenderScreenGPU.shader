@@ -8,7 +8,10 @@ Shader "Example/RenderScreenGPUShader"
         [MainTexture]       _BaseMap("Main Texture", 2D)                = "black"
         [TextureRes]        _TextureRes("Texture Resolution", int)      = 100
         [RasterizeCount]    _RasterizeCount("Rasterize Count", int)     = 0
-        [RasterComplete]    _RasterComplete("Raster Complete", int)    = 0
+        [RasterComplete]    _RasterComplete("Raster Complete", int)     = 0
+        [ColorR]            _ColorR("Color R", Vector)                  = (0,0,0,0)
+        [ColorG]            _ColorG("Color G", Vector)                  = (0,0,0,0)
+        [ColorB]            _ColorB("Color B", Vector)                  = (0,0,0,0)
     }
 
     SubShader
@@ -45,6 +48,10 @@ Shader "Example/RenderScreenGPUShader"
                 int _TextureRes;
                 int _RasterizeCount;
                 int _RasterComplete;
+                
+                half4 _ColorR;
+                half4 _ColorG;
+                half4 _ColorB;
             CBUFFER_END
 
             Varyings vert(Attributes IN)
@@ -60,6 +67,9 @@ Shader "Example/RenderScreenGPUShader"
             half4 frag(Varyings IN) : SV_Target
             {
                 half4 cameraOutput = SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap, (IN.UV + float2(0.0,0.1)) / float2(1.0,0.8));
+                cameraOutput = _ColorR * cameraOutput.r + _ColorG * cameraOutput.g + _ColorB * cameraOutput.b;
+                cameraOutput.a = 1.0;
+
                 half4 blackness = half4(0.0,0.0,0.0,1.0);
 
                 if(_RasterComplete) return cameraOutput;

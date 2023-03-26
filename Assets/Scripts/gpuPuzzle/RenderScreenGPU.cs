@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class RenderScreenGPU : MonoBehaviour
 {
+    public static RenderScreenGPU Instance;
+
     public static int RasterizeCount = 1000;
     public static bool rasterComplete = false;
 
@@ -11,6 +13,12 @@ public class RenderScreenGPU : MonoBehaviour
     RenderTexture rt;
 
     bool myRasterComplete = false;
+
+    void Awake()
+    {
+        if(Instance != null) Destroy(this);
+        else Instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -52,5 +60,14 @@ public class RenderScreenGPU : MonoBehaviour
                 myRasterComplete = true;
             }
         }
+    }
+
+    public void updateColor(Vector3[] cols)
+    {
+        if(rt == null) return;
+
+        mr.material.SetVector("_ColorR", cols[0]);
+        mr.material.SetVector("_ColorG", cols[1]);
+        mr.material.SetVector("_ColorB", cols[2]);
     }
 }

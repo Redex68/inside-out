@@ -15,6 +15,15 @@ public class CommandPanelRaster : MonoBehaviour
     bool[,] buttonStates;
     int buttonOnCount = 0;
     bool rasterComplete = false;
+    bool colorCompleted = false;
+
+    public static CommandPanelRaster Instance;
+
+    void Awake()
+    {
+        if(Instance != null) Destroy(this);
+        else Instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -32,10 +41,9 @@ public class CommandPanelRaster : MonoBehaviour
     void Update()
     {
         if(!rasterComplete) updateRasterizer();
-        else
-        {
-            RenderTargetGPU.Instance.advance();
-        }
+        else RenderTargetGPU.Instance.advance();
+
+        if(!colorCompleted) updateColors();
     }
 
     void initPuzzle()
@@ -63,9 +71,48 @@ public class CommandPanelRaster : MonoBehaviour
         }
     }
 
-    void updateUIStatus()
+    public void updateUIStatus()
     {
-        PromptScript.instance.updatePrompt(string.Format("Graphics Processors: {0}/{1}\nColors: ", buttonOnCount, gridSize*gridSize));
+        if(CommandPanelColor.Instance == null) return;
+        var rgb = CommandPanelColor.Instance.ColRGB;
+        if(rgb.Length != 3) return;
+
+        PromptScript.instance.updatePrompt
+        (
+            string.Format
+            (
+                "Graphics Processors: {0}/{1}\nColors:\n1. {2}\n2. {3}\n3. {4}",
+                buttonOnCount, 
+                gridSize*gridSize, 
+                CommandPanelColor.ColorToName[CommandPanelColor.Colors[rgb[0]]],
+                CommandPanelColor.ColorToName[CommandPanelColor.Colors[rgb[1]]],
+                CommandPanelColor.ColorToName[CommandPanelColor.Colors[rgb[2]]]
+            )
+        );
+    }
+
+    
+    void updateColors()
+    {
+        if(CommandPanelColor.Instance == null) return;
+        if(CommandPanelColor.Instance.ColRGB.Equals(CommandPanelColor.ColorSolution)) colorCompleted = true;
+        
+        var cols = CommandPanelColor.Instance.ColRGB;
+
+        if(cols.Length != 3) return;
+
+        var colR = CommandPanelColor.Colors[cols[0]];
+        var colG = CommandPanelColor.Colors[cols[1]];
+        var colB = CommandPanelColor.Colors[cols[2]];
+
+        Vector3[] rgbVec = new Vector3[]
+        {
+            new Vector3(colR.r, colR.g, colR.b).normalized,
+            new Vector3(colG.r, colG.g, colG.b).normalized,
+            new Vector3(colB.r, colB.g, colB.b).normalized
+        };
+
+        RenderScreenGPU.Instance.updateColor(rgbVec);
     }
 
     void initButtonGrid()
