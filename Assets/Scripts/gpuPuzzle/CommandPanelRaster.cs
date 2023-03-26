@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using BNG;
 
-public class CommandPanel : MonoBehaviour
+public class CommandPanelRaster : MonoBehaviour
 {
     [SerializeField] GameObject button;
     [Space]
@@ -14,9 +14,61 @@ public class CommandPanel : MonoBehaviour
     GameObject[,] gridButtons;
     bool[,] buttonStates;
     int buttonOnCount = 0;
+    bool rasterComplete = false;
 
     // Start is called before the first frame update
     void Start()
+    {
+        StartCoroutine("LateStart", 1.0f);
+    }
+ 
+    IEnumerator LateStart(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        initPuzzle();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if(!rasterComplete) updateRasterizer();
+        else
+        {
+            RenderTargetGPU.Instance.advance();
+        }
+    }
+
+    void initPuzzle()
+    {
+        initButtonGrid();
+        updateUIStatus();
+
+        CommandPanelColor.Instance.initColorGrid();
+    }
+
+    void updateRasterizer()
+    {
+        RenderTexture rt = RenderTargetGPU.Instance.RenderTexGPU;
+        if(rt == null) return;
+        int pixelCount = rt.width * rt.width;
+
+        float buttonProgress = 1.01f * buttonOnCount / gridSize / gridSize;
+        buttonProgress = buttonProgress * buttonProgress * buttonProgress;
+
+        RenderScreenGPU.RasterizeCount += (int)(pixelCount * buttonProgress);
+        if(RenderScreenGPU.RasterizeCount > pixelCount)
+        {
+            RenderScreenGPU.RasterizeCount -= pixelCount;
+            RenderTargetGPU.Instance.advance();
+        }
+    }
+
+    void updateUIStatus()
+    {
+        PromptScript.instance.updatePrompt(string.Format("Graphics Processors: {0}/{1}\nColors: ", buttonOnCount, gridSize*gridSize));
+    }
+
+    void initButtonGrid()
     {
         gridButtons = new GameObject[gridSize, gridSize];
         buttonStates = new bool[gridSize, gridSize];
@@ -37,8 +89,8 @@ public class CommandPanel : MonoBehaviour
         Vector3 iVec = - transform.right * transform.localScale.x / gridSize;
         Vector3 jVec = - transform.up * transform.localScale.y / gridSize;
 
-        for(int i = 0; i < 5; i++)
-            for(int j = 0; j < 5; j++)
+        for(int i = 0; i < gridSize; i++)
+            for(int j = 0; j < gridSize; j++)
             {
                 //Instantiation
                 gridButtons[i, j] = Instantiate(button, beginButtonPos + iVec * i + jVec * j, Quaternion.Euler(90, 0, 0), transform);
@@ -54,14 +106,10 @@ public class CommandPanel : MonoBehaviour
             }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void onButtonDown(int i, int j)
     {
+        if(rasterComplete) return;
+
         Vector2Int[] xored = new Vector2Int[]
         {
             new Vector2Int(i, j),
@@ -88,6 +136,16 @@ public class CommandPanel : MonoBehaviour
                 gridButtons[xor.x, xor.y].transform.GetChild(0).GetChild(1).GetComponent<MeshRenderer>().material.color = Color.blue;
                 buttonOnCount++;
             }
+
+            updateUIStatus();
+            if(buttonOnCount == gridSize*gridSize) onRasterComplete();
         }
+    }
+
+    void onRasterComplete()
+    {
+        rasterComplete = true;
+        RenderScreenGPU.rasterComplete = true;
+        RenderTargetGPU.Instance.onRasterComplete();
     }
 }
