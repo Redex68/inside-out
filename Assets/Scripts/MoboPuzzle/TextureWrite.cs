@@ -196,10 +196,11 @@ public class TextureWrite : MonoBehaviour
         if(!needCleaning) validateResult();
    }
 
-   private void OnDisable() {
-        edgesBuffer.Release();
-        filterBuffer.Release();
-        bitBuffer.Release();
+   private void OnDisable() 
+   {
+        if(edgesBuffer != null) edgesBuffer.Release();
+        if(filterBuffer != null) filterBuffer.Release();
+        if(bitBuffer != null) bitBuffer.Release();
     }
 
     void updateDeltaTime()
