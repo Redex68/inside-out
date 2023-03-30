@@ -44,6 +44,12 @@ public class CommandPanelRaster : MonoBehaviour
         else RenderTargetGPU.Instance.advance();
 
         if(!colorCompleted) updateColors();
+
+        if(colorCompleted && rasterComplete)
+        {
+            PromptScript.instance.updatePrompt("GPU Puzzle Completed!", 4);
+            TransitionManager.completePuzzle();
+        }
     }
 
     void initPuzzle()
@@ -91,11 +97,21 @@ public class CommandPanelRaster : MonoBehaviour
         );
     }
 
-    
+    bool compareArrs(int[] a, int[] b)
+    {
+        if(a.Length != b.Length) return false;
+        for(int i = 0; i < a.Length; i++) if(a[i] != b[i]) return false;
+        return true;
+    }
+
     void updateColors()
     {
         if(CommandPanelColor.Instance == null) return;
-        if(CommandPanelColor.Instance.ColRGB.Equals(CommandPanelColor.ColorSolution)) colorCompleted = true;
+        if(compareArrs(CommandPanelColor.Instance.ColRGB, CommandPanelColor.ColorSolution))
+        {
+            colorCompleted = true;
+            CommandPanelColor.Instance.colorCompleted = true;
+        }
         
         var cols = CommandPanelColor.Instance.ColRGB;
 

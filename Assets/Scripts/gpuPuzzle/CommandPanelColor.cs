@@ -12,8 +12,8 @@ public class CommandPanelColor : MonoBehaviour
         Color.magenta,
         Color.red,
         Color.yellow,
-        Color.green,
-        Color.blue
+        Color.blue,
+        Color.green
     };
 
     public static Dictionary<Color, string> ColorToName = new Dictionary<Color, string>()
@@ -27,7 +27,7 @@ public class CommandPanelColor : MonoBehaviour
 
     public static int[] ColorSolution = { 1, 4, 3 };
     public int[] ColRGB = new int[3]{ 0, 0, 0 };
-
+    public bool colorCompleted = false;
 
     Transform[] rgbRow;
 
@@ -56,7 +56,10 @@ public class CommandPanelColor : MonoBehaviour
 
     void onButtonDown(int i, int j)
     {
-        ColRGB[i] = j;
-        CommandPanelRaster.Instance.updateUIStatus();
+        if(!colorCompleted)
+        {
+            ColRGB[i] = j;
+            CommandPanelRaster.Instance.updateUIStatus();
+        }
     }
 }
