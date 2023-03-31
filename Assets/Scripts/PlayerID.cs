@@ -13,6 +13,9 @@ public class PlayerID : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKey(KeyCode.P))
+        {
+            GetComponentInChildren<BNG.PlayerTeleport>().TeleportPlayer(GameObject.Find("GPU Location").transform.position, Quaternion.identity);
+        }
     }
 }

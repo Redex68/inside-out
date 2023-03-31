@@ -6,6 +6,7 @@ using BNG;
 public class CommandPanelRaster : MonoBehaviour
 {
     [SerializeField] GameObject button;
+    [SerializeField] AudioClip successAudio;
     [Space]
     [SerializeField] short gridSize = 5;
     [SerializeField] float buttonForwardFac = 0.4f;
@@ -16,8 +17,11 @@ public class CommandPanelRaster : MonoBehaviour
     int buttonOnCount = 0;
     bool rasterComplete = false;
     bool colorCompleted = false;
+    float audioSpeed = 0.0f;
 
     public static CommandPanelRaster Instance;
+
+    AudioSource audioSource;
 
     void Awake()
     {
@@ -28,6 +32,7 @@ public class CommandPanelRaster : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         StartCoroutine("LateStart", 1.0f);
     }
  
@@ -40,7 +45,11 @@ public class CommandPanelRaster : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!rasterComplete) updateRasterizer();
+        if(!rasterComplete) 
+        {
+            updateRasterizer();
+            audioSource.pitch = audioSpeed;
+        }
         else RenderTargetGPU.Instance.advance();
 
         if(!colorCompleted) updateColors();
@@ -66,8 +75,13 @@ public class CommandPanelRaster : MonoBehaviour
         if(rt == null) return;
         int pixelCount = rt.width * rt.width;
 
-        float buttonProgress = 1.01f * buttonOnCount / gridSize / gridSize;
-        buttonProgress = buttonProgress * buttonProgress * buttonProgress;
+        float buttonProgress = Mathf.Clamp(1.01f * buttonOnCount / gridSize / gridSize, 0.0f, 1.0f);
+
+        audioSpeed = buttonProgress * 9;
+        audioSpeed = Mathf.Pow(audioSpeed, 1.5f);
+
+        buttonProgress = Mathf.Pow(buttonProgress, 5);
+
 
         RenderScreenGPU.RasterizeCount += (int)(pixelCount * buttonProgress);
         if(RenderScreenGPU.RasterizeCount > pixelCount)
@@ -210,5 +224,10 @@ public class CommandPanelRaster : MonoBehaviour
         rasterComplete = true;
         RenderScreenGPU.rasterComplete = true;
         RenderTargetGPU.Instance.onRasterComplete();
+
+        audioSource.Stop();
+        audioSource.pitch = 1.0f;
+        audioSource.clip = successAudio;
+        audioSource.PlayOneShot(successAudio);
     }
 }
