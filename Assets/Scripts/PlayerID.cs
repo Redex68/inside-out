@@ -17,5 +17,9 @@ public class PlayerID : MonoBehaviour
         {
             GetComponentInChildren<BNG.PlayerTeleport>().TeleportPlayer(GameObject.Find("GPU Location").transform.position, Quaternion.identity);
         }
+        else if(Input.GetKey(KeyCode.O))
+        {
+            TransitionManager.completePuzzle();
+        }
     }
 }
