@@ -2,12 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using System.Linq;
 using System.Threading.Tasks;
 
 public class TransitionManager : MonoBehaviour{
     public static TransitionManager Instance { get; private set; }
-    
+    public static UnityEvent<PC.Component> CallbackEvent = new UnityEvent<PC.Component>();
+
     private static PC pc;
 
     private static BNG.PlayerTeleport player;
@@ -86,15 +88,20 @@ public class TransitionManager : MonoBehaviour{
     {
         //Throws if none are found
         Puzzle puzzle = Instance.Puzzles.FirstOrDefault(puzzle => puzzle.PuzzleName == comp.name);
-        if(puzzle == null) {
+
+        if(puzzle == null) 
+        {
             Debug.Log("Komponenta nema puzlu \"" + comp.name + "\"");
             Instance.addToMiniatureWorld(comp.name);
             if(pc.components.Count == 0) finish();
-            return;
+        }
+        else
+        {
+            Instance.currentPuzzleComponent = comp;
+            Instance.StartCoroutine(delayedInit(puzzle));
         }
 
-        Instance.currentPuzzleComponent = comp;
-        Instance.StartCoroutine(delayedInit(puzzle));
+        CallbackEvent.Invoke(comp);
     }
 
     private static IEnumerator delayedInit(Puzzle puzzle){
