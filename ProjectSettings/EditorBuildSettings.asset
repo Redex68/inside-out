@@ -24,6 +24,9 @@ EditorBuildSettings:
     path: Assets/Vendor/BNG Framework/Scenes/Quest Demo.unity
     guid: eac0312c32df12949a47d07747a9d1cd
   - enabled: 1
+    path: Assets/Scenes/Main Menu.unity
+    guid: 0831f8c7e1c84ac47a07c6b0f80d9c43
+  - enabled: 1
     path: Assets/Scenes/Sandbox.unity
     guid: 00c27ed76ff310340933dadacdccd162
   m_configObjects:
