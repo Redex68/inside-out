@@ -18,6 +18,8 @@ public class Fader : MonoBehaviour
     void Start()
     {
         img = GetComponent<Image>();
+
+        
     }
 
     // Update is called once per frame
