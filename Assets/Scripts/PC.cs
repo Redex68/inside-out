@@ -141,13 +141,6 @@ public class PC : MonoBehaviour
         components[componentIndex].snapPositions.RemoveAt(snapPosIndex);
         components[componentIndex].gameObjects.RemoveAt(gameObjectIndex);
 
-        if(components[componentIndex].snapPositions.Count == 0) 
-        {
-            String componentName = components[componentIndex].name;
-            components.RemoveAt(componentIndex);
-            TransitionManager.startPuzzle(defaultComponents[componentName]);
-        }
-
         obj.transform.localPosition = position;
         obj.transform.localEulerAngles = angle;
 
@@ -158,6 +151,13 @@ public class PC : MonoBehaviour
             BNG.Grabbable grab = obj.GetComponent<BNG.Grabbable>();
             grab.enabled = false;
             grab.DropItem(grab.GetPrimaryGrabber(), true, true);
-        }         
+        }
+
+        if(components[componentIndex].gameObjects.Count == 0) 
+        {
+            String componentName = components[componentIndex].name;
+            components.RemoveAt(componentIndex);
+            TransitionManager.startPuzzle(defaultComponents[componentName]);
+        }
     }
 }
