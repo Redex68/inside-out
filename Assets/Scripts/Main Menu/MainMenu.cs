@@ -10,6 +10,8 @@ using UnityEngine.EventSystems;
 
 public class MainMenu : MonoBehaviour
 {
+    [SerializeField] AudioClip buttonClickSFX;
+    [Space]
     [SerializeField] GameObject fader;
     [Space]
     [SerializeField] Button PlayButton;
@@ -35,12 +37,12 @@ public class MainMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PlayButton.onClick.AddListener      (() => StartCoroutine(onPlay()));
-        QuizButton.onClick.AddListener      (() => StartCoroutine(onQuiz()));
-        SettingsButton.onClick.AddListener  (() => onSettings());
-        CreditsButton.onClick.AddListener   (() => onCredits());
-        ExitButton.onClick.AddListener      (() => onExit());
-        BackButton.onClick.AddListener      (() => onBack());
+        PlayButton.onClick.AddListener      (() => { onAnyButtonClick(); StartCoroutine(onPlay());  });
+        QuizButton.onClick.AddListener      (() => { onAnyButtonClick(); StartCoroutine(onQuiz());  });
+        SettingsButton.onClick.AddListener  (() => { onAnyButtonClick(); onSettings();              });
+        CreditsButton.onClick.AddListener   (() => { onAnyButtonClick(); onCredits();               });
+        ExitButton.onClick.AddListener      (() => { onAnyButtonClick(); onExit();                  });
+        BackButton.onClick.AddListener      (() => { onAnyButtonClick(); onBack();                  });
 
         Volume.GetComponentInChildren<Slider>().value = AudioListener.volume;
         Volume.GetComponentInChildren<Slider>().onValueChanged.AddListener((call) => AudioListener.volume = call);
@@ -72,6 +74,7 @@ public class MainMenu : MonoBehaviour
         while(fadeIn < fadeTime)
         {
             fadeIn += Time.deltaTime;
+            FindObjectOfType<PlayerID>().GetComponent<AudioSource>().volume = fadeTime - fadeIn;
             Fader.Instance.setTransparency(fadeIn / fadeTime);
             yield return new WaitForEndOfFrame();
         }
@@ -88,6 +91,7 @@ public class MainMenu : MonoBehaviour
         while(fadeIn < fadeTime)
         {
             fadeIn += Time.deltaTime;
+            FindObjectOfType<PlayerID>().GetComponent<AudioSource>().volume = fadeTime - fadeIn;
             Fader.Instance.setTransparency(fadeIn / fadeTime);
             yield return new WaitForEndOfFrame();
         }
@@ -143,5 +147,10 @@ public class MainMenu : MonoBehaviour
     void onExit() 
     {
         Application.Quit();
+    }
+
+    void onAnyButtonClick()
+    {
+        AudioSource.PlayClipAtPoint(buttonClickSFX, FindObjectOfType<PlayerID>().transform.position);
     }
 }

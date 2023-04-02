@@ -1657,6 +1657,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1593059790, guid: da7cb42398646f541b79585efb71bdbf, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: ef442d7806e19f04bba41b74d96f8d24, type: 3}
     - target: {fileID: 6069362580920209501, guid: da7cb42398646f541b79585efb71bdbf,
         type: 3}
       propertyPath: m_RootOrder
@@ -2452,6 +2456,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8de3a71742e3254499e30be8d40b0d55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonClickSFX: {fileID: 8300000, guid: 403579db8ac228c408c01363a3299674, type: 3}
   fader: {fileID: 5800273748080807661, guid: f9e2f5252c70ce54e8572b3ac43ee9f4, type: 3}
   PlayButton: {fileID: 1845172728}
   QuizButton: {fileID: 2055333967}

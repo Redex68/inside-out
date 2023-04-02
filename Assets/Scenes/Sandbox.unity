@@ -149,25 +149,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7516992335759242669}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &308093710 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 590334108864090877, guid: b6730aab83fd0bd488d6f505c8f149d9,
-    type: 3}
-  m_PrefabInstance: {fileID: 7516992335759242669}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &349073718 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6109500024528079235, guid: b6730aab83fd0bd488d6f505c8f149d9,
-    type: 3}
-  m_PrefabInstance: {fileID: 7516992335759242669}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &391662585 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3746217814689304692, guid: b6730aab83fd0bd488d6f505c8f149d9,
-    type: 3}
-  m_PrefabInstance: {fileID: 7516992335759242669}
-  m_PrefabAsset: {fileID: 0}
---- !u!84 &466827687
+--- !u!84 &288788955
 RenderTexture:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -204,6 +186,24 @@ RenderTexture:
   m_Dimension: 2
   m_VolumeDepth: 1
   m_ShadowSamplingMode: 2
+--- !u!1 &308093710 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 590334108864090877, guid: b6730aab83fd0bd488d6f505c8f149d9,
+    type: 3}
+  m_PrefabInstance: {fileID: 7516992335759242669}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &349073718 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6109500024528079235, guid: b6730aab83fd0bd488d6f505c8f149d9,
+    type: 3}
+  m_PrefabInstance: {fileID: 7516992335759242669}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &391662585 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3746217814689304692, guid: b6730aab83fd0bd488d6f505c8f149d9,
+    type: 3}
+  m_PrefabInstance: {fileID: 7516992335759242669}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &482135414 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1283328207562528937, guid: 1f18f25e841424f40821c0c703f91a63,
@@ -253,6 +253,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1593059790, guid: da7cb42398646f541b79585efb71bdbf, type: 3}
+      propertyPath: m_Volume
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1593059790, guid: da7cb42398646f541b79585efb71bdbf, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 8461290fe7d973141bba8ac9c11dfbef, type: 3}
     - target: {fileID: 6069362580920209501, guid: da7cb42398646f541b79585efb71bdbf,
         type: 3}
       propertyPath: m_RootOrder
@@ -1015,7 +1023,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TargetTexture
       value: 
-      objectReference: {fileID: 466827687}
+      objectReference: {fileID: 288788955}
     - target: {fileID: 7516992335592174921, guid: b6730aab83fd0bd488d6f505c8f149d9,
         type: 3}
       propertyPath: m_RootOrder
