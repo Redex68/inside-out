@@ -74,7 +74,11 @@ public class TransitionManager : MonoBehaviour{
         Instance.componentNames.ForEach(name => 
         {
             GameObject comp = GameObject.Find(name);
-            if(comp != null) Instance.largeComponents.Add(comp);
+            if(comp != null) 
+            {
+                Debug.Log("Added " + name + string.Format(" {0}", Instance.largeComponents.Count));
+                Instance.largeComponents.Add(comp);
+            }
         });
     }
 
@@ -210,7 +214,15 @@ public class TransitionManager : MonoBehaviour{
 
     private static void finish()
     {
+        saveCompletedGame();
         teleport(FindObjectOfType<EndTP>().transform.position, Quaternion.identity, 0.5f);
+    }
+
+    static void saveCompletedGame()
+    {
+        PersistentData pd = new PersistentData();
+        pd.storyCompleted = true;
+        Serializer.Save(pd);
     }
 
     public static float fadeTime;
