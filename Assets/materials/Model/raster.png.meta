@@ -1,0 +1,1758 @@
+fileFormatVersion: 2
+guid: 4deebc4a3bd4e274cba2e5cd658f11f7
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: raster_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4320
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 565feee58840dbf4cb2081f3ac0ca73a
+      internalID: -603472545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_1
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 4320
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34001eacc0ba6e342830c0b8299b5478
+      internalID: 590972699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_2
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 4320
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c7c70d6b9ce321449d1ac4635afcb7f
+      internalID: 190824491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_3
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 4320
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e16e0d4e715cd2543bb11ef06f05a17c
+      internalID: -292945824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_4
+      rect:
+        serializedVersion: 2
+        x: 2240
+        y: 4320
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cdcd892331868645a3c4991095db212
+      internalID: -91190951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_5
+      rect:
+        serializedVersion: 2
+        x: 2800
+        y: 4320
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c667d16150b66846a89880ebcd0d6b8
+      internalID: -1294473100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_6
+      rect:
+        serializedVersion: 2
+        x: 3360
+        y: 4320
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c6e563403685eb438719372bc152e9b
+      internalID: 1906633792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_7
+      rect:
+        serializedVersion: 2
+        x: 3920
+        y: 4320
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2b5057c6a5cf2b42975172b56a11f95
+      internalID: 1320416907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_8
+      rect:
+        serializedVersion: 2
+        x: 4480
+        y: 4320
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b0981d0c9ef0b4408c3052e8ad7a8ec
+      internalID: 268794586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3780
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0f3013df13aa9240b2a5dca31012fa0
+      internalID: -1900640603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_10
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 3780
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73e66aca235cf3d408fa2d0aec5ccd5b
+      internalID: 123673263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_11
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 3780
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1edb71f8d261cea4486d7f7a7b429190
+      internalID: 2055975875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_12
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 3780
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d42d7a5f6407a684fbdd48519ae58a2e
+      internalID: -612943867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_13
+      rect:
+        serializedVersion: 2
+        x: 2240
+        y: 3780
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a4bbf545128b3f4ba6e6b49b85505a7
+      internalID: -1200764639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_14
+      rect:
+        serializedVersion: 2
+        x: 2800
+        y: 3780
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f4971d4ec8242d4487f17cba06502e5
+      internalID: -116636136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_15
+      rect:
+        serializedVersion: 2
+        x: 3360
+        y: 3780
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73e8a9fd2c804e94e93665398a12e4c9
+      internalID: -1379793465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_16
+      rect:
+        serializedVersion: 2
+        x: 3920
+        y: 3780
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12f4bf337137a744d9c60ad351faa3bd
+      internalID: 1925727542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_17
+      rect:
+        serializedVersion: 2
+        x: 4480
+        y: 3780
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 582ce5e6519e23946af653824122de52
+      internalID: -463414162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3240
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8373cd5c52abeee4b82e749c9e56a97f
+      internalID: -1604394173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_19
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 3240
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1e14afd8bb0870479d2ae1c6827a51e
+      internalID: 1303443642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_20
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 3240
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8d680f8d79ed0147a382c1940a479dd
+      internalID: -1217850164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_21
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 3240
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee892d200f444ee46bf11ff9cb2783c8
+      internalID: -1629971068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_22
+      rect:
+        serializedVersion: 2
+        x: 2240
+        y: 3240
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3dcd7c586efad1b41b9ab663768bec13
+      internalID: 1316501467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_23
+      rect:
+        serializedVersion: 2
+        x: 2800
+        y: 3240
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2268262ee8ec69a44860bdaa21c3df2b
+      internalID: 736358322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_24
+      rect:
+        serializedVersion: 2
+        x: 3360
+        y: 3240
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9b080b077e41394aa16c84c4819bdc5
+      internalID: -1600305291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_25
+      rect:
+        serializedVersion: 2
+        x: 3920
+        y: 3240
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8878c9bbe07d7f4a8bd146d15acca47
+      internalID: -817322426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_26
+      rect:
+        serializedVersion: 2
+        x: 4480
+        y: 3240
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a08f20c954d6c86459911523381967d6
+      internalID: -1462261451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_27
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2700
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ea5f3660852e6c4dbaae742d5cde6f6
+      internalID: 1473912185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_28
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 2700
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1dd2209d7d3ad644c9a3ead0548dadcb
+      internalID: -1093775101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_29
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 2700
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69e9fd1c596295f44929504e3bc94401
+      internalID: 158106604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_30
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 2700
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c05acac5c194d7e4d96937bde0e9f725
+      internalID: 2076548343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_31
+      rect:
+        serializedVersion: 2
+        x: 2240
+        y: 2700
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11e643cedc8a5774b952173ffcd50e12
+      internalID: -1091397376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_32
+      rect:
+        serializedVersion: 2
+        x: 2800
+        y: 2700
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 317b5dfb808522c47ab480b22c66419a
+      internalID: 1390056326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_33
+      rect:
+        serializedVersion: 2
+        x: 3360
+        y: 2700
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e8f822f3d4ee30469b61ef8d68c2836
+      internalID: 953018269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_34
+      rect:
+        serializedVersion: 2
+        x: 3920
+        y: 2700
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7eae7163d8744c44bba84d239ac97a65
+      internalID: -150297112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_35
+      rect:
+        serializedVersion: 2
+        x: 4480
+        y: 2700
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af8f3605c9e44194f8322dcefd32b659
+      internalID: -875238310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2160
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8423cef28cfa1dc468c3b6e84b99561a
+      internalID: -721711718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_37
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 2160
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e031ee308a56c4a4cbf826ed13c24b09
+      internalID: 646764995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_38
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 2160
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: beb05de3998ddd94abdc4d7ff6aa512d
+      internalID: -1081078117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_39
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 2160
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3dbe0409fce84a3429b7f80f889d567e
+      internalID: 1702203146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_40
+      rect:
+        serializedVersion: 2
+        x: 2240
+        y: 2160
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 574bece33d175b042b852cdbfee0ff35
+      internalID: -1701282041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_41
+      rect:
+        serializedVersion: 2
+        x: 2800
+        y: 2160
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f09781ee49c3e934f90d91f89448672f
+      internalID: -543819987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_42
+      rect:
+        serializedVersion: 2
+        x: 3360
+        y: 2160
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46967621269a63f4a8d399adf44fda44
+      internalID: 1638397355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_43
+      rect:
+        serializedVersion: 2
+        x: 3920
+        y: 2160
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39ac07d887cfc7643bc1b173b0033f2b
+      internalID: 182133691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_44
+      rect:
+        serializedVersion: 2
+        x: 4480
+        y: 2160
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad2aaaa5053d8dd40b5556f4561ce665
+      internalID: -1014126713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_45
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1620
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ff75fb40eb25db4ab474113e1aa4ad0
+      internalID: 1245364648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_46
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 1620
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5604a77fb1caf0d4c89186b135bfc673
+      internalID: 795723189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_47
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 1620
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbd1f725563f7ea46bd450c0d93f41f7
+      internalID: -371859814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_48
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 1620
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2097fa1cb753eea43b71bfde4925889d
+      internalID: -1687043374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_49
+      rect:
+        serializedVersion: 2
+        x: 2240
+        y: 1620
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a46786269668a140bf59a1e9c826a74
+      internalID: 680529601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_50
+      rect:
+        serializedVersion: 2
+        x: 2800
+        y: 1620
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71fb1b50a4b89834f96baefc64ef413c
+      internalID: 880249228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_51
+      rect:
+        serializedVersion: 2
+        x: 3360
+        y: 1620
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff0cc36ad533ff3469998f6b7992e67c
+      internalID: 1810374231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_52
+      rect:
+        serializedVersion: 2
+        x: 3920
+        y: 1620
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0415e05f1073c8b44947ebfd9d190395
+      internalID: 1442560220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_53
+      rect:
+        serializedVersion: 2
+        x: 4480
+        y: 1620
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d35a9e3cc2d99ba4489cbd8c863c5959
+      internalID: 1839362649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_54
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1080
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcac44bda7f47fc488c7e775c15c1334
+      internalID: 738314873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_55
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 1080
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d2783a6014a63e458652ceba689f139
+      internalID: -486893416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_56
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 1080
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6c03d1224e31c9448a59cfa1380bdb3
+      internalID: 27334360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_57
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 1080
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba537c8f6f427da4b842619fb1736afb
+      internalID: 565668013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_58
+      rect:
+        serializedVersion: 2
+        x: 2240
+        y: 1080
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86da17df2ffca1a46a1b69fee57e8690
+      internalID: -2123472998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_59
+      rect:
+        serializedVersion: 2
+        x: 2800
+        y: 1080
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a602dc16ed5726d48bc4cae1c4918d95
+      internalID: 1152767464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_60
+      rect:
+        serializedVersion: 2
+        x: 3360
+        y: 1080
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 799367b246b0a264caa21fc27946ea04
+      internalID: 1281972340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_61
+      rect:
+        serializedVersion: 2
+        x: 3920
+        y: 1080
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcf3ba1fb96d2954c9d8d184c682bdfe
+      internalID: -45362126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_62
+      rect:
+        serializedVersion: 2
+        x: 4480
+        y: 1080
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac2f6b0307ed67749b1ea7352761cb58
+      internalID: 394140773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_63
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 540
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72e6b8b238177c44e970a173e367713d
+      internalID: 1264467824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_64
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 540
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22f4acd01c758704891674eb7625b5f8
+      internalID: 2049670428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_65
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 540
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 199088258ede70942884d2712965caa1
+      internalID: -766355195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_66
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 540
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1516102c3ad778469ed25d5274b5e55
+      internalID: 521017202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_67
+      rect:
+        serializedVersion: 2
+        x: 2240
+        y: 540
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa3008a1bfa2e114db76462a27ee0f0e
+      internalID: 1422117930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_68
+      rect:
+        serializedVersion: 2
+        x: 2800
+        y: 540
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58f704862436fb040884eaaae0dff841
+      internalID: -292436107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_69
+      rect:
+        serializedVersion: 2
+        x: 3360
+        y: 540
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e63812901da5ba499d542c7828adc4b
+      internalID: -2092159589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_70
+      rect:
+        serializedVersion: 2
+        x: 3920
+        y: 540
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d24d91d2173771d4da33f9491457c38a
+      internalID: 252818096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_71
+      rect:
+        serializedVersion: 2
+        x: 4480
+        y: 540
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04ad42a7a1847204da32756d09ef37dd
+      internalID: -1921400285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_72
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab1cb5f8e77e8e94aac7e66fb94a9588
+      internalID: 1747009317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raster_73
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 0
+        width: 560
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba11173d53e9eee48bcedafb3f653786
+      internalID: -506466287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 191fce49c8edd3d4697c3854d1cc0d75
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      raster_67: 1422117930
+      raster_3: -292945824
+      raster_66: 521017202
+      raster_73: -506466287
+      raster_70: 252818096
+      raster_53: 1839362649
+      raster_8: 268794586
+      raster_52: 1442560220
+      raster_28: -1093775101
+      raster_39: 1702203146
+      raster_21: -1629971068
+      raster_79: 1812538715
+      raster_51: 1810374231
+      raster_16: 1925727542
+      raster_38: -1081078117
+      raster_6: 1906633792
+      raster_19: 1303443642
+      raster_31: -1091397376
+      raster_5: -1294473100
+      raster_13: -1200764639
+      raster_36: -721711718
+      raster_33: 953018269
+      raster_34: -150297112
+      raster_17: -463414162
+      raster_27: 1473912185
+      raster_4: -91190951
+      raster_72: 1747009317
+      raster_59: 1152767464
+      raster_74: 1689097163
+      raster_65: -766355195
+      raster_15: -1379793465
+      raster_76: 60334680
+      raster_0: -603472545
+      raster_46: 795723189
+      raster_50: 880249228
+      raster_80: 540785422
+      raster_69: -2092159589
+      raster_37: 646764995
+      raster_54: 738314873
+      raster_26: -1462261451
+      raster_20: -1217850164
+      raster_44: -1014126713
+      raster_55: -486893416
+      raster_62: 394140773
+      raster_48: -1687043374
+      raster_61: -45362126
+      raster_1: 590972699
+      raster_35: -875238310
+      raster_11: 2055975875
+      raster_77: 1587118965
+      raster_75: 1562432698
+      raster_9: -1900640603
+      raster_7: 1320416907
+      raster_29: 158106604
+      raster_47: -371859814
+      raster_23: 736358322
+      raster_58: -2123472998
+      raster_18: -1604394173
+      raster_22: 1316501467
+      raster_30: 2076548343
+      raster_56: 27334360
+      raster_64: 2049670428
+      raster_60: 1281972340
+      raster_49: 680529601
+      raster_57: 565668013
+      raster_14: -116636136
+      raster_2: 190824491
+      raster_45: 1245364648
+      raster_25: -817322426
+      raster_68: -292436107
+      raster_24: -1600305291
+      raster_42: 1638397355
+      raster_41: -543819987
+      raster_40: -1701282041
+      raster_43: 182133691
+      raster_78: 1846272383
+      raster_12: -612943867
+      raster_10: 123673263
+      raster_32: 1390056326
+      raster_71: -1921400285
+      raster_63: 1264467824
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
