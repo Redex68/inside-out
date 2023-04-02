@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1283328207562528938
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1283328207562528936}
+  - component: {fileID: 1283328207562528937}
+  m_Layer: 0
+  m_Name: TransitionManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1283328207562528936
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1283328207562528938}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -23.528086, y: -6.3803816, z: 7.7135878}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1283328207562528937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1283328207562528938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87ae9f1680838d94aa21882869af7bdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpawnPosition: {x: 0, y: 2.3, z: 0}
+  Puzzles:
+  - PuzzleName: FAN
+    PuzzleObject: {fileID: 8328177253699819229, guid: 489108d502a14d0439fa189353b364dd,
+      type: 3}
+    StartPos: {fileID: 0}
+    PuzzleCompleted: 0
+  - PuzzleName: MOBO
+    PuzzleObject: {fileID: 7506085363045154520, guid: a819b9a5b700a094fbb037271613cf26,
+      type: 3}
+    StartPos: {fileID: 0}
+    PuzzleCompleted: 0
+  - PuzzleName: RAM
+    PuzzleObject: {fileID: 8213390219550786748, guid: 89c34c7690ebf7649bcff3e0ba3899a7,
+      type: 3}
+    StartPos: {fileID: 0}
+    PuzzleCompleted: 0
+  - PuzzleName: COOLER
+    PuzzleObject: {fileID: 5216380497721785070, guid: d4b5246a2cb1546768ddc6277b5d07bb,
+      type: 3}
+    StartPos: {fileID: 0}
+    PuzzleCompleted: 0
+  - PuzzleName: CPU
+    PuzzleObject: {fileID: 3785780561498903360, guid: f74813f360cd2c147be57bd39d3adc8a,
+      type: 3}
+    StartPos: {fileID: 0}
+    PuzzleCompleted: 0
+  - PuzzleName: GPU
+    PuzzleObject: {fileID: 7586742804996808169, guid: b4da8536bc3879e46a8d437932349ab2,
+      type: 3}
+    StartPos: {fileID: 0}
+    PuzzleCompleted: 0
+  - PuzzleName: USB
+    PuzzleObject: {fileID: 4446116884411626695, guid: 05fb13a1fb0647740bc9df164e2ecb45,
+      type: 3}
+    StartPos: {fileID: 0}
+    PuzzleCompleted: 0
+  locations: []

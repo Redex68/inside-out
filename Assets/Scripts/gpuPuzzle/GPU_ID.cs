@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PSU_ID : MonoBehaviour
+public class GPU_ID : MonoBehaviour
 {
-    [SerializeField] AudioClip powerOn;
+    [SerializeField] AudioClip surprise;
 
     // Start is called before the first frame update
     void Start()
@@ -20,11 +20,10 @@ public class PSU_ID : MonoBehaviour
 
     void onAttach(PC.Component comp)
     {
-        if(comp.name == "PSU") 
+        if(comp.name == "GPU")
         {
-            Debug.Log("PSU Attached!");
-            AudioSource.PlayClipAtPoint(powerOn, comp.snapPositions[0]);
-            PromptScript.instance.updatePrompt("Power Supply attached successfuly!", 3.0f);
+            AudioSource.PlayClipAtPoint(surprise, transform.position);
+            PromptScript.instance.updatePrompt("Error!\nSolve a puzzle to fix it", 3.0f);
         }
     }
 }

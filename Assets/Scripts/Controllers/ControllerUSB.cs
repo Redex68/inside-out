@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class ControllerUSB : MonoBehaviour
 {
+    [SerializeField] AudioClip usbConnected;
     [SerializeField] GameObject Controller;
+
+    static AudioClip usbConnectedInstance;
 
     static int attachCount = 0;
     static float attachOffset = 0.012f;
@@ -14,6 +17,11 @@ public class ControllerUSB : MonoBehaviour
     int dir = 1;
 
     Material lightMat;
+
+    void Awake()
+    {
+        if(usbConnectedInstance == null && usbConnected != null) usbConnectedInstance = usbConnected;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -49,7 +57,8 @@ public class ControllerUSB : MonoBehaviour
         if(this.name == comp.gameObjects[0].name) 
         {
             completed = true;
-            //TODO: Add sounds for all objects attaching
+            AudioSource.PlayClipAtPoint(usbConnectedInstance, transform.position);
+            PromptScript.instance.updatePrompt("USB connected successfuly!", 3.0f);
         }
     }
 }

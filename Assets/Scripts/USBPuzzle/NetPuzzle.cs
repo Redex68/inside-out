@@ -26,6 +26,7 @@ public class NetPuzzle : MonoBehaviour
     void onComplete()
     {
         Router.Instance.completed = true;
+        PromptScript.instance.updatePrompt("Connected to a network!", 3.0f);
         TransitionManager.completePuzzle();
     }
 }

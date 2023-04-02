@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Router : MonoBehaviour
 {
+    [SerializeField] public AudioClip connectionEstablished;
+
     public static Router Instance;
 
     public bool completed = false;
@@ -22,6 +24,7 @@ public class Router : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        TransitionManager.CallbackEvent.AddListener((comp) => onAttach(comp));
         lightMat = GetComponent<MeshRenderer>().sharedMaterials[4];
         lightMat.color = Color.red;
     }
@@ -44,6 +47,15 @@ public class Router : MonoBehaviour
         {
             dir *= -1;
             lightMat.color = Color.black;
+        }
+    }
+
+    void onAttach(PC.Component comp)
+    {
+        if(comp.name == "USB")
+        {
+            AudioSource.PlayClipAtPoint(connectionEstablished, transform.position);
+            PromptScript.instance.updatePrompt("Error!\nSolve a puzzle to fix it", 3.0f);
         }
     }
 }
