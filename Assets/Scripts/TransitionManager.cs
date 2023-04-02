@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 
 public class TransitionManager : MonoBehaviour{
     public static TransitionManager Instance { get; private set; }
-    public static UnityEvent<PC.Component> CallbackEvent = new UnityEvent<PC.Component>();
+    public static UnityEvent<PC.Component> AttachCallbackEvent = new UnityEvent<PC.Component>();
+    public static UnityEvent<PC.Component> CompleteCallbackEvent = new UnityEvent<PC.Component>();
 
     private static PC pc;
 
@@ -105,7 +106,7 @@ public class TransitionManager : MonoBehaviour{
             Instance.StartCoroutine(delayedInit(puzzle));
         }
 
-        CallbackEvent.Invoke(comp);
+        AttachCallbackEvent.Invoke(comp);
     }
 
     private static IEnumerator delayedInit(Puzzle puzzle){
@@ -157,6 +158,8 @@ public class TransitionManager : MonoBehaviour{
 
         Puzzle currentPuzzle = Instance.Puzzles.FirstOrDefault(puzzle => puzzle.PuzzleName == Instance.currentPuzzleComponent.name);
         currentPuzzle.PuzzleCompleted = true;
+
+        CompleteCallbackEvent.Invoke(Instance.currentPuzzleComponent);
 
         foreach(var comp in Instance.currentPuzzleComponent.subComponents) pc.components.Add(comp);
 

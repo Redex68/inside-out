@@ -24,7 +24,7 @@ public class Router : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        TransitionManager.CallbackEvent.AddListener((comp) => onAttach(comp));
+        TransitionManager.AttachCallbackEvent.AddListener((comp) => onAttach(comp));
         lightMat = GetComponent<MeshRenderer>().sharedMaterials[4];
         lightMat.color = Color.red;
     }

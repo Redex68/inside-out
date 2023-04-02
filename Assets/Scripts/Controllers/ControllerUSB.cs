@@ -28,7 +28,7 @@ public class ControllerUSB : MonoBehaviour
     {
         lightMat = Controller.GetComponentInChildren<ControllerLight>().GetComponent<MeshRenderer>().material;
         lightMat.color = Color.red;
-        TransitionManager.CallbackEvent.AddListener((comp) => onAttach(comp));
+        TransitionManager.AttachCallbackEvent.AddListener((comp) => onAttach(comp));
     }
 
     // Update is called once per frame
