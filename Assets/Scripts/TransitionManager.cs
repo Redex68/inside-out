@@ -75,11 +75,7 @@ public class TransitionManager : MonoBehaviour{
         Instance.componentNames.ForEach(name => 
         {
             GameObject comp = GameObject.Find(name);
-            if(comp != null) 
-            {
-                Debug.Log("Added " + name + string.Format(" {0}", Instance.largeComponents.Count));
-                Instance.largeComponents.Add(comp);
-            }
+            if(comp != null) Instance.largeComponents.Add(comp);
         });
     }
 
