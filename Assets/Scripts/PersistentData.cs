@@ -6,4 +6,5 @@ using UnityEngine;
 public class PersistentData
 {
     public bool storyCompleted = false;
+    
 }

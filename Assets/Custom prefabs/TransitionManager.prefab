@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87ae9f1680838d94aa21882869af7bdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnPosition: {x: 0, y: 2.3, z: 0}
+  SpawnPosition: {x: 0, y: 6.14, z: 0}
   Puzzles:
   - PuzzleName: FAN
     PuzzleObject: {fileID: 8328177253699819229, guid: 489108d502a14d0439fa189353b364dd,

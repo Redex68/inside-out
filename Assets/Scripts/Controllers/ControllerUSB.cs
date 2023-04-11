@@ -12,7 +12,7 @@ public class ControllerUSB : MonoBehaviour
     static int attachCount = 0;
     static float attachOffset = 0.012f;
 
-    bool completed = false;
+    public bool completed = false;
     float lightInterval = 0.0f;
     int dir = 1;
 

@@ -6,6 +6,9 @@ public class PC : MonoBehaviour
 {
     public static PC Instance;
 
+    public GameObject ModelInstance;
+    GameObject currentModel = null;
+
     [System.Serializable]
     public struct Component
     {
@@ -43,6 +46,11 @@ public class PC : MonoBehaviour
 
     Transform tf;
 
+    public void resetModel()
+    {
+        if(currentModel != null) Destroy(currentModel);
+        currentModel = Instantiate(ModelInstance);
+    }
 
     private void Awake(){
         if(Instance != null && Instance != this) Destroy(this);
@@ -53,6 +61,7 @@ public class PC : MonoBehaviour
     void Start()
     {
         tf = GetComponent<Transform>();
+        resetModel();
         cacheComponents();
     }
 

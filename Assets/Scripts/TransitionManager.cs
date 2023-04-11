@@ -15,6 +15,8 @@ public class TransitionManager : MonoBehaviour{
 
     private static BNG.PlayerTeleport player;
 
+    public static GameObject endModel = null;
+
     [Serializable]
     public class Puzzle
     {
@@ -31,7 +33,7 @@ public class TransitionManager : MonoBehaviour{
     //Triba settat u editoru
     //Soba -503.41f, 185.5f, 994.549f
     //Mini soba - 0, 2.142f, 0
-    public Vector3 SpawnPosition = new Vector3(0, 2.142f, 0);
+    public Vector3 SpawnPosition = new Vector3(0, 3.142f, 0);
 
     [SerializeField]
     public List<Puzzle> Puzzles;
@@ -111,7 +113,6 @@ public class TransitionManager : MonoBehaviour{
         
         //Instantiate the puzzle and teleport the player
         Instance.currentPuzzleInstance = Instantiate(puzzle.PuzzleObject);
-        //TODO: add delay and transition
         teleport(puzzle.StartPos.transform.position, Quaternion.Euler(puzzle.StartPos.transform.eulerAngles), 0.5f);
     }
 
@@ -213,6 +214,9 @@ public class TransitionManager : MonoBehaviour{
 
     private static void finish()
     {
+        var obj = FindObjectOfType<ModelID>().gameObject;
+        endModel = Instantiate(obj, FindObjectOfType<EndModelID>().transform.position, obj.transform.rotation);
+
         saveCompletedGame();
         teleport(FindObjectOfType<EndTP>().transform.position, Quaternion.identity, 0.5f);
     }

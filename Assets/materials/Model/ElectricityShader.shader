@@ -6,6 +6,7 @@ Shader "Example/ElectricityShader"
     Properties
     {
         [MainTexture]       _BaseMap("Main Texture", 2D)                = "black"
+        [PowerOn]           _PowerOn("Power ON", float)                 = 0
     }
 
     SubShader
@@ -38,10 +39,10 @@ Shader "Example/ElectricityShader"
 
             TEXTURE2D(_BaseMap); SAMPLER(sampler_BaseMap);
 
-            bool _PowerOn;
             
             CBUFFER_START(UnityPerMaterial)
                 float4 _BaseMap_ST;
+                bool _PowerOn;
             CBUFFER_END
 
             Varyings vert(Attributes IN)
@@ -59,7 +60,7 @@ Shader "Example/ElectricityShader"
             {
                 float speed = 100.0;
                 float freq = 10;
-                half3 col = half3(0.8, 0.9, 0.1) * 0.4;
+                half3 col = half3(0.8, 0.9, 0.1) * 0.2;
 
                 float val = frac(IN.positionOS.b * freq + _Time * speed);
 

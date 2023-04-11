@@ -104,6 +104,7 @@ public class MonitorDisplay : MonoBehaviour
 
                 // firstLerpTime = 0.0f;
                 // secondLerpTime = 0.0f;
+                if(TransitionManager.endModel != null) Destroy(TransitionManager.endModel);
                 lerpDelay = 0.0f;
                 resetTime = 0.0f;
 
@@ -115,16 +116,22 @@ public class MonitorDisplay : MonoBehaviour
         }
     }
 
-
     void reposition()
     {
         playerEyeTransform.localPosition = Vector3.zero;
         playerEyeTransform.localRotation = Quaternion.identity;
-        TransitionManager.teleport(new Vector3(0, 3.2f, 0), Quaternion.Euler(0,-90,0), 0.5f);
+        TransitionManager.teleport(TransitionManager.Instance.SpawnPosition, Quaternion.Euler(0,-90,0), 0.5f);
+
+        if(TransitionManager.endModel != null) Destroy(TransitionManager.endModel);
     }
 
     void resetPC()
     {
+        PC.Instance.resetModel();
+        Router.Instance.completed = false;
+        foreach(var controller in FindObjectsOfType<ControllerUSB>())
+            controller.completed = false;
+
         string[] startingComponents = { "PSU", "MOBO", "FAN" };
 
         PC.Instance.components.Clear();

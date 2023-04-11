@@ -7,6 +7,7 @@ using TMPro;
 
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using Localization;
 
 public class MainMenu : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] TMP_Text Credits;
     [Space]
     [SerializeField] GameObject Volume; 
+    [SerializeField] GameObject Language;
     
     public static MainMenu Instance;
 
@@ -44,8 +46,10 @@ public class MainMenu : MonoBehaviour
         ExitButton.onClick.AddListener      (() => { onAnyButtonClick(); onExit();                  });
         BackButton.onClick.AddListener      (() => { onAnyButtonClick(); onBack();                  });
 
+
         Volume.GetComponentInChildren<Slider>().value = AudioListener.volume;
         Volume.GetComponentInChildren<Slider>().onValueChanged.AddListener((call) => AudioListener.volume = call);
+        Language.GetComponentInChildren<Button>().onClick.AddListener(() => { onAnyButtonClick(); onLang();});
 
         PersistentData pd = Serializer.Load();
         if(pd == null || !pd.storyCompleted) QuizButton.interactable = false;
@@ -101,7 +105,8 @@ public class MainMenu : MonoBehaviour
 
     void onSettings() 
     {
-        Title.text = "Settings";
+        Title.text = Settings.GameLanguage == Languages.English ?
+            "Settings" : "Postavke";
 
         PlayButton.gameObject.SetActive(false);
         QuizButton.gameObject.SetActive(false);
@@ -111,12 +116,14 @@ public class MainMenu : MonoBehaviour
         BackButton.gameObject.SetActive(true);
         Credits.gameObject.SetActive(false);
         Volume.SetActive(true);
+        Language.gameObject.SetActive(true);
 
     }
 
     void onCredits() 
     {
-        Title.text = "Credits";
+        Title.text = Settings.GameLanguage == Languages.English ?
+            "Credits" : "Zasluge";
 
         PlayButton.gameObject.SetActive(false);
         QuizButton.gameObject.SetActive(false);
@@ -141,6 +148,7 @@ public class MainMenu : MonoBehaviour
         BackButton.gameObject.SetActive(false);
         Credits.gameObject.SetActive(false);
         Volume.SetActive(false);
+        Language.gameObject.SetActive(false);
 
     }
 
@@ -152,5 +160,30 @@ public class MainMenu : MonoBehaviour
     void onAnyButtonClick()
     {
         AudioSource.PlayClipAtPoint(buttonClickSFX, FindObjectOfType<PlayerID>().transform.position);
+    }
+
+    void onLang()
+    {
+        if(Settings.GameLanguage == Languages.English) 
+        {
+            Settings.GameLanguage = Languages.Hrvatski;
+        }
+        else if(Settings.GameLanguage == Languages.Hrvatski) 
+        {
+            Settings.GameLanguage = Languages.English;
+        }
+
+
+        Title.text = Loc.loc(MainMenuTxt.Settings);
+        Credits.text = Loc.loc(MainMenuTxt.CreditsText);
+        Loc.locChild(Volume, MainMenuTxt.Volume);
+        Loc.locChild(PlayButton, MainMenuTxt.Play);
+        Loc.locChild(SettingsButton, MainMenuTxt.Settings);
+        Loc.locChild(CreditsButton, MainMenuTxt.Credits);
+        Loc.locChild(QuizButton, MainMenuTxt.Quiz);
+        Loc.locChild(BackButton, MainMenuTxt.Back);
+        Loc.locChild(ExitButton, MainMenuTxt.Exit);
+        Language.GetComponentInChildren<TMP_Text>().text = Loc.loc(MainMenuTxt.Language);
+        Loc.locChild(Language.GetComponentInChildren<Button>(), Loc.loc());
     }
 }
