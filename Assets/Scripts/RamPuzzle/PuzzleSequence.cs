@@ -36,7 +36,7 @@ public class PuzzleSequence : MonoBehaviour
     {
         for(int i = 6; i > 0; i--)
         {
-            PromptScript.instance.updatePrompt(Localization.Loc.loc(RamPuzzle) + string.Format("{}", i), 2.0f);
+            PromptScript.instance.updatePrompt(Localization.Loc.loc(RamPuzzle) + string.Format("{0}", i), 2.0f);
             yield return new WaitForSeconds(1.0f);
         }
     }

@@ -177,7 +177,7 @@ public class HeatManager : MonoBehaviour {
         "Potpuno ohlađen "
     };
 
-    static Dictionary<string, string> HeatedComponentsLoc = new Dictionary<string, string>()
+    public static Dictionary<string, string> HeatedComponentsLoc = new Dictionary<string, string>()
     {
         { "resistor" , Localization.Loc.loc(new string[]{ "resistor", "otpornik" }) },
         { "chip" , Localization.Loc.loc(new string[]{ "chip", "čip" }) },
@@ -191,7 +191,7 @@ public class HeatManager : MonoBehaviour {
 /// <param name="info"> The HeatInfo descriptor of the heated object. </param>
     private void objectFullyCooledDown(HeatInfo info){
         heatInfos.Remove(info);
-        PromptScript.instance.updatePrompt("Completely cooled down " + HeatedComponentsLoc[info.heatedObject.name.ToLower()] + "!", 3);
+        PromptScript.instance.updatePrompt(Localization.Loc.loc(CooledDown) + HeatedComponentsLoc[info.heatedObject.name.ToLower()] + "!", 3);
         UIManager.removeUIEntry(info);
         info.heatedObject.SetActive(false);
     }

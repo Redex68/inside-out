@@ -16,16 +16,16 @@ public class ModelID : MonoBehaviour
 
     bool resetted = false;
 
-    bool moboCompleted = false;
-    bool psuCompleted = false;
-    bool memoryCompleted = false;
-    bool cloudCompleted = false;
-    bool bcCompleted = false;
-    bool rcCompleted = false;
-    bool mouseCompleted = false;
-    bool kbCompleted = false;
-    bool gpuCompleted = false;
-    bool cpuCompleted = false;
+    public bool moboCompleted = false;
+    public bool psuCompleted = false;
+    public bool memoryCompleted = false;
+    public bool cloudCompleted = false;
+    public bool bcCompleted = false;
+    public bool rcCompleted = false;
+    public bool mouseCompleted = false;
+    public bool kbCompleted = false;
+    public bool gpuCompleted = false;
+    public bool cpuCompleted = false;
     bool outputCompleted = false;
 
     // Start is called before the first frame update
@@ -73,7 +73,7 @@ public class ModelID : MonoBehaviour
     {
     }
 
-    IEnumerator onAttach(PC.Component comp)
+    public IEnumerator onAttach(PC.Component comp)
     {
         yield return new WaitForSeconds(1.0f);
 
@@ -92,7 +92,7 @@ public class ModelID : MonoBehaviour
     }
 
 
-    IEnumerator onComplete(PC.Component comp)
+    public IEnumerator onComplete(PC.Component comp)
     {
         yield return new WaitForSeconds(2.0f);
 
@@ -111,62 +111,92 @@ public class ModelID : MonoBehaviour
 
     void onKBCompleted()
     {
-        kbCompleted = true;
-        StartCoroutine(showElement("InputElements/KeyboardElement"));
+        if(!kbCompleted)
+        {
+            kbCompleted = true;
+            StartCoroutine(showElement("InputElements/KeyboardElement"));
+        }
     }
 
     void onMSCompleted()
     {
-        mouseCompleted = true;
-        StartCoroutine(showElement("InputElements/MouseElement"));
+        if(!mouseCompleted)
+        {
+            mouseCompleted = true;
+            StartCoroutine(showElement("InputElements/MouseElement"));
+        }
     }
 
     void onRCCompleted()
     {
-        rcCompleted = true;
-        StartCoroutine(showElement("InputElements/RCElement"));
+        if(!rcCompleted)
+        {
+            rcCompleted = true;
+            StartCoroutine(showElement("InputElements/RCElement"));
+        }
     }
 
     void onBCCompleted()
     {
-        bcCompleted = true;
-        StartCoroutine(showElement("InputElements/BCElement"));
+        if(!bcCompleted)
+        {
+            bcCompleted = true;
+            StartCoroutine(showElement("InputElements/BCElement"));
+        }
     }
 
     void onCloudCompleted()
     {
-        cloudCompleted = true;
-        StartCoroutine(showElement("Internal/CloudElement"));
+        if(!cloudCompleted)
+        {
+            cloudCompleted = true;
+            StartCoroutine(showElement("Internal/CloudElement"));
+        }
     }
 
     void onPSUCompleted()
     {
-        psuCompleted = true;
-        StartCoroutine(showElement("Internal/PowerElement"));
+        if(!psuCompleted)
+        {
+            psuCompleted = true;
+            StartCoroutine(showElement("Internal/PowerElement"));
+        }
     }
 
     void onMOBOCompleted()
     {
-        moboCompleted = true;
-        showWires();
+        if(!moboCompleted)
+        {
+            moboCompleted = true;
+            showWires();
+        }
     }
 
     void onGPUCompleted()
     {
-        gpuCompleted = true;
-        StartCoroutine(showElement("Internal/RasterElement"));
+        if(!gpuCompleted)
+        {
+            gpuCompleted = true;
+            StartCoroutine(showElement("Internal/RasterElement"));
+        }
     }
 
     void onCPUCompleted()
     {
-        cpuCompleted = true;
-        StartCoroutine(showElement("Internal/SimulationElement"));
+        if(!cpuCompleted)
+        {
+            cpuCompleted = true;
+            StartCoroutine(showElement("Internal/SimulationElement"));
+        }
     }
 
     void onRamCompleted()
     {
-        memoryCompleted = true;
-        StartCoroutine(showElement("Internal/MemoryElement"));
+        if(!memoryCompleted)
+        {
+            memoryCompleted = true;
+            StartCoroutine(showElement("Internal/MemoryElement"));
+        }
     }
 
     IEnumerator showElement(string elementName)
@@ -295,7 +325,7 @@ public class ModelID : MonoBehaviour
         if(gpuCompleted && cpuCompleted && psuCompleted && memoryCompleted && cloudCompleted && (rcCompleted || bcCompleted || mouseCompleted || kbCompleted)) updateOutput();
     }
 
-    void updateOutput()
+    public void updateOutput(int n = -1)
     {
         if(!outputCompleted)
         {
@@ -303,7 +333,8 @@ public class ModelID : MonoBehaviour
             StartCoroutine(showElement("OutputElements/GameElement"));
         }
 
-        int n = Convert.ToInt32(rcCompleted) + Convert.ToInt32(bcCompleted) + Convert.ToInt32(mouseCompleted) + Convert.ToInt32(kbCompleted);
+
+        if(n == -1) n = Convert.ToInt32(rcCompleted) + Convert.ToInt32(bcCompleted) + Convert.ToInt32(mouseCompleted) + Convert.ToInt32(kbCompleted);
 
         Action<string> off = new Action<string>(name => transform.Find(name).gameObject.SetActive(false));
         Action<string> on = new Action<string>(name => transform.Find(name).gameObject.SetActive(true));

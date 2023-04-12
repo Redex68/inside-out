@@ -99,7 +99,7 @@ public class HeatUIManager {
 
         //Set the text in the UI entry to the name of the object.
         TMPro.TMP_Text text = info.button.GetComponentInChildren<TMPro.TMP_Text>();
-        text.SetText(info.heatedObject.name);
+        text.SetText(HeatManager.HeatedComponentsLoc[info.heatedObject.name.ToLower()]);
     }
 
 /// <summary>

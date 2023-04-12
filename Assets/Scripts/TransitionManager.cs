@@ -96,7 +96,7 @@ public class TransitionManager : MonoBehaviour{
         {
             Debug.Log("Komponenta nema puzlu \"" + comp.name + "\"");
             Instance.addToMiniatureWorld(comp.name);
-            if(pc.components.Count == 0) finish();
+            if(pc.components.Count == 0) finish(comp);
         }
         else
         {
@@ -155,17 +155,15 @@ public class TransitionManager : MonoBehaviour{
 
         Puzzle currentPuzzle = Instance.Puzzles.FirstOrDefault(puzzle => puzzle.PuzzleName == Instance.currentPuzzleComponent.name);
         currentPuzzle.PuzzleCompleted = true;
-
-        CompleteCallbackEvent.Invoke(Instance.currentPuzzleComponent);
-
         foreach(var comp in Instance.currentPuzzleComponent.subComponents) pc.components.Add(comp);
 
-        Instance.addToMiniatureWorld(Instance.currentPuzzleComponent.name);
-        
-        Destroy(Instance.currentPuzzleInstance);      
-
         if(pc.components.Count > 0) teleport(Instance.SpawnPosition, Quaternion.identity, 0.5f);
-        else finish();
+        else finish(Instance.currentPuzzleComponent);
+        
+        CompleteCallbackEvent.Invoke(Instance.currentPuzzleComponent);
+
+        Destroy(Instance.currentPuzzleInstance);      
+        Instance.addToMiniatureWorld(Instance.currentPuzzleComponent.name);
     }
 
     private void removeAllFromMiniatureWorld()
@@ -212,13 +210,27 @@ public class TransitionManager : MonoBehaviour{
             }
     }
 
-    private static void finish()
+    private static void finish(PC.Component? comp = null)
     {
+        saveCompletedGame();
+
         var obj = FindObjectOfType<ModelID>().gameObject;
         endModel = Instantiate(obj, FindObjectOfType<EndModelID>().transform.position, obj.transform.rotation);
 
-        saveCompletedGame();
+        if(comp != null)
+        {
+            Instance.StartCoroutine(endModel.GetComponent<ModelID>().onComplete(comp.Value));
+            Instance.StartCoroutine(endModel.GetComponent<ModelID>().onAttach(comp.Value));
+            Instance.StartCoroutine(finishModel(endModel));
+        }
+
         teleport(FindObjectOfType<EndTP>().transform.position, Quaternion.identity, 0.5f);
+    }
+
+    static IEnumerator finishModel(GameObject model)
+    {
+        yield return new WaitForSeconds(2.0f);
+        endModel.GetComponent<ModelID>().updateOutput(4);
     }
 
     static void saveCompletedGame()
