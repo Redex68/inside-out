@@ -12,11 +12,17 @@ public class cpuPuzzleManager : MonoBehaviour
     private List<GameObject> tasks;
     private static BNG.PlayerTeleport player;
 
+    static string[] ChooseLogic =
+    {
+        "Choose the correct logic operation!",
+        "Izaberi točnu logičku operaciju!"
+    };
+
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindObjectOfType<BNG.PlayerTeleport>();
-        PromptScript.instance.updatePrompt("Choose the correct logic operation that was applied to left objects to get the right object! You can make a mistake 3 times!", 3f);
+        PromptScript.instance.updatePrompt(Localization.Loc.loc(ChooseLogic), 5f);
         SetupPuzzle();
         
     }
@@ -51,6 +57,18 @@ public class cpuPuzzleManager : MonoBehaviour
        
     }
 
+    static string[] Correct =
+    {
+        "Correct! Currently solved: ",
+        "Točno! Trenutno Riješeno: "
+    };
+
+    static string[] Incorrect =
+    {
+        "Incorrect! Mistakes: ",
+        "Netočno! Greške: "
+    };
+
     public void TaskCorrect(string index) {
         string tag = "task" + index;
         GameObject currentTask = GameObject.FindWithTag(tag);
@@ -58,9 +76,8 @@ public class cpuPuzzleManager : MonoBehaviour
             tasks.Remove(currentTask);
             string text = PromptScript.instance.getPrompt();
             this.counter++;
-            PromptScript.instance.updatePrompt("Correct! Currently solved: " + counter + " / 5", 3);
+            PromptScript.instance.updatePrompt(Localization.Loc.loc(Correct) + counter + " / 5", 3);
             StartCoroutine(delayedPrompt(text));
-            Debug.Log("Correct! Solved: " + counter + " / 5" + index);
         }
         
 
@@ -71,12 +88,9 @@ public class cpuPuzzleManager : MonoBehaviour
         if(tasks.Contains(currentTask)) {
             string text = PromptScript.instance.getPrompt();
             this.failed++;
-            PromptScript.instance.updatePrompt("Incorrect! Mistakes: " + failed + " / 3", 3);
+            PromptScript.instance.updatePrompt(Localization.Loc.loc(Incorrect) + failed + " / 3", 3);
             StartCoroutine(delayedPrompt(text));
-            Debug.Log("Incorrect! Solved: " + counter + " / 5" + index);
         }
-        
-
     }
 
     private static IEnumerator delayedPrompt(String text){
@@ -88,7 +102,7 @@ public class cpuPuzzleManager : MonoBehaviour
     {
         
         puzzleActive = false;
-        PromptScript.instance.updatePrompt("Congratulations! You have beaten the puzzle!", 3);
+        PromptScript.instance.updatePrompt(Localization.Loc.loc(Localization.StoryTxt.Completed), 3);
         TransitionManager.completePuzzle();
     }
 

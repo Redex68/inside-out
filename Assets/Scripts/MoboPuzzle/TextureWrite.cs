@@ -315,12 +315,25 @@ public class TextureWrite : MonoBehaviour
         onConnected();
     }
 
+    static string[] WeldStation =
+    {
+        "/3 weld stations complete!",
+        "/3 dovršene stanice za lemljenje!"
+    };
+
     void onConnected()
     {
         electricity = true;
         rot.turnOn(150.0f);
         successCount++;
-        PromptScript.instance.updatePrompt(successCount + "/3 weld stations complete!", 3);
-        if(successCount == 3) TransitionManager.completePuzzle();
+        if(successCount < 3)
+        {
+            PromptScript.instance.updatePrompt(successCount + Localization.Loc.loc(WeldStation), 3);
+        }
+        else
+        {
+            PromptScript.instance.updatePrompt(Localization.Loc.loc(Localization.StoryTxt.Completed), 3);
+            TransitionManager.completePuzzle();
+        }
     }
 }

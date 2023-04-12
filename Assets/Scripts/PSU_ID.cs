@@ -18,13 +18,19 @@ public class PSU_ID : MonoBehaviour
         
     }
 
+    static string[] PsuAttached = 
+    {
+        "Power Supply attached successfuly!",
+        "Napajanje uspješno priključeno!"
+    };
+
     void onAttach(PC.Component comp)
     {
         if(comp.name == "PSU") 
         {
             Debug.Log("PSU Attached!");
             AudioSource.PlayClipAtPoint(powerOn, comp.snapPositions[0]);
-            PromptScript.instance.updatePrompt("Power Supply attached successfuly!", 3.0f);
+            PromptScript.instance.updatePrompt(Localization.Loc.loc(PsuAttached), 3.0f);
         }
     }
 }

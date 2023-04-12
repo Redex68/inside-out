@@ -52,9 +52,21 @@ public class cpuFanPuzzleManager : MonoBehaviour
         }
     }
 
+    static string[] FindThermalPaste =
+    {
+        "Find the hidden thermal paste and put it on CPU before temperature reaches 100!",
+        "Pronađi skrivenu termalnu pastu i stavi ju na procesor prije nego što dosegne 100 stupnjeva!"
+    };
+
+    static string[] CurrentCPUTemp =
+    {
+        "Current CPU temperature is {0} degrees",
+        "Trenutna temperatura procesora je {0} stupnjeva"
+    };
+
     IEnumerator CountdownOnWatch()
     {
-        PromptScript.instance.updatePrompt("Find the thermal paste hidden inside the level before the CPU temperature reaches 100!\n Once you find the thermal paste, splash it on the CPU", 6);
+        PromptScript.instance.updatePrompt(Localization.Loc.loc(FindThermalPaste), 6);
         while (currentTemperature < maxCpuTemp)
         {
             if (currentTemperature < -2)
@@ -65,13 +77,13 @@ public class cpuFanPuzzleManager : MonoBehaviour
             {
                 yield return new WaitForSeconds(5);
                 currentTemperature += 5;
-                PromptScript.instance.updatePrompt("Current CPU temperature is " + currentTemperature.ToString() + " �C", 1);
+                PromptScript.instance.updatePrompt(string.Format(Localization.Loc.loc(CurrentCPUTemp), currentTemperature.ToString()), 1);
             }
             else if (currentTemperature > 0 && currentTemperature < 100)
             {
                 yield return new WaitForSeconds(delta);
                 currentTemperature++;
-                PromptScript.instance.updatePrompt("Current CPU temperature is " + currentTemperature.ToString() + " �C", 1);
+                PromptScript.instance.updatePrompt(string.Format(Localization.Loc.loc(CurrentCPUTemp), currentTemperature.ToString()), 1);
             }
         }
     }
@@ -103,9 +115,15 @@ public class cpuFanPuzzleManager : MonoBehaviour
         }
     }
 
+    static string[] DontLetCPU =
+    {
+        "Don't let the CPU reach 100 degrees!",
+        "Nemoj dopustiti procesoru da dosegne 100 stupnjeva!"
+    };
+
     private void FailPuzzle()
     {
-        PromptScript.instance.updatePrompt("Don't let the CPU reach 100 �C!", 3);
+        PromptScript.instance.updatePrompt(Localization.Loc.loc(DontLetCPU), 3);
         GameObject champagneInstance = GameObject.Find("Champagne(Clone)");
         Destroy(champagneInstance);
         Invoke("SetupPuzzle", 5);
@@ -114,7 +132,7 @@ public class cpuFanPuzzleManager : MonoBehaviour
     public void PuzzleCleared()
     {
         puzzleActive = false;
-        PromptScript.instance.updatePrompt("Congratulations! You have beaten the puzzle!", 3);
+        PromptScript.instance.updatePrompt(Localization.Loc.loc(Localization.StoryTxt.Completed), 3);
         // player.GetComponent<BNG.PlayerTeleport>().TeleportPlayer(new Vector3(0, 5.142f, 0), Quaternion.identity);
         currentTemperature = -10;
 

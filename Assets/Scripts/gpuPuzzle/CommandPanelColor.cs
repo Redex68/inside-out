@@ -18,11 +18,11 @@ public class CommandPanelColor : MonoBehaviour
 
     public static Dictionary<Color, string> ColorToName = new Dictionary<Color, string>()
     {
-        { Color.magenta, "Magenta"  },
-        { Color.red,     "Red"      },
-        { Color.yellow,  "Yellow"   },
-        { Color.green,   "Green"    },
-        { Color.blue,    "Blue"     }
+        { Color.magenta, Localization.Loc.loc(new string[]{ "Magenta", "Roza"})     },
+        { Color.red,     Localization.Loc.loc(new string[]{ "Red", "Crvena"})       },
+        { Color.yellow,  Localization.Loc.loc(new string[]{ "Yellow", "Žuta"})      },
+        { Color.green,   Localization.Loc.loc(new string[]{ "Green", "Zelena"})     },
+        { Color.blue,    Localization.Loc.loc(new string[]{ "Blue", "Plava"})       }
     };
 
     public static int[] ColorSolution = { 1, 4, 3 };

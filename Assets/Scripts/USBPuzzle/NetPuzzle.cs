@@ -32,7 +32,7 @@ public class NetPuzzle : MonoBehaviour
     void onComplete()
     {
         Router.Instance.completed = true;
-        PromptScript.instance.updatePrompt(Localization.Loc.loc(Connected), 3.0f);
+        PromptScript.instance.updatePrompt(Localization.Loc.loc(Localization.StoryTxt.Completed), 3.0f);
         TransitionManager.completePuzzle();
     }
 }

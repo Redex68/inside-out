@@ -105,16 +105,22 @@ public class HeatManager : MonoBehaviour {
         UIManager.clearUI();
         heatInfos.Clear();
         Destroy(coolerInstance);
-        PromptScript.instance.updatePrompt("Congratulations! You have beaten the puzzle.", 5);
+        PromptScript.instance.updatePrompt(Localization.Loc.loc(Localization.StoryTxt.Completed), 5);
 
         TransitionManager.completePuzzle();
     }
+
+    static string[] Overheat =
+    {
+        "Don't let the components overheat!",
+        "Nemoj dopustiti da se komponente pregriju!"
+    };
 
 /// <summary>
 /// Called when the player has failed the puzzle.
 /// </summary>
     private void failPuzzle(){
-        PromptScript.instance.updatePrompt("Don't let the components overheat!", 3);
+        PromptScript.instance.updatePrompt(Localization.Loc.loc(Overheat), 3);
         resetPuzzle();
     }
 
@@ -165,6 +171,19 @@ public class HeatManager : MonoBehaviour {
         throw new System.ArgumentException("Provided object is not in the list of HeatedComponents of the HeatManager.");
     }
 
+    static string[] CooledDown =
+    {
+        "Completely cooled down ",
+        "Potpuno ohlađen "
+    };
+
+    static Dictionary<string, string> HeatedComponentsLoc = new Dictionary<string, string>()
+    {
+        { "resistor" , Localization.Loc.loc(new string[]{ "resistor", "otpornik" }) },
+        { "chip" , Localization.Loc.loc(new string[]{ "chip", "čip" }) },
+        { "capacitor" , Localization.Loc.loc(new string[]{ "capacitor", "kondenzator" }) },
+    };
+
 /// <summary>
 /// Called when an object has been fully cooled down. Disables the heat component of the
 /// object and prints a prompt that the component has successfully been cooled.
@@ -172,7 +191,7 @@ public class HeatManager : MonoBehaviour {
 /// <param name="info"> The HeatInfo descriptor of the heated object. </param>
     private void objectFullyCooledDown(HeatInfo info){
         heatInfos.Remove(info);
-        PromptScript.instance.updatePrompt("Completely cooled down " + info.heatedObject.name.ToLower() + "!", 3);
+        PromptScript.instance.updatePrompt("Completely cooled down " + HeatedComponentsLoc[info.heatedObject.name.ToLower()] + "!", 3);
         UIManager.removeUIEntry(info);
         info.heatedObject.SetActive(false);
     }

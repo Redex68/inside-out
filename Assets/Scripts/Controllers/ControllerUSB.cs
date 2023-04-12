@@ -59,13 +59,19 @@ public class ControllerUSB : MonoBehaviour
         }
     }
 
+    static string[] UsbConnected =
+    {
+        "USB connected successguly!",
+        "USB uspješno uključen!"
+    };
+
     void onAttach(PC.Component comp)
     {
         if(this.name == comp.gameObjects[0].name) 
         {
             completed = true;
             AudioSource.PlayClipAtPoint(usbConnectedInstance, transform.position);
-            PromptScript.instance.updatePrompt("USB connected successfuly!", 3.0f);
+            PromptScript.instance.updatePrompt(Localization.Loc.loc(UsbConnected), 3.0f);
         }
     }
 }

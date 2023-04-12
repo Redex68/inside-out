@@ -36,12 +36,6 @@ public class Timer : MonoBehaviour
         timerOn = true;
     }
 
-    static string[] RamCompleted =
-    {
-        "You have successfully solved the puzzle!",
-        "Uspješno ste odradili puzlu!"
-    };
-
     static string[] Solved =
     {
         "Solved ",
@@ -70,7 +64,7 @@ public class Timer : MonoBehaviour
                     timerOn = false;
                     done = true;
                     
-                    PromptScript.instance.updatePrompt(Localization.Loc.loc(RamCompleted), 6f);
+                    PromptScript.instance.updatePrompt(Localization.Loc.loc(Localization.StoryTxt.Completed), 6f);
                     StartCoroutine(endPuzzle());
                 }
             }

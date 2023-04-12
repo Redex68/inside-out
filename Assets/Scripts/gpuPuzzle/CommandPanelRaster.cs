@@ -17,6 +17,7 @@ public class CommandPanelRaster : MonoBehaviour
     int buttonOnCount = 0;
     bool rasterComplete = false;
     bool colorCompleted = false;
+    bool completedAll = false;
     float audioSpeed = 0.0f;
 
     public static CommandPanelRaster Instance;
@@ -54,9 +55,10 @@ public class CommandPanelRaster : MonoBehaviour
 
         if(!colorCompleted) updateColors();
 
-        if(colorCompleted && rasterComplete)
+        if(colorCompleted && rasterComplete && !completedAll)
         {
-            PromptScript.instance.updatePrompt("GPU Puzzle Completed!", 4);
+            completedAll = true;
+            PromptScript.instance.updatePrompt(Localization.Loc.loc(Localization.StoryTxt.Completed), 3);
             TransitionManager.completePuzzle();
         }
     }
@@ -91,6 +93,12 @@ public class CommandPanelRaster : MonoBehaviour
         }
     }
 
+    static string[] GpuStatus =
+    {
+        "Graphics Processors: {0}/{1}\nColors:\n1. {2}\n2. {3}\n3. {4}",
+        "Grafički procesori: {0}/{1}\nBoje:\n1. {2}\n2. {3}\n3. {4}"
+    };
+
     public void updateUIStatus()
     {
         if(CommandPanelColor.Instance == null) return;
@@ -101,7 +109,7 @@ public class CommandPanelRaster : MonoBehaviour
         (
             string.Format
             (
-                "Graphics Processors: {0}/{1}\nColors:\n1. {2}\n2. {3}\n3. {4}",
+                Localization.Loc.loc(GpuStatus),
                 buttonOnCount, 
                 gridSize*gridSize, 
                 CommandPanelColor.ColorToName[CommandPanelColor.Colors[rgb[0]]],

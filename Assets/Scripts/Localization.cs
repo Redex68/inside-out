@@ -253,5 +253,11 @@ Ako želite igrati neke igre na njemu, stisnite crveni gumb."
             "Error!\nSolve a puzzle to fix it",
             "Kvar!\nRiješi puzlu da bi ga popravio"
         };
+
+        public static string[] Completed =
+        {
+            "You have successfully solved the puzzle!",
+            "Uspješno ste odradili puzlu!"
+        };
     }
 }

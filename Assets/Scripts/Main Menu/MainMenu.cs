@@ -39,6 +39,8 @@ public class MainMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        localize();
+
         PlayButton.onClick.AddListener      (() => { onAnyButtonClick(); StartCoroutine(onPlay());  });
         QuizButton.onClick.AddListener      (() => { onAnyButtonClick(); StartCoroutine(onQuiz());  });
         SettingsButton.onClick.AddListener  (() => { onAnyButtonClick(); onSettings();              });
@@ -105,8 +107,7 @@ public class MainMenu : MonoBehaviour
 
     void onSettings() 
     {
-        Title.text = Settings.GameLanguage == Languages.English ?
-            "Settings" : "Postavke";
+        Title.text = Loc.loc(new string[]{ "Settings", "Postavke" });
 
         PlayButton.gameObject.SetActive(false);
         QuizButton.gameObject.SetActive(false);
@@ -122,8 +123,7 @@ public class MainMenu : MonoBehaviour
 
     void onCredits() 
     {
-        Title.text = Settings.GameLanguage == Languages.English ?
-            "Credits" : "Zasluge";
+        Title.text = Loc.loc(new string[]{ "Credits", "Zasluge" });
 
         PlayButton.gameObject.SetActive(false);
         QuizButton.gameObject.SetActive(false);
@@ -173,8 +173,18 @@ public class MainMenu : MonoBehaviour
             Settings.GameLanguage = Languages.English;
         }
 
+        localize();
+    }
 
-        Title.text = Loc.loc(MainMenuTxt.Settings);
+    void localize()
+    {
+        Title.text = 
+            PlayButton.gameObject.activeInHierarchy ? 
+                "InsideOut" : 
+                Volume.gameObject.activeInHierarchy ? 
+                    Loc.loc(new string[]{ "Settings", "Postavke" }) : 
+                    Loc.loc(new string[]{ "Credits", "Zasluge" });
+
         Credits.text = Loc.loc(MainMenuTxt.CreditsText);
         Loc.locChild(Volume, MainMenuTxt.Volume);
         Loc.locChild(PlayButton, MainMenuTxt.Play);
