@@ -34,7 +34,7 @@ public class cpuPuzzleManager : MonoBehaviour
             if(counter == 5) {
                 PuzzleCleared();
             }
-            else if(failed == 4) {
+            else if(failed == 3) {
                 PuzzleFailed();
             }
 
@@ -59,14 +59,14 @@ public class cpuPuzzleManager : MonoBehaviour
 
     static string[] Correct =
     {
-        "Correct! Currently solved: ",
-        "Točno! Trenutno Riješeno: "
+        "Correct!\nCurrently solved: ",
+        "Točno!\nTrenutno Riješeno: "
     };
 
     static string[] Incorrect =
     {
-        "Incorrect! Mistakes: ",
-        "Netočno! Greške: "
+        "Incorrect!\nMistakes: ",
+        "Netočno!\nGreške: "
     };
 
     public void TaskCorrect(string index) {
@@ -76,20 +76,21 @@ public class cpuPuzzleManager : MonoBehaviour
             tasks.Remove(currentTask);
             string text = PromptScript.instance.getPrompt();
             this.counter++;
-            PromptScript.instance.updatePrompt(Localization.Loc.loc(Correct) + counter + " / 5", 3);
-            StartCoroutine(delayedPrompt(text));
+            PromptScript.instance.updatePrompt(Localization.Loc.loc(Correct) + counter + "/5", 3);
+            // StartCoroutine(delayedPrompt(text));
         }
         
 
     }
 
     public void TaskInCorrect(string index) {
-        GameObject currentTask = GameObject.FindWithTag(index);
+        string tag = "task" + index;
+        GameObject currentTask = GameObject.FindWithTag(tag);
         if(tasks.Contains(currentTask)) {
             string text = PromptScript.instance.getPrompt();
             this.failed++;
-            PromptScript.instance.updatePrompt(Localization.Loc.loc(Incorrect) + failed + " / 3", 3);
-            StartCoroutine(delayedPrompt(text));
+            PromptScript.instance.updatePrompt(Localization.Loc.loc(Incorrect) + failed + "/3", 3);
+            // StartCoroutine(delayedPrompt(text));
         }
     }
 
@@ -110,7 +111,7 @@ public class cpuPuzzleManager : MonoBehaviour
         puzzleActive = false;
         this.counter = 0;
         this.failed = 0;
-        player.TeleportPlayer(new Vector3(-499.709991f,186.539993f,992.76001f), Quaternion.identity);
+        player.TeleportPlayer(GameObject.Find("GPU Location").transform.position, Quaternion.identity);
         SetupPuzzle();
     }
 }
