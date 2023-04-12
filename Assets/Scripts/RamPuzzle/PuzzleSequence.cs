@@ -20,15 +20,24 @@ public class PuzzleSequence : MonoBehaviour
         
     }
 
-    IEnumerator timerStart(){
+    IEnumerator timerStart()
+    {
         yield return new WaitForSeconds(7f);
         GameObject.Find("Timer").GetComponent<Timer>().enabled = true;
     }
 
-    IEnumerator startPrompt(){
-        for(int i = 7; i >= 0; i--){
-            PromptScript.instance.updatePrompt("Place the boxes in the correct order. \nWatch out, each time you get a different order! \nYou have a minute and a half.\n" + string.Format("{0:00} : {1:00}", 0,  Mathf.FloorToInt(i % 60)));
-            yield return new WaitForSeconds(1f);
+    static string[] RamPuzzle =
+    {
+        "Place the boxes in the correct order.\nThe clock is ticking!\n",
+        "Stavi kutije točnim redoslijedom.\nVrijeme teče!\n"
+    };
+
+    IEnumerator startPrompt()
+    {
+        for(int i = 6; i > 0; i--)
+        {
+            PromptScript.instance.updatePrompt(Localization.Loc.loc(RamPuzzle) + string.Format("{}", i), 2.0f);
+            yield return new WaitForSeconds(1.0f);
         }
     }
 }

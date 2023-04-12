@@ -10,5 +10,5 @@ public enum Languages
 
 public static class Settings
 {
-    public static Languages GameLanguage = Languages.English;
+    public static Languages GameLanguage = Languages.Hrvatski;
 }

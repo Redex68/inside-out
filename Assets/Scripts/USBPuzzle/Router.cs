@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using Localization;
+
 public class Router : MonoBehaviour
 {
     [SerializeField] public AudioClip connectionEstablished;
@@ -27,6 +29,13 @@ public class Router : MonoBehaviour
         TransitionManager.AttachCallbackEvent.AddListener((comp) => onAttach(comp));
         lightMat = GetComponent<MeshRenderer>().sharedMaterials[4];
         lightMat.color = Color.red;
+    }
+
+    public void resetRouter()
+    {
+        lightMat = GetComponent<MeshRenderer>().sharedMaterials[4];
+        lightMat.color = Color.red;
+        completed = false;
     }
 
     // Update is called once per frame
@@ -55,7 +64,7 @@ public class Router : MonoBehaviour
         if(comp.name == "USB")
         {
             AudioSource.PlayClipAtPoint(connectionEstablished, transform.position);
-            PromptScript.instance.updatePrompt("Error!\nSolve a puzzle to fix it", 3.0f);
+            PromptScript.instance.updatePrompt(Loc.loc(StoryTxt.Error), 3.0f);
         }
     }
 }

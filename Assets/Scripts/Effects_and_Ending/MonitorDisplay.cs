@@ -4,6 +4,8 @@ using UnityEngine;
 
 using UnityEngine.Events;
 
+using Localization;
+
 [ExecuteAlways]
 public class MonitorDisplay : MonoBehaviour
 {
@@ -31,6 +33,8 @@ public class MonitorDisplay : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        localize();
+
         r = GetComponent<MeshRenderer>();
 
         Resolution res = Screen.currentResolution;
@@ -58,6 +62,11 @@ public class MonitorDisplay : MonoBehaviour
     void Update()
     {
         resetGame();
+    }
+
+    void localize()
+    {
+        Loc.locObj(transform.parent.Find("CongratsTitle"), StoryTxt.Congrats);
     }
 
     void resetGame()
@@ -128,9 +137,9 @@ public class MonitorDisplay : MonoBehaviour
     void resetPC()
     {
         PC.Instance.resetModel();
-        Router.Instance.completed = false;
+        Router.Instance.resetRouter();
         foreach(var controller in FindObjectsOfType<ControllerUSB>())
-            controller.completed = false;
+            controller.resetUSB();
 
         string[] startingComponents = { "PSU", "MOBO", "FAN" };
 

@@ -23,10 +23,16 @@ public class NetPuzzle : MonoBehaviour
         
     }
 
+    static string[] Connected =
+    {
+        "Connected to a network!",
+        "Povezano na mrežu!"
+    };
+
     void onComplete()
     {
         Router.Instance.completed = true;
-        PromptScript.instance.updatePrompt("Connected to a network!", 3.0f);
+        PromptScript.instance.updatePrompt(Localization.Loc.loc(Connected), 3.0f);
         TransitionManager.completePuzzle();
     }
 }

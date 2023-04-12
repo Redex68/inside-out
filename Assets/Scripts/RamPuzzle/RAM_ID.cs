@@ -23,7 +23,7 @@ public class RAM_ID : MonoBehaviour
         if(comp.name == "RAM")
         {
             AudioSource.PlayClipAtPoint(surprise, transform.position);
-            PromptScript.instance.updatePrompt("Error!\nSolve a puzzle to fix it", 3.0f);
+            PromptScript.instance.updatePrompt(Localization.Loc.loc(Localization.StoryTxt.Error), 3.0f);
         }
     }
 }

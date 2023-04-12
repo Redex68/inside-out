@@ -547,7 +547,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7516992335759242669}
   m_PrefabAsset: {fileID: 0}
---- !u!84 &2041959852
+--- !u!84 &1956281476
 RenderTexture:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -597,6 +597,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 818165086340898257, guid: 2d2e9ede2d11c69408ddba0d49294137,
+        type: 3}
+      propertyPath: m_Name
+      value: Title
+      objectReference: {fileID: 0}
     - target: {fileID: 5207857332522489491, guid: 2d2e9ede2d11c69408ddba0d49294137,
         type: 3}
       propertyPath: m_RootOrder
@@ -651,6 +656,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738258252074065880, guid: 2d2e9ede2d11c69408ddba0d49294137,
+        type: 3}
+      propertyPath: m_Name
+      value: CongratsTitle
       objectReference: {fileID: 0}
     - target: {fileID: 7565381820202466582, guid: 2d2e9ede2d11c69408ddba0d49294137,
         type: 3}
@@ -1006,11 +1016,24 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 578651042, guid: b6730aab83fd0bd488d6f505c8f149d9, type: 3}
+      propertyPath: usbConnected
+      value: 
+      objectReference: {fileID: 8300000, guid: f57f8f4693a11694e969b1e02d7b1f1b, type: 3}
+    - target: {fileID: 1475914500, guid: b6730aab83fd0bd488d6f505c8f149d9, type: 3}
+      propertyPath: usbConnected
+      value: 
+      objectReference: {fileID: 8300000, guid: f57f8f4693a11694e969b1e02d7b1f1b, type: 3}
+    - target: {fileID: 3254904882092071490, guid: b6730aab83fd0bd488d6f505c8f149d9,
+        type: 3}
+      propertyPath: usbConnected
+      value: 
+      objectReference: {fileID: 8300000, guid: f57f8f4693a11694e969b1e02d7b1f1b, type: 3}
     - target: {fileID: 6651635446882081170, guid: b6730aab83fd0bd488d6f505c8f149d9,
         type: 3}
       propertyPath: m_TargetTexture
       value: 
-      objectReference: {fileID: 2041959852}
+      objectReference: {fileID: 1956281476}
     - target: {fileID: 7516992335592174921, guid: b6730aab83fd0bd488d6f505c8f149d9,
         type: 3}
       propertyPath: m_RootOrder
@@ -1070,6 +1093,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PlayArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 7516992335612828351, guid: b6730aab83fd0bd488d6f505c8f149d9,
+        type: 3}
+      propertyPath: m_Name
+      value: Title
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6730aab83fd0bd488d6f505c8f149d9, type: 3}

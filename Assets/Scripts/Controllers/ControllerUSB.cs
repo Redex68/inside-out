@@ -12,7 +12,7 @@ public class ControllerUSB : MonoBehaviour
     static int attachCount = 0;
     static float attachOffset = 0.012f;
 
-    public bool completed = false;
+    bool completed = false;
     float lightInterval = 0.0f;
     int dir = 1;
 
@@ -29,6 +29,13 @@ public class ControllerUSB : MonoBehaviour
         lightMat = Controller.GetComponentInChildren<ControllerLight>().GetComponent<MeshRenderer>().material;
         lightMat.color = Color.red;
         TransitionManager.AttachCallbackEvent.AddListener((comp) => onAttach(comp));
+    }
+
+    public void resetUSB()
+    {
+        lightMat = Controller.GetComponentInChildren<ControllerLight>().GetComponent<MeshRenderer>().material;
+        lightMat.color = Color.red;
+        completed = false;
     }
 
     // Update is called once per frame

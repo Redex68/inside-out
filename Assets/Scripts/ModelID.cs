@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+using Localization;
+
 public class ModelID : MonoBehaviour
 {
     [SerializeField] GameObject particleObj;
@@ -29,11 +31,41 @@ public class ModelID : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        localize();
+
         TransitionManager.CompleteCallbackEvent.AddListener((comp) => StartCoroutine(onComplete(comp)));
         TransitionManager.AttachCallbackEvent.AddListener((comp) => StartCoroutine(onAttach(comp)));
 
         transform.Find("Wires/PSU1").GetComponent<MeshRenderer>().sharedMaterial.SetInt("_PowerOn", 0);
         onElectricityOn();
+    }
+
+    void localize()
+    {
+        Action<string, string[]> put = new Action<string, string[]>
+        (
+            (path, txt) => Loc.locObj(transform.Find(path), txt)
+        );
+
+        Action<string, string[]> locElement = new Action<string, string[]>
+        (
+            (path, txt) => Loc.locObj(transform.Find(path + "/Title"), txt)
+        );
+        
+        put("InputElements/Title", StoryTxt.UserInput);
+        put("OutputElements/Title", StoryTxt.Output);
+        put("Internal/Title", StoryTxt.ComputerResources);
+
+        locElement("InputElements/RCElement", StoryTxt.RedController);
+        locElement("InputElements/BCElement", StoryTxt.BlueController);
+        locElement("InputElements/MouseElement", StoryTxt.Mouse);
+        locElement("InputElements/KeyboardElement", StoryTxt.Keyboard);
+        locElement("OutputElements/GameElement", StoryTxt.Output);
+        locElement("Internal/RasterElement", StoryTxt.Rasterization);
+        locElement("Internal/SimulationElement", StoryTxt.Simulation);
+        locElement("Internal/PowerElement", StoryTxt.Electricity);
+        locElement("Internal/MemoryElement", StoryTxt.Memory);
+        locElement("Internal/CloudElement", StoryTxt.Network);
     }
 
     // Update is called once per frame

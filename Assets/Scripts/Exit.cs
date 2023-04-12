@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+using Localization;
+
 public class Exit : MonoBehaviour
 {
     bool exiting = false;
@@ -10,7 +12,7 @@ public class Exit : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        localize();
     }
 
     // Update is called once per frame
@@ -22,6 +24,11 @@ public class Exit : MonoBehaviour
     private void OnTriggerEnter(Collider other) 
     {
         if(!exiting && other.gameObject.GetComponentInParent<PlayerID>() != null) StartCoroutine(ExitToMenu());
+    }
+
+    void localize()
+    {
+        Localization.Loc.locObj(transform.parent.Find("Door/Door_Wood_One/Title"), StoryTxt.ExitToMainMenu);
     }
 
     IEnumerator ExitToMenu()

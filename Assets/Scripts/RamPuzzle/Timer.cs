@@ -36,6 +36,24 @@ public class Timer : MonoBehaviour
         timerOn = true;
     }
 
+    static string[] RamCompleted =
+    {
+        "You have successfully solved the puzzle!",
+        "Uspješno ste odradili puzlu!"
+    };
+
+    static string[] Solved =
+    {
+        "Solved ",
+        "Riješeno "
+    };
+
+    static string[] TimeUp =
+    {
+        "Time is up! Try again!",
+        "Vrijeme je isteklo! Pokušajte ponovno!"
+    };
+
     void Update()
     {
         if(timerOn){
@@ -52,7 +70,7 @@ public class Timer : MonoBehaviour
                     timerOn = false;
                     done = true;
                     
-                    PromptScript.instance.updatePrompt("You have successfully solved the puzzle!", 6f);
+                    PromptScript.instance.updatePrompt(Localization.Loc.loc(RamCompleted), 6f);
                     StartCoroutine(endPuzzle());
                 }
             }
@@ -78,12 +96,12 @@ public class Timer : MonoBehaviour
             if(rightOrder[i] == true)
                 counter++;
 
-        PromptScript.instance.updatePrompt("Solved " + counter + "/5 \n" + string.Format("{0:00} : {1:00}", minutes, seconds));
+        PromptScript.instance.updatePrompt(Localization.Loc.loc(Solved) + counter + "/5 \n" + string.Format("{0:00} : {1:00}", minutes, seconds));
     }
 
     IEnumerator startAgain(){
         for(int i = 5; i >= 0; i--){
-            PromptScript.instance.updatePrompt("Time is up! Try again! \n" + string.Format("{0:00} : {1:00}", 0,  Mathf.FloorToInt(i % 60)));
+            PromptScript.instance.updatePrompt(Localization.Loc.loc(TimeUp) + " \n" + string.Format("{0:00} : {1:00}", 0,  Mathf.FloorToInt(i % 60)));
             yield return new WaitForSeconds(1f);
         }
         Start();
