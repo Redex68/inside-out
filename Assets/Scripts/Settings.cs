@@ -10,5 +10,6 @@ public enum Languages
 
 public static class Settings
 {
+    [SerializeField]
     public static Languages GameLanguage = Languages.Hrvatski;
 }

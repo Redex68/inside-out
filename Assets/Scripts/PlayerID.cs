@@ -27,5 +27,9 @@ public class PlayerID : MonoBehaviour
             TransitionManager.completePuzzle();
             delay += 1.0f;
         }
+        else if(Input.GetKey(KeyCode.L))
+        {
+            GetComponentInChildren<BNG.PlayerTeleport>().TeleportPlayer(GameObject.Find("NET Location").transform.position, Quaternion.identity);
+        }
     }
 }
