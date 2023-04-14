@@ -12,7 +12,6 @@ public class ModelID : MonoBehaviour
 
     static Color completeGlassColor = new Color(0x86/255.0f, 0xE0/255.0f, 0xBE/255.0f, 0x29/255.0f);
     static float showTime = 0.8f;
-    static float showTimeSpeed = 0.5f;
 
     bool resetted = false;
 

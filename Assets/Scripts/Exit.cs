@@ -23,7 +23,8 @@ public class Exit : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) 
     {
-        if(!exiting && other.gameObject.GetComponentInParent<PlayerID>() != null) StartCoroutine(ExitToMenu());
+        if(!exiting && other.gameObject.GetComponentInParent<PlayerID>() != null) 
+            StartCoroutine(ExitToMenu());
     }
 
     void localize()
@@ -37,10 +38,17 @@ public class Exit : MonoBehaviour
         float fadeIn = 0.0f;
         float fadeTime = 1.0f;
 
+        var obj = GameObject.Find("Fader");
+        obj.transform.GetChild(0).gameObject.SetActive(true);
+
+        yield return new WaitForEndOfFrame();
+        
+        Fader f = obj.GetComponentInChildren<Fader>();
+
         while(fadeIn < fadeTime)
         {
             fadeIn += Time.deltaTime;
-            Fader.Instance.setTransparency(fadeIn / fadeTime);
+            f.setTransparency(fadeIn / fadeTime);
             yield return new WaitForEndOfFrame();
         }
 
