@@ -31,10 +31,17 @@ public class Quiz : MonoBehaviour
     int currentQuestion;
     int correct = 0;
 
+    static string[] InsideOutQuiz =
+    {
+        "InsideOut - Quiz",
+        "InsideOut - Kviz"
+    };
+
     // Start is called before the first frame update
     void Start()
     {
         Answers = transform.Find("Canvas/Question/Answers");
+        transform.Find("Canvas/Title").GetComponent<TMP_Text>().text = Localization.Loc.loc(InsideOutQuiz);
         for(int i = 0; i < Answers.childCount; i++)
         {
             int k = i;
@@ -47,7 +54,7 @@ public class Quiz : MonoBehaviour
 
     void setQuestion()
     {
-        setQuestionTitle(Questions[currentQuestion].text);
+        setQuestionTitle(Questions[currentQuestion].text + string.Format(" ({0}/{1})", currentQuestion+1, Questions.Count));
         setPossibleAnswers(Questions[currentQuestion].answers);
     }
 
@@ -84,6 +91,12 @@ public class Quiz : MonoBehaviour
         }
     }
 
+    static string[] QuizFinished =
+    {
+        "Quiz Finished!\nScore: ",
+        "Kviz završen!\nRezultat: "
+    };
+
     void showFinalResult()
     {
         transform.Find("Canvas/Question/QuestTitle").gameObject.SetActive(false);
@@ -91,7 +104,7 @@ public class Quiz : MonoBehaviour
 
         var res = transform.Find("Canvas/Result");
         res.gameObject.SetActive(true);
-        res.GetComponent<TMP_Text>().text = "Quiz finished!\nScore: " + correct;
+        res.GetComponent<TMP_Text>().text = Localization.Loc.loc(QuizFinished) + correct;
     }
 
     IEnumerator onAnswerClicked(int answer)
