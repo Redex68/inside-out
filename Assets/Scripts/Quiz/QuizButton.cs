@@ -43,7 +43,7 @@ public class QuizButton : MonoBehaviour, IPointerExitHandler, IPointerEnterHandl
     {
         if(blockEvents) return;
 
-        GetComponentInChildren<TMP_Text>().color = Color.blue;
+        GetComponentInChildren<TMP_Text>().color = Color.cyan;
     }
 
     void autoResize()

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-// [ExecuteAlways]
+
 public class AutoSizeUI : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -16,12 +16,6 @@ public class AutoSizeUI : MonoBehaviour
     void Update()
     {
 
-    }
-
-    void OnValidate() 
-    {
-        Debug.Log("Resizing");
-        autoResize(); 
     }
 
     void autoResize()

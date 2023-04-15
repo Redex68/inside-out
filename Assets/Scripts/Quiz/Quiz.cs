@@ -28,6 +28,7 @@ public class Quiz : MonoBehaviour
 
     Transform Answers;
     bool answerProcessing = false;
+    bool quizBegan = false;
     int currentQuestion;
     int correct = 0;
 
@@ -37,16 +38,46 @@ public class Quiz : MonoBehaviour
         "InsideOut - Kviz"
     };
 
+    static string[] Intro =
+    {
+        "Welcome to the quiz!\nThere are {0} questions and you will have 15 seconds for each. Press start button when you are ready.",
+        "Dobrodošli na kviz!\nPostoji {0} pitanja i za svako imate 15 sekundi. Pritisnite gumb za početak kada ste spremni."
+    };
+
+    static string[] StartQuiz =
+    {
+        "Start Quiz!",
+        "Započni kviz!"
+    };
+
     // Start is called before the first frame update
     void Start()
     {
         Answers = transform.Find("Canvas/Question/Answers");
         transform.Find("Canvas/Title").GetComponent<TMP_Text>().text = Localization.Loc.loc(InsideOutQuiz);
+        transform.Find("Canvas/Intro").GetComponent<TMP_Text>().text = string.Format(Localization.Loc.loc(Intro), Questions.Count);
+        transform.Find("Canvas/StartButton").GetComponent<Button>().onClick.AddListener(() => beginQuiz());
+        transform.Find("Canvas/StartButton").GetComponentInChildren<TMP_Text>().text = Localization.Loc.loc(StartQuiz);
+        registerAnswerButtons();
+    }
+
+    void registerAnswerButtons()
+    {
         for(int i = 0; i < Answers.childCount; i++)
         {
             int k = i;
             Answers.GetChild(i).GetComponent<Button>().onClick.AddListener(() => StartCoroutine(onAnswerClicked(k)));
         }
+    }
+
+    void beginQuiz()
+    {
+        if(quizBegan) return;
+        quizBegan = true;
+
+        transform.Find("Canvas/Intro").gameObject.SetActive(false);
+        transform.Find("Canvas/StartButton").gameObject.SetActive(false);
+        transform.Find("Canvas/Question").gameObject.SetActive(true);
 
         currentQuestion = 0;
         setQuestion();
@@ -54,8 +85,26 @@ public class Quiz : MonoBehaviour
 
     void setQuestion()
     {
-        setQuestionTitle(Questions[currentQuestion].text + string.Format(" ({0}/{1})", currentQuestion+1, Questions.Count));
+        StartCoroutine(startTimer());
         setPossibleAnswers(Questions[currentQuestion].answers);
+    }
+
+    IEnumerator startTimer()
+    {
+        int timeLeft = 15;
+
+        while(timeLeft > 0 && !answerProcessing)
+        {
+            setQuestionTitle
+            (
+                string.Format("[{0}/{1}] ", currentQuestion+1, Questions.Count) + 
+                Questions[currentQuestion].text + 
+                string.Format(" {0}", timeLeft--)
+            );
+            yield return new WaitForSeconds(1.0f);
+        }
+
+        if(timeLeft == 0) StartCoroutine(onAnswerClicked(-1));
     }
 
     void setQuestionTitle(string title)
@@ -113,7 +162,7 @@ public class Quiz : MonoBehaviour
         {
             answerProcessing = true;
 
-            if(Questions[currentQuestion].solution == Questions[currentQuestion].answers[answer])
+            if(answer >= 0 && Questions[currentQuestion].solution == Questions[currentQuestion].answers[answer])
             {
                 correct++;
                 AudioSource.PlayClipAtPoint(correctSFX, transform.position);
@@ -125,14 +174,14 @@ public class Quiz : MonoBehaviour
 
             showResult(answer);
 
-            yield return new WaitForSeconds(3.0f);
+            yield return new WaitForSeconds(4.0f);
 
             currentQuestion++;
 
+            answerProcessing = false;
+
             if(currentQuestion == Questions.Count) showFinalResult();
             else setQuestion();
-
-            answerProcessing = false;
         } 
     }
 }
