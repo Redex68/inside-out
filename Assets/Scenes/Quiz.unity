@@ -545,6 +545,82 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 261324924}
   m_CullTransparentMesh: 1
+--- !u!1 &263870866
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 263870867}
+  - component: {fileID: 263870868}
+  - component: {fileID: 263870869}
+  m_Layer: 0
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &263870867
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263870866}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -482.49295, y: 187.7197, z: 1006.4131}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &263870868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263870866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38cb1b741aded174b9a67fb1651fb36a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &263870869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263870866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: d172669ac04fa3a43918b79d55179981,
+    type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &286961673
 GameObject:
   m_ObjectHideFlags: 0
@@ -1343,6 +1419,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64d442bb5938cf04b9c40b76d8457335, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  questionFile: QuizQuestions.txt
   Questions:
   - text: What holds memory?
     answers:
@@ -1374,6 +1451,196 @@ MonoBehaviour:
     solution: PSU
   correctSFX: {fileID: 8300000, guid: 92dfdec1cfbe0fb4f8b36d612c244318, type: 3}
   incorrectSFX: {fileID: 8300000, guid: 6fa18c1a8b6c72b4dbd2aa4af5a03bbc, type: 3}
+--- !u!1001 &618193310
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1600
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.0034684057
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.0034684064
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.0034684064
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5.914
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.0000014603138
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 2.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410428, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_Name
+      value: Lecture (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649733880859256, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_text
+      value: "Procesor marke AMD ili Intel je srce ra\u010Dunala koje obavlja milijune
+        ra\u010Dunalnih operacija u sekundi. Najbr\u017Ei komercijalno dostupni procesor
+        mo\u017Ee imati vi\u0161e od 50 jezgri i raditi na frekvenciji vecoj od 5
+        GHz.\n\r\nMati\u010Dna plo\u010Da je slo\u017Eena elektroni\u010Dka plo\u010Da
+        koja omogu\u0107uje povezivanje svih komponenti racunala. Moderna mati\u010Dna
+        plo\u010Da mo\u017Ee podr\u017Eavati do 128 GB RAM-a i ima razli\u010Dite
+        utore za priklju\u010Divanje procesora, grafi\u010Dke kartice, i ostalih
+        ure\u0111aja.\n\r\nRAM je brza privremena memorija koja pohranjuje podatke
+        s kojima ra\u010Dunalo trenutno radi. Uobi\u010Dajene koli\u010Dine RAM-a
+        u suvremenim ra\u010Dunalima kre\u0107u se od 8 GB do 64GB i vi\u0161e. Mjerna
+        jedinica brzine RAM-a je uglavnom MHz, a ve\u0107e brzine omogu\u0107uju
+        br\u017Ee izvr\u0161avanje operacija.\r\n\nTvrdi disk (HDD) koristi magnetske
+        ploce za dugotrajno pohranjivanje podataka. Solid State Drive (SSD) koristi
+        flash memoriju i omogu\u0107uje br\u017Ee u\u010Ditavanje i pisanje podataka.
+        Kapaciteti tvrdih diskova kre\u0107u se od nekoliko stotina gigabajta do
+        nekoliko terabajta, dok SSD-ovi mogu dose\u0107i kapacitete od nekoliko terabajta.\n\r\nGrafi\u010Dka
+        kartica je odgovorna za obradu i prikazivanje grafike na zaslonu. GPU je
+        posebno dizajniran za brzu obradu velikih kolicina podataka i igra klju\u010Dnu
+        ulogu u izvo\u0111enju igara i obradi videa. Najnaprednije grafi\u010Dke
+        kartice mogu imati tisu\u0107e jezgri i GDDR5 ili GDDR6 memoriju s kapacitetom
+        vecim od 16 GB.\n\r\nNapajanje je komponenta koja opskrbljuje elektri\u010Dnom
+        energijom sve dijelove ra\u010Dunala. Napajanja se mjere u vatima (W), a
+        ve\u0107i broj vata omogu\u0107uje napajanje energetski zahtjevnijih komponenti.
+        Naprednija napajanja mogu imati modularne kabele koji olaksavaju organizaciju
+        kablova u racunalu.\n\r\nZanimljive \u010Dinjenice:\n- Ra\u010Dunalni procesori
+        su postali tisu\u0107u puta br\u017Ei u posljednjih 40 godina.\n- Najbr\u017Ei
+        superkompjuteri na svijetu mogu raditi na vi\u0161e od 100 petaflopsa, sto
+        je ekvivalentno izvrsavanju 100 bilijuna operacija u sekundi.\n- Prvi tvrdi
+        disk (HDD) iz 1956. imao je kapacitet od samo 5 megabajta, dok su dana\u0161nji
+        modeli veli\u010Dine nekoliko terabajta.\n- NVIDIA GeForce RTX 3090, jedna
+        od najmocnijih grafi\u010Dkih kartica na tr\u017Ei\u0161tu, ima preko 10.000
+        jezgri i 24 GB GDDR6X memorije."
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649733880859256, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 20.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649734138996691, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_text
+      value: "Osnove ra\u010Dunalnih dijelova"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649734138996691, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 66.4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 166ed7e18bbbc9d428b6175dca7137d3, type: 3}
 --- !u!1 &765672405
 GameObject:
   m_ObjectHideFlags: 0
@@ -2922,6 +3189,181 @@ Transform:
   m_Father: {fileID: 4760724859096987062}
   m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &2079943234
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1500
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.0031582592
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.0031582597
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.0031582597
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.98
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.7071048
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.70710886
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 5.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 2.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 270
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410428, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_Name
+      value: Lecture (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649733880859256, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_text
+      value: "Procesor se postavlja na posebnu uti\u010Dnicu na mati\u010Dnoj plo\u010Di,
+        koja mo\u017Ee biti razli\u010Ditog oblika ovisno o generaciji procesora.
+        Utori za procesore su se razvijali tijekom vremena, s primjerima poput LGA
+        (Land Grid Array) ili PGA (Pin Grid Array) tehnologija.\r\n\r\nRadna memorija
+        (RAM) se umetne u utor(e) na mati\u010Dnoj plo\u010Di, koji su obi\u010Dno
+        DIMM (Dual In-Line Memory Module) ili SODIMM (Small Outline DIMM) tipovi
+        utora.\r\nBroj i kapaciteti utora za RAM ovise o modelu mati\u010Dne plo\u010De
+        i mogu podr\u017Eavati razli\u010Dite kombinacije modula s razli\u010Ditim
+        kapacitetima (npr. 2 x 8 GB, 4 x 16 GB).\r\n\r\nTvrdi disk ili SSD povezuje
+        se s mati\u010Dnom plo\u010Dom putem kabela, naj\u010De\u0161\u0107e SATA
+        (Serial ATA) kabela. SATA kabeli mogu biti razli\u010Ditih duljina i brzina
+        prijenosa podataka, poput SATA II (3 Gb/s) ili SATA III (6 Gb/s).\r\n\r\nGrafi\u010Dka
+        kartica se postavlja u PCI-Express utor na mati\u010Dnoj plo\u010Di, koji
+        je standardni interkonekcijski su\u010Delje za grafi\u010Dke kartice. PCI-Express
+        x16 utori su naj\u010De\u0161\u0107i za moderne grafi\u010Dke kartice, ali
+        postoje i razli\u010Diti oblici kao \u0161to su PCI-Express x8 ili x4.\r\n\r\nNapajanje
+        se povezuje s mati\u010Dnom plo\u010Dom i ostalim komponentama putem kabela
+        za napajanje. Standardno napajanje u ra\u010Dunalima obi\u010Dno ima ATX
+        (Advanced Technology eXtended) oblik i mo\u017Ee isporu\u010Diti razli\u010Dite
+        razine snage, poput 500 W, 750 W, pa \u010Dak i preko 1000 W za potrebe energetski
+        zahtjevnih sustava.\r\n\r\nZanimljive \u010Dinjenice\r:\r\n- SATA su\u010Delje,
+        koje se \u010Desto koristi za povezivanje tvrdih diskova i SSD-ova, prvi
+        put je predstavljeno 2000. godine.\r\n- PCI-Express 4.0 su\u010Delje, koje
+        pru\u017Ea ve\u0107i protok podataka, u stanju je dosegnuti brzinu od 16
+        gigabajta u sekundi.\r\n- Napajanja za ra\u010Dunalne sustave s visokim performansama
+        mogu imati u\u010Dinkovitost od preko 90%, \u0161to smanjuje gubitak energije
+        i poma\u017Ee u odr\u017Eavanju energetske u\u010Dinkovitosti."
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649733880859256, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 25.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649734138996691, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_text
+      value: "Povezivanje dijelova ra\u010Dunala"
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 166ed7e18bbbc9d428b6175dca7137d3, type: 3}
 --- !u!33 &7715098225208991
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -3214,6 +3656,145 @@ Transform:
   m_Father: {fileID: 1147494712712448029}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1447649733787722052
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.0032457109
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.0028667299
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.0028667299
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -4.633
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 2.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410424, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447649732841410428, guid: 166ed7e18bbbc9d428b6175dca7137d3,
+        type: 3}
+      propertyPath: m_Name
+      value: Lecture
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 166ed7e18bbbc9d428b6175dca7137d3, type: 3}
 --- !u!4 &1512230454961028329
 Transform:
   m_ObjectHideFlags: 0

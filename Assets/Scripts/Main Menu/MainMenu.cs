@@ -47,11 +47,11 @@ public class MainMenu : MonoBehaviour
         CreditsButton.onClick.AddListener   (() => { onAnyButtonClick(); onCredits();               });
         ExitButton.onClick.AddListener      (() => { onAnyButtonClick(); onExit();                  });
         BackButton.onClick.AddListener      (() => { onAnyButtonClick(); onBack();                  });
+        Volume.GetComponentInChildren<Slider>().onValueChanged.AddListener((call) => AudioListener.volume = call);
+        Language.GetComponentInChildren<Button>().onClick.AddListener(() => { onAnyButtonClick(); onLang();});
 
 
         Volume.GetComponentInChildren<Slider>().value = AudioListener.volume;
-        Volume.GetComponentInChildren<Slider>().onValueChanged.AddListener((call) => AudioListener.volume = call);
-        Language.GetComponentInChildren<Button>().onClick.AddListener(() => { onAnyButtonClick(); onLang();});
 
         PersistentData pd = Serializer.Load();
         if(pd == null || !pd.storyCompleted) QuizButton.interactable = false;

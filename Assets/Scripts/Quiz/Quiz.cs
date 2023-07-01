@@ -4,18 +4,28 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
+[System.Serializable]
+public struct Question
+{
+    [SerializeField]
+    public string text;
+    [SerializeField]
+    public List<string> answers;
+    [SerializeField]
+    public string solution;
+
+    public Question(string text, List<string> answers, string solution)
+    {
+        this.text = text;
+        this.answers = answers;
+        this.solution = solution;
+    }
+}
+
 public class Quiz : MonoBehaviour
 {
-    [System.Serializable]
-    struct Question
-    {
-        [SerializeField]
-        public string text;
-        [SerializeField]
-        public List<string> answers;
-        [SerializeField]
-        public string solution;
-    }
+    [SerializeField]
+    string questionFile = "";
 
     [SerializeField]
     List<Question> Questions;
@@ -50,6 +60,13 @@ public class Quiz : MonoBehaviour
         "Započni kviz!"
     };
 
+    void Awake()
+    {
+        if(questionFile.Length > 0)
+        {
+            Questions = QuestionParser.ParseQuestionsFromFile(questionFile);
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -114,18 +131,11 @@ public class Quiz : MonoBehaviour
 
     void setPossibleAnswers(List<string> answers)
     {
-        if(answers.Count < 2 || answers.Count > 4) throw new System.Exception("Invalid amount of possible answers! Range [2,4]");
+        if(answers.Count != 4) throw new System.Exception("Invalid amount of possible answers!");
         for(int i = 0; i < 4; i++)
         {
             var obj = Answers.GetChild(i);
-            if(i <= answers.Count)
-            {
-                obj.GetComponent<QuizButton>().setAnswer(answers[i]);
-            }
-            else
-            {
-                obj.gameObject.SetActive(false);
-            }
+            obj.GetComponent<QuizButton>().setAnswer(answers[i]);
         }
     }
 
