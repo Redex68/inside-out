@@ -235,6 +235,7 @@ public class CommandPanelRaster : MonoBehaviour
 
         audioSource.Stop();
         audioSource.pitch = 1.0f;
+        audioSource.volume = 0.9f;
         audioSource.clip = successAudio;
         audioSource.PlayOneShot(successAudio);
     }

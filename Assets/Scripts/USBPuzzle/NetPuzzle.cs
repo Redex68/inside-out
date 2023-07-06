@@ -29,7 +29,7 @@ public class NetPuzzle : MonoBehaviour
 
     bool dropped = false;
     int successCount = 0;
-    int neededCount = 8;
+    int neededCount = 5;
 
     static Dictionary<string, string[]> NamesLoc = new Dictionary<string, string[]>
     {

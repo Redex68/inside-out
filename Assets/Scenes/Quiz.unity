@@ -2943,6 +2943,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6069362580952815755, guid: da7cb42398646f541b79585efb71bdbf,
+        type: 3}
+      propertyPath: far clip plane
+      value: 1500
+      objectReference: {fileID: 0}
+    - target: {fileID: 6085046987332326283, guid: da7cb42398646f541b79585efb71bdbf,
+        type: 3}
+      propertyPath: far clip plane
+      value: 1500
+      objectReference: {fileID: 0}
+    - target: {fileID: 6088075493773197157, guid: da7cb42398646f541b79585efb71bdbf,
+        type: 3}
+      propertyPath: far clip plane
+      value: 1500
+      objectReference: {fileID: 0}
     - target: {fileID: 7473253609412370188, guid: da7cb42398646f541b79585efb71bdbf,
         type: 3}
       propertyPath: m_IsActive
@@ -6513,7 +6528,7 @@ GameObject:
   - component: {fileID: 4760724859135966336}
   - component: {fileID: 4760724859135966351}
   - component: {fileID: 4760724859135966350}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Ceiling
   m_TagString: Untagged
   m_Icon: {fileID: 0}

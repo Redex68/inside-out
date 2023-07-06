@@ -208,7 +208,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: bc717dbd69a925a4ea400a5d7ab5dfd6, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.08
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -359,6 +359,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: RenderTargetGPU
       objectReference: {fileID: 0}
+    - target: {fileID: 8567111964364184945, guid: 564257abb9be56d418d7954f13575c3a,
+        type: 3}
+      propertyPath: m_TargetTexture
+      value: 
+      objectReference: {fileID: 8400000, guid: a081a0c3623716046b8686d4b74b767a, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 564257abb9be56d418d7954f13575c3a, type: 3}
 --- !u!4 &6339797995519761096 stripped
